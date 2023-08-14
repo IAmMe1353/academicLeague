@@ -1,7 +1,6 @@
 package academicLeague;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -31,14 +30,14 @@ public class Main extends Application {
 	BorderPane mainMenu;
 	VBox leftMenu, practiceBox;
 	HBox practiceSettings;
-	Scene scene;
+	static Scene scene;
 	Button practiceB, playGameB, importDeckB, exitB, startPractice;
 	Label practiceT;
 	ColorAdjust colorAdjust;
 	CheckBox shuffleCheck;
 	ComboBox<String> deckSelect;
 	final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
-	final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
+	static final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
 	static int stageHeight = 250;
 	static int buttonHeight = (stageHeight-35)/4;
 	static int buttonWidth = buttonHeight*2;
@@ -140,7 +139,7 @@ public class Main extends Application {
 	private void startPractice(Stage stage) {
 		String deck = deckSelect.getValue(); 
 		if (deck != null)
-			new Practice(stage,shuffleCheck.isSelected(),deck);
+			new Practice(stage,shuffleCheck.isSelected(),deck+".txt");
 		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");
 			
 	}

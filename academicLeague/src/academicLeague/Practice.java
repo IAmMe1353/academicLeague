@@ -34,91 +34,109 @@ public class Practice {
 	Button save,exit;
 	int line, correct;
 	
-	//	TODO take in String[]
+	
+	
 	public Practice(Stage window,boolean shuffle, String fileName) {
-		//	create question label
-		questions = readFileAsArray(fileName); 
-		this.window = window;
-		line = 0;
-		question = new Label(questions[0]);
-		question.setFont(Font.font(Main.titleSize));
-		question.setWrapText(true);
-		answerT = new TextArea();
-		answerT.setPromptText("Press Enter When Finished");
-		answerT.setPrefRowCount(2);
-		answerT.setOnKeyPressed(e ->{
-			if(e.getCode() == KeyCode.ENTER) {
-				check();
-			}
-		});
-		VBox mainBox = new VBox(25);
-		mainBox.setAlignment(Pos.TOP_CENTER);
-		mainBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
-		mainBox.setPadding(new Insets(10,10,10,10));
-		mainBox.getChildren().addAll(question,answerT);
-		scene = new Scene(mainBox,Main.stageHeight*2,Main.stageHeight);
+		//	turn deck into array
+			questions = readFileAsArray(fileName); 
+			this.window = window;
+			line = 0;
+		//	set up question screen
+			//	create question label
+			question = new Label(questions[0]);
+			question.setFont(Font.font(Main.titleSize));
+			question.setWrapText(true);
+			//	create answer area
+			answerT = new TextArea();
+			answerT.setPromptText("Press Enter When Finished");
+			answerT.setPrefRowCount(2);
+			//	if enter is pressed check answer
+			answerT.setOnKeyPressed(e ->{
+				if(e.getCode() == KeyCode.ENTER) check();
+			});
+			//	set up VBox and create scene
+			VBox mainBox = new VBox(25);
+			mainBox.setAlignment(Pos.TOP_CENTER);
+			mainBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
+			mainBox.setPadding(new Insets(10,10,10,10));
+			mainBox.getChildren().addAll(question,answerT);
+			scene = new Scene(mainBox,Main.stageHeight*2,Main.stageHeight);
+		//	set window to question
 		window.setScene(scene);
+		//
 		createCorrect();
 		createWrong();
 	}
 	private Scene createComplete(boolean perfect) {
-		VBox completeBox = new VBox(25);
-		HBox saveBox = new HBox(25);
-		final Label deckComplete = new Label("Deck Complete!");
-		deckComplete.setFont(Font.font(Main.titleSize));
-		completeBox.getChildren().add(deckComplete);
+		//	create boxes
+			VBox completeBox = new VBox(25);
+			completeBox.setAlignment(Pos.TOP_CENTER);
+			completeBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
+			completeBox.setPadding(new Insets(10,10,10,10));
+			HBox saveBox = new HBox(25);
+			saveBox.setAlignment(Pos.CENTER);
+		//	set up deck complete label
+			final Label deckComplete = new Label("Deck Complete!");
+			deckComplete.setFont(Font.font(Main.titleSize));
+			completeBox.getChildren().add(deckComplete);
+		//	set up correct amount and save
 		if(!perfect) {
-			int correct = this.correct;
-			int total = (int)(questions.length/3.0 +.5);
-			numCorrect = new Label(correct + "/" + total + "  Answers Correct");
-			numCorrect.setFont(Font.font(Main.titleSize));
-			completeBox.getChildren().add(numCorrect);
-			
-			Button save = new Button("Save Incorrect");
-			save.setOnAction(e -> window.setScene(save(questionsWrong,true)));
-			saveBox.getChildren().add(save);
+			//	display amount correct
+				int correct = this.correct;
+				int total = (int)(questions.length/3.0 +.5);
+				numCorrect = new Label(correct + "/" + total + "  Answers Correct");
+				numCorrect.setFont(Font.font(Main.titleSize));
+				completeBox.getChildren().add(numCorrect);
+			//	set up save button
+				Button save = new Button("Save Incorrect");
+				save.setOnAction(e -> window.setScene(save(questionsWrong,true)));
+				saveBox.getChildren().add(save);
 		}
+		//	display perfect score
 		else {
 			numCorrect = new Label("Perfect Score!");
 			numCorrect.setFont(Font.font(Main.titleSize));
 			completeBox.getChildren().add(numCorrect);
 		}
-		
-		Button exit = new Button("Exit");
-		exit.setOnAction(e -> window.setScene(Main.scene));
-		saveBox.setAlignment(Pos.CENTER);
-		saveBox.getChildren().addAll(exit);
-		completeBox.setAlignment(Pos.TOP_CENTER);
+		//	exit button
+			Button exit = new Button("Exit");
+			exit.setOnAction(e -> window.setScene(Main.scene));
+			saveBox.getChildren().add(exit);
 		completeBox.getChildren().add(saveBox);
-		completeBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
-		completeBox.setPadding(new Insets(10,10,10,10));
 		return new Scene(completeBox,Main.stageHeight*2,Main.stageHeight);		
 	}
 	private void createCorrect(){
-		final Label correctLabel = new Label("Correct!");
-		correctLabel.setFont(Font.font(Main.titleSize));
-		Button button = new Button("Continue");
-		button.setOnAction(e -> window.setScene(scene));
-		VBox correctBox = new VBox(25);
-		correctBox.setAlignment(Pos.TOP_CENTER);
-		correctBox.getChildren().addAll(correctLabel,button);
-		correctBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
-		correctBox.setPadding(new Insets(10,10,10,10));
+		//	create correct label
+			final Label correctLabel = new Label("Correct!");
+			correctLabel.setFont(Font.font(Main.titleSize));
+		//	create continue button
+			Button button = new Button("Continue");
+			button.setOnAction(e -> window.setScene(scene));
+		//	create VBox
+			VBox correctBox = new VBox(25);
+			correctBox.setAlignment(Pos.TOP_CENTER);
+			correctBox.getChildren().addAll(correctLabel,button);
+			correctBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
+			correctBox.setPadding(new Insets(10,10,10,10));
 		correctScene = new Scene(correctBox,Main.stageHeight*2,Main.stageHeight);
 	}
 	
 	private void createWrong() {
-		final Label wrong = new Label("Incorrect!");
-		wrong.setFont(Font.font(Main.titleSize));
-		Button button = new Button("Continue");
-		button.setOnAction(e -> window.setScene(scene));
-		correctAnswer = new Label();
-		correctAnswer.setFont(Font.font(Main.titleSize));
-		VBox wrongBox = new VBox(25);
-		wrongBox.setAlignment(Pos.TOP_CENTER);
-		wrongBox.getChildren().addAll(wrong,correctAnswer,button);
-		wrongBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
-		wrongBox.setPadding(new Insets(10,10,10,10));
+		//	create incorrect label
+			final Label wrongLabel = new Label("Incorrect!");
+			wrongLabel.setFont(Font.font(Main.titleSize));
+		//	create correct answer label
+			correctAnswer = new Label();
+			correctAnswer.setFont(Font.font(Main.titleSize));
+		//	create continue button
+			Button button = new Button("Continue");
+			button.setOnAction(e -> window.setScene(scene));
+		//	create VBox
+			VBox wrongBox = new VBox(25);
+			wrongBox.setAlignment(Pos.TOP_CENTER);
+			wrongBox.getChildren().addAll(wrongLabel,correctAnswer,button);
+			wrongBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
+			wrongBox.setPadding(new Insets(10,10,10,10));
 		wrongScene = new Scene(wrongBox,Main.stageHeight*2,Main.stageHeight);
 	}
 	
@@ -191,6 +209,7 @@ public class Practice {
 	    if (checkAnswer(answer, questions[line])) {
 	        correct = true;
 	        window.setScene(correctScene);
+	        System.out.println("hello");
 	    } else {
 	    // adds wrong questions to global string
 	    	questionsWrong += questions[line - 1] + "\n" + questions[line] + "\n\n";

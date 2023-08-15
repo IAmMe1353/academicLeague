@@ -84,7 +84,7 @@ public class Main extends Application {
 			exitB.setPrefHeight(buttonHeight);
 			exitB.setPrefWidth(buttonWidth);
 			exitB.setFont(Font.font(fontSize));
-			
+			exitB.setOnAction(e-> primaryStage.close());
 			leftMenu = new VBox(5);
 			leftMenu.setPadding(new Insets(10, 10, 10, 10));
 			leftMenu.getChildren().addAll(practiceB,playGameB,importDeckB,exitB);

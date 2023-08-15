@@ -28,7 +28,7 @@ public class Alert {
 		layout.setAlignment(Pos.CENTER);
 		layout.setPadding(new Insets(10,40,10,40));
 		Scene scene =new Scene(layout);
-		alertWindow.getIcons().add(new Image(Main.class.getResourceAsStream("/images/alertIcon.png")));
+		alertWindow.getIcons().add(new Image(System.getProperty("user.dir")+"/resources/images/alertIcon.png"));
 		alertWindow.setScene(scene);
 		alertWindow.showAndWait();
 	}

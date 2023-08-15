@@ -1,8 +1,13 @@
 package academicLeague;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -36,7 +41,7 @@ public class Main extends Application {
 	ColorAdjust colorAdjust;
 	CheckBox shuffleCheck;
 	ComboBox<String> deckSelect;
-	final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
+	static final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
 	static final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
 	static int stageHeight = 250;
 	static int buttonHeight = (stageHeight-35)/4;
@@ -98,21 +103,22 @@ public class Main extends Application {
 			//	set up Deck drop down
 			deckSelect = new ComboBox<>();
 			
-			InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("decks");
-			if (resourceAsStream != null) {
-				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resourceAsStream));
-				String line;
-				
-				while ((line = bufferedReader.readLine()) != null) {
-					deckSelect.getItems().add(line.substring(0, line.length() - 4));
+			Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
+			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
+				for (Path path : directoryStream) {
+					if (Files.isRegularFile(path)) {
+						String file = "" + path.getFileName();
+						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
+						}
 				}
 			}
-			else System.out.println("not found");
-
+			catch (IOException e) {
+				e.printStackTrace();
+			}
 			deckSelect.setPromptText("Choose a Deck");
 			//	set up shuffle check box
 			shuffleCheck = new CheckBox("Shuffle Deck?");
-			shuffleCheck.setSelected(true);
+			shuffleCheck.setSelected(false);
 			//	set up HBox for shuffle check box and deck select
 			practiceSettings = new HBox(10);
 			practiceSettings.setAlignment(Pos.CENTER);
@@ -128,9 +134,9 @@ public class Main extends Application {
 			mainMenu.setLeft(leftMenu);
 			mainMenu.setCenter(practiceBox);
 			mainMenu.setBackground(new Background(new BackgroundFill(gray, CornerRadii.EMPTY,Insets.EMPTY )));
-		scene = new Scene(mainMenu,stageHeight*2,stageHeight);
+			scene = new Scene(mainMenu,stageHeight*2,stageHeight);
 		//	set up stage			
-			primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/images/Helix_High_School_logo.jpg")));
+			primaryStage.getIcons().add(new Image(System.getProperty("user.dir")+"/resources/images/Helix_High_School_logo.jpg"));
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();

@@ -1,0 +1,98 @@
+Who is the author of "Alice in Wonderland"?
+Lewis Carroll;Carroll
+
+Who is the author of "All Quiet on the Western Front"?
+Erich Maria Remarque;Remarque
+
+Who is the author of "Cyrano de Bergerac"?
+Edmond Rostand;Rostand
+
+Who is the author of "Night"?
+Elie Wiesel;Wiesel
+
+Who is the author of "Don Quixote"?
+Miguel de Cervantes;Cervantes
+
+Who is the author of "I, Too"?
+Langston Hughes;Hughes
+
+Who is the author of "Animal Farm"?
+George Orwell;Orwell
+
+Who is the author of "Fahrenheit 451"?
+Ray Bradbury;Bradbury
+
+Who is the author of "Of Mice and Men"?
+John Steinbeck;Steinbeck
+
+Who is the author of "I Know Why the Caged Bird Sings"?
+Maya Angelou;Angelou
+
+Who is the author of "The Hate U Give"?
+Angie Thomas;Thomas
+
+Who is the author of "Les Miserables"?
+Victor Hugo;Hugo
+
+Who is the author of "Lord of the Flies"?
+William Golding;Golding
+
+Who is the author of "Great Expectations"?
+Charles Dickens;Dickens
+
+Who is the author of "The Crucible"?
+Arthur Miller;Miller
+
+Who is the author of "The Epic of Gilgamesh"?
+Unknown (Ancient Mesopotamian);Unknown
+
+Who is the author of "The Catcher in the Rye"?
+J.D. Salinger;Salinger
+
+Who is the author of "The Diary of Anne Frank"?
+Anne Frank;Frank
+
+Who is the author of "The Giver"?
+Lois Lowry;Lowry
+
+Who is the author of "A Midsummer Night's Dream"?
+William Shakespeare;Shakespeare
+
+Who is the author of "The Legend of Sleepy Hollow"?
+Washington Irving;Irving
+
+Who is the author of "The Odyssey"?
+Homer;Homer
+
+Who is the author of "Romeo and Juliet"?
+William Shakespeare;Shakespeare
+
+Who is the author of "Harlem"?
+Langston Hughes;Hughes
+
+Who is the author of "The Old Man and the Sea"?
+Ernest Hemingway;Hemingway
+
+Who is the author of "Things Fall Apart"?
+Chinua Achebe;Achebe
+
+Who is the author of "The Grapes of Wrath"?
+John Steinbeck;Steinbeck
+
+Who is the author of "Uncle Tom’s Cabin"?
+Harriet Beecher Stowe;Stowe
+
+Who is the author of "The Negro Speaks of Rivers"?
+Langston Hughes;Hughes
+
+Who is the author of "The Perks of Being a Wallflower"?
+Stephen Chbosky;Chbosky
+
+Who is the author of "The Alchemist"?
+Paulo Coelho;Coelho
+
+Who is the author of "The Pearl"?
+John Steinbeck;Steinbeck
+
+Who is the author of "A Tale of Two Cities"?
+Charles Dickens;Dickens

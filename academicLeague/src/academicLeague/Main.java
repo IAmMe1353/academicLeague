@@ -48,7 +48,7 @@ public class Main extends Application {
 	static int buttonWidth = buttonHeight*2;
 	static int fontSize = buttonHeight/4;
 	static double titleSize = fontSize * (1.5);
-
+	
 	
 	
 	public static void main(String[] args) {
@@ -67,9 +67,9 @@ public class Main extends Application {
 			practiceB.setFont(Font.font(fontSize));
 			//	TODO make colorAdjust change
 			colorAdjust = new ColorAdjust();
-            colorAdjust.setBrightness(-.25);
-            practiceB.setEffect(colorAdjust);
-            
+			colorAdjust.setBrightness(-.25);
+			practiceB.setEffect(colorAdjust);
+			
 			playGameB = new Button("Play Game");
 			playGameB.setPrefHeight(buttonHeight);
 			playGameB.setPrefWidth(buttonWidth);

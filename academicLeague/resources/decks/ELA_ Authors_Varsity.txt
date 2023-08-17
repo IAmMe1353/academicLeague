@@ -26,13 +26,13 @@ Who is the author of The Divine Comedy?
 Dante Alighieri;Dante;Alighieri
  
 Who is the author of Death of a Salesman? 
-Arthur Miller;Miller:Arthur
+Arthur Miller;Miller
  
 Who is the author of Don Quixote?
 Miguel de Cervantes;Cervantes
  
 Who is the author of Strange Case of Dr. Jekyll and Mr. Hyde?
-Robert Louis Stevenson;Stevenson:Robert
+Robert Louis Stevenson;Stevenson
  
 Who is the author of Ethan Frome?
 Edith Wharton;Wharton

@@ -29,21 +29,32 @@ public class Practice {
 	Label question, correctAnswer, numCorrect;
 	TextArea answerT;
 	String[] questions;
+	boolean shuffle;
+	boolean[] ran;
 	String questionsWrong = "";
 	Stage window;
 	Button save,exit;
-	int line, correct;
+	int line, correct, numQuestions,shuffleLine;
 	
 	
 	
 	public Practice(Stage window,boolean shuffle, String fileName) {
+
 		//	turn deck into array
 			questions = readFileAsArray(fileName); 
+			numQuestions = (int)(questions.length/3.0 +.5);
 			this.window = window;
 			line = 0;
 		//	set up question screen
 			//	create question label
-			question = new Label(questions[0]);
+			this.shuffle = shuffle;
+			question = new Label();
+			if (shuffle) {
+				ran = new boolean[numQuestions];
+				shuffleLine = (int)(Math.random()*(numQuestions));
+				question.setText(questions[shuffleLine]);
+			}
+			else question.setText(questions[0]);
 			question.setFont(Font.font(Main.titleSize));
 			question.setWrapText(true);
 			//	create answer area
@@ -202,31 +213,44 @@ public class Practice {
 	}
 	private void check() {
 		boolean correct = false;
-	    // get and check answer
+	    //	get and check answer
 	    String answer = answerT.getText();
 	    answer = answer.substring(0,answer.length()-1);
+	    //	move line to answer
 	    line++;
 	    if (checkAnswer(answer, questions[line])) {
 	        correct = true;
 	        window.setScene(correctScene);
-	        System.out.println("hello");
 	    } else {
-	    // adds wrong questions to global string
+	    	// adds wrong questions to global string
 	    	questionsWrong += questions[line - 1] + "\n" + questions[line] + "\n\n";
 	    	correctAnswer.setText("The correct answer is " + questions[line].split(";")[0]);
 	    	window.setScene(wrongScene);
 	    }
+	    //	moves line to next question
 	    line += 2;
-	    if (correct) 
+	    if (correct)
 	    	this.correct++;
+	    //	checks if finished
 	    if(line >= questions.length) {
+	    	//	if perfect score
 	    	if (this.correct == (int)(questions.length/3.0+.5))
 	    		window.setScene(createComplete(true));
+	    	//	if imperfect score
 	    	else
 	    		window.setScene(createComplete(false));
 	    }
 	    else {
-	    question.setText(questions[line]);
+	    if (shuffle){
+	    	ran[shuffleLine] = true;
+	    	shuffleLine = (int)(Math.random()*(numQuestions));
+	    	while(ran[shuffleLine]) {
+	    		shuffleLine = (int)(Math.random()*(numQuestions));
+	    	}
+	    	question.setText(questions[shuffleLine]);
+	    }
+	    else
+	    	question.setText(questions[line]);
 	    answerT.clear();
 	    	}
 	    }

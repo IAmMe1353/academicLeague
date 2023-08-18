@@ -52,7 +52,7 @@ public class Practice {
 			if (shuffle) {
 				ran = new boolean[numQuestions];
 				shuffleLine = (int)(Math.random()*(numQuestions));
-				question.setText(questions[shuffleLine]);
+				question.setText(questions[shuffleLine*3]);
 			}
 			else question.setText(questions[0]);
 			question.setFont(Font.font(Main.titleSize));
@@ -218,14 +218,27 @@ public class Practice {
 	    answer = answer.substring(0,answer.length()-1);
 	    //	move line to answer
 	    line++;
-	    if (checkAnswer(answer, questions[line])) {
-	        correct = true;
-	        window.setScene(correctScene);
-	    } else {
-	    	// adds wrong questions to global string
-	    	questionsWrong += questions[line - 1] + "\n" + questions[line] + "\n\n";
-	    	correctAnswer.setText("The correct answer is " + questions[line].split(";")[0]);
-	    	window.setScene(wrongScene);
+	    if (shuffle) {
+	    	if (checkAnswer(answer,questions[shuffleLine*3+1])){
+	    		correct = true;
+	    		window.setScene(correctScene);
+	    	} else {
+		    	// adds wrong questions to global string
+		    	questionsWrong += questions[shuffleLine*3] + "\n" + questions[shuffleLine*3+1] + "\n\n";
+		    	correctAnswer.setText("The correct answer is " + questions[shuffleLine*3+1].split(";")[0]);
+		    	window.setScene(wrongScene);
+		    }
+	    	
+	    }else {
+		    if (checkAnswer(answer, questions[line])) {
+		        correct = true;
+		        window.setScene(correctScene);
+		    } else {
+		    	// adds wrong questions to global string
+		    	questionsWrong += questions[line - 1] + "\n" + questions[line] + "\n\n";
+		    	correctAnswer.setText("The correct answer is " + questions[line].split(";")[0]);
+		    	window.setScene(wrongScene);
+		    }
 	    }
 	    //	moves line to next question
 	    line += 2;
@@ -247,7 +260,7 @@ public class Practice {
 	    	while(ran[shuffleLine]) {
 	    		shuffleLine = (int)(Math.random()*(numQuestions));
 	    	}
-	    	question.setText(questions[shuffleLine]);
+	    	question.setText(questions[shuffleLine*3]);
 	    }
 	    else
 	    	question.setText(questions[line]);

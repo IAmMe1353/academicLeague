@@ -1,3 +1,6 @@
+Who is the current president of the US?
+Joe Biden;Biden
+
 Who shot JFK?
 Lee Harvey Oswald;Oswald
 

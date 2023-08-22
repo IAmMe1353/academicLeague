@@ -191,7 +191,6 @@ public class Practice {
 		return new Scene(saveBox,Main.stageHeight*2,Main.stageHeight);
 	}
 	private void saveToFile(boolean overwrite,String text, String deck) {
-		System.out.println(text);
 		if (deck != null) {
 			if (overwrite) {
 				text = text.substring(0,text.length()-1);

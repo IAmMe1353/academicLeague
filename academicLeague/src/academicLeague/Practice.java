@@ -74,6 +74,7 @@ public class Practice {
 			scene = new Scene(mainBox,Main.stageHeight*2,Main.stageHeight);
 		//	set window to question
 		window.setScene(scene);
+	
 		//
 		createCorrect();
 		createWrong();
@@ -122,7 +123,7 @@ public class Practice {
 			correctLabel.setFont(Font.font(Main.titleSize));
 		//	create continue button
 			Button button = new Button("Continue");
-			button.setOnAction(e -> window.setScene(scene));
+			button.setOnAction(e -> nextQuestion());
 		//	create VBox
 			VBox correctBox = new VBox(25);
 			correctBox.setAlignment(Pos.TOP_CENTER);
@@ -150,7 +151,10 @@ public class Practice {
 			wrongBox.setPadding(new Insets(10,10,10,10));
 		wrongScene = new Scene(wrongBox,Main.stageHeight*2,Main.stageHeight);
 	}
-	
+	private void nextQuestion() {
+		 window.setScene(scene);
+		 new Speak(question.getText());
+	}
 	private String[] readFileAsArray(String fileName) {
 		Path filePath = Paths.get(System.getProperty("user.dir"),"resources","decks",fileName);
 		try {

@@ -73,6 +73,7 @@ public class Practice {
 			mainBox.getChildren().addAll(question,answerT);
 			scene = new Scene(mainBox,Main.stageHeight*2,Main.stageHeight);
 		//	set window to question
+		window.setTitle("Practice");
 		window.setScene(scene);
 	
 		//
@@ -123,7 +124,7 @@ public class Practice {
 			correctLabel.setFont(Font.font(Main.titleSize));
 		//	create continue button
 			Button button = new Button("Continue");
-			button.setOnAction(e -> window.setScene(scene));
+			button.setOnAction(e ->  continueToScene());
 		//	create VBox
 			VBox correctBox = new VBox(25);
 			correctBox.setAlignment(Pos.TOP_CENTER);
@@ -142,7 +143,7 @@ public class Practice {
 			correctAnswer.setFont(Font.font(Main.titleSize));
 		//	create continue button
 			Button button = new Button("Continue");
-			button.setOnAction(e -> window.setScene(scene));
+			button.setOnAction(e ->  continueToScene());
 		//	create VBox
 			VBox wrongBox = new VBox(25);
 			wrongBox.setAlignment(Pos.TOP_CENTER);
@@ -150,6 +151,16 @@ public class Practice {
 			wrongBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
 			wrongBox.setPadding(new Insets(10,10,10,10));
 		wrongScene = new Scene(wrongBox,Main.stageHeight*2,Main.stageHeight);
+	}
+	private void continueToScene() {
+	if (line < questions.length)
+		window.setScene(scene);
+	else {
+		if (this.correct == (int)(questions.length/3.0+.5))
+			window.setScene(createComplete(true));
+		else
+			window.setScene(createComplete(false));
+		}
 	}
 	private String[] readFileAsArray(String fileName) {
 		Path filePath = Paths.get(System.getProperty("user.dir"),"resources","decks",fileName);
@@ -243,28 +254,20 @@ public class Practice {
 	    line += 2;
 	    if (correct)
 	    	this.correct++;
-	    //	checks if finished
-	    if(line >= questions.length) {
-	    	//	if perfect score
-	    	if (this.correct == (int)(questions.length/3.0+.5))
-	    		window.setScene(createComplete(true));
-	    	//	if imperfect score
-	    	else
-	    		window.setScene(createComplete(false));
-	    }
-	    else {
-	    if (shuffle){
-	    	ran[shuffleLine] = true;
-	    	shuffleLine = (int)(Math.random()*(numQuestions));
-	    	while(ran[shuffleLine]) {
-	    		shuffleLine = (int)(Math.random()*(numQuestions));
-	    	}
-	    	question.setText(questions[shuffleLine*3]);
-	    }
-	    else
-	    	question.setText(questions[line]);
-	    answerT.clear();
-	    	}
+	    
+	    if (line < questions.length) {
+		    if (shuffle){
+		    	ran[shuffleLine] = true;
+		    	shuffleLine = (int)(Math.random()*(numQuestions));
+		    	while(ran[shuffleLine]) {
+		    		shuffleLine = (int)(Math.random()*(numQuestions));
+		    	}
+		    	question.setText(questions[shuffleLine*3]);
+		    }
+		    else
+		    	question.setText(questions[line]);
+		    answerT.clear();
+		}
 	    }
 
 	private boolean checkAnswer(String answer, String answerLine) {

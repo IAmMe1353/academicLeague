@@ -175,6 +175,7 @@ public class Main extends Application {
 			scene = new Scene(mainMenu,stageHeight*2,stageHeight);
 		//	set up stage			
 			primaryStage.getIcons().add(new Image(System.getProperty("user.dir")+"/resources/images/Helix_High_School_logo.jpg"));
+			primaryStage.setTitle("Home");
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();

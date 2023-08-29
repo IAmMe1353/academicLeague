@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -28,7 +30,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-
+import checkComboBox.CheckComboBox;
 
 public class Main extends Application {
 	BorderPane mainMenu;
@@ -40,7 +42,7 @@ public class Main extends Application {
 	Label practiceT;
 	ColorAdjust colorAdjust;
 	CheckBox shuffleCheck;
-	ComboBox<String> deckSelect;
+	CheckComboBox<String> deckSelect;
 	static final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
 	static final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
 	static int stageHeight = 250;
@@ -111,21 +113,23 @@ public class Main extends Application {
 			startPractice.setPrefWidth(buttonWidth/1.5);
 			startPractice.setOnAction(e -> startPractice(primaryStage));
 			//	set up Deck drop down
-			deckSelect = new ComboBox<>();
+
+			
+			ObservableList<String> strings = FXCollections.observableArrayList();
 			
 			Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
 			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
 				for (Path path : directoryStream) {
 					if (Files.isRegularFile(path)) {
 						String file = "" + path.getFileName();
-						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
+						strings.add(("" + file.substring(0,file.length()-4)));
 						}
 				}
 			}
 			catch (IOException e) {
 				e.printStackTrace();
 			}
-			deckSelect.setPromptText("Choose a Deck");
+			deckSelect = new CheckComboBox<>(strings);
 			//	set up shuffle check box
 			shuffleCheck = new CheckBox("Shuffle Deck?");
 			shuffleCheck.setSelected(false);

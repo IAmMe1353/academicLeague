@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -30,7 +31,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import checkComboBox.CheckComboBox;
 
 public class Main extends Application {
 	BorderPane mainMenu;
@@ -42,7 +42,7 @@ public class Main extends Application {
 	Label practiceT;
 	ColorAdjust colorAdjust;
 	CheckBox shuffleCheck;
-	CheckComboBox<String> deckSelect;
+	ComboBox<String> deckSelect;
 	static final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
 	static final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
 	static int stageHeight = 250;
@@ -64,6 +64,7 @@ public class Main extends Application {
 		colorAdjust = new ColorAdjust();
 		colorAdjust.setBrightness(-.25);
 		//	set up left Menu
+		System.out.println("hello");
 			practiceB = new Button("Practice Deck");
 			practiceB.setPrefHeight(buttonHeight);
 			practiceB.setPrefWidth(buttonWidth);
@@ -113,7 +114,7 @@ public class Main extends Application {
 			startPractice.setPrefWidth(buttonWidth/1.5);
 			startPractice.setOnAction(e -> startPractice(primaryStage));
 			//	set up Deck drop down
-
+			deckSelect = new ComboBox<>();
 			
 			ObservableList<String> strings = FXCollections.observableArrayList();
 			
@@ -122,14 +123,14 @@ public class Main extends Application {
 				for (Path path : directoryStream) {
 					if (Files.isRegularFile(path)) {
 						String file = "" + path.getFileName();
-						strings.add(("" + file.substring(0,file.length()-4)));
+						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
 						}
 				}
 			}
 			catch (IOException e) {
 				e.printStackTrace();
 			}
-			deckSelect = new CheckComboBox<>(strings);
+
 			//	set up shuffle check box
 			shuffleCheck = new CheckBox("Shuffle Deck?");
 			shuffleCheck.setSelected(false);
@@ -139,9 +140,14 @@ public class Main extends Application {
 			practiceSettings.getChildren().addAll(deckSelect,shuffleCheck);
 			//	set up VBox for practice page
 			practiceBox = new VBox(40);
-			practiceBox.setPadding(new Insets(10, 10, 10, 10));
+			practiceBox.setPadding(new Insets(10, 10, -00, 10));
 			practiceBox.setAlignment(Pos.TOP_CENTER);
-			practiceBox.getChildren().addAll(practiceT,practiceSettings,startPractice);
+			System.out.println("hello");
+			ImageView imageView = new ImageView(new Image(System.getProperty("user.dir")+"/resources/images/pngegg.png"));
+		    imageView.setPreserveRatio(true);
+		    imageView.setFitHeight(250); 
+		    imageView.setFitWidth(250); 
+			practiceBox.getChildren().addAll(practiceT,practiceSettings,startPractice,imageView);
 		//	set up playBox
 			//	set up labels
 			//	TODO make sure everything is standard size
@@ -186,6 +192,7 @@ public class Main extends Application {
 	}
 	
 	private void startPractice(Stage stage) {
+		
 		String deck = deckSelect.getValue(); 
 		if (deck != null)
 			new Practice(stage,shuffleCheck.isSelected(),deck+".txt");

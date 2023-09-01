@@ -15,6 +15,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -31,6 +33,7 @@ public class Practice {
 	String[] questions;
 	boolean shuffle;
 	boolean[] ran;
+	VBox mainBox;
 	String questionsWrong = "";
 	Stage window;
 	Button save,exit;
@@ -57,6 +60,7 @@ public class Practice {
 			else question.setText(questions[0]);
 			question.setFont(Font.font(Main.titleSize));
 			question.setWrapText(true);
+
 			//	create answer area
 			answerT = new TextArea();
 			answerT.setPromptText("Press Enter When Finished");
@@ -66,11 +70,21 @@ public class Practice {
 				if(e.getCode() == KeyCode.ENTER) check();
 			});
 			//	set up VBox and create scene
-			VBox mainBox = new VBox(25);
+			mainBox = new VBox(25);
 			mainBox.setAlignment(Pos.TOP_CENTER);
 			mainBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
 			mainBox.setPadding(new Insets(10,10,10,10));
 			mainBox.getChildren().addAll(question,answerT);
+			//	create image
+			//	if there is an image
+			if(!questions[2].trim().equals("")) {
+				ImageView imageView = new ImageView(new Image(System.getProperty("user.dir")+"/resources/images/" + questions[2]));
+			    imageView.setPreserveRatio(true);
+			    imageView.setFitHeight(500); 
+			    imageView.setFitWidth(500);
+			    mainBox.getChildren().add(imageView);
+		    }
+			//	make scene
 			scene = new Scene(mainBox,Main.stageHeight*2,Main.stageHeight);
 		//	set window to question
 		window.setTitle("Practice");
@@ -164,13 +178,18 @@ public class Practice {
 	}
 	private String[] readFileAsArray(String fileName) {
 		Path filePath = Paths.get(System.getProperty("user.dir"),"resources","decks",fileName);
+		String fileContents;
 		try {
-			return (new String(Files.readAllBytes(filePath))).split("\n");
+			fileContents = new String(Files.readAllBytes(filePath));
 		}
 		catch (IOException e){
 			e.printStackTrace();
 			return null;
 		}
+		if (fileContents.endsWith("\r\n"))
+			return fileContents.split("\r\n");
+		else 
+			return fileContents.split("\n");
 	}
 	private Scene save(String text,boolean finishedDeck) {
 		HBox deckSave = new HBox(25);
@@ -269,7 +288,12 @@ public class Practice {
 		    answerT.clear();
 		}
 	    }
-
+	private void remakeScene() {
+		mainBox.getChildren().clear();
+		mainBox.getChildren(question, answerT, );
+		scene = new Scene();
+		window.setScene(scene);
+	}
 	private boolean checkAnswer(String answer, String answerLine) {
 	    String[] answers = answerLine.split(";");
 

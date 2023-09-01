@@ -45,7 +45,7 @@ public class Main extends Application {
 	ComboBox<String> deckSelect;
 	static final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
 	static final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
-	static int stageHeight = 250;
+	static int stageHeight = 500;
 	static int buttonHeight = (stageHeight-35)/4;
 	static int buttonWidth = buttonHeight*2;
 	static int fontSize = buttonHeight/4;
@@ -64,7 +64,6 @@ public class Main extends Application {
 		colorAdjust = new ColorAdjust();
 		colorAdjust.setBrightness(-.25);
 		//	set up left Menu
-		System.out.println("hello");
 			practiceB = new Button("Practice Deck");
 			practiceB.setPrefHeight(buttonHeight);
 			practiceB.setPrefWidth(buttonWidth);
@@ -142,12 +141,7 @@ public class Main extends Application {
 			practiceBox = new VBox(40);
 			practiceBox.setPadding(new Insets(10, 10, -00, 10));
 			practiceBox.setAlignment(Pos.TOP_CENTER);
-			System.out.println("hello");
-			ImageView imageView = new ImageView(new Image(System.getProperty("user.dir")+"/resources/images/pngegg.png"));
-		    imageView.setPreserveRatio(true);
-		    imageView.setFitHeight(250); 
-		    imageView.setFitWidth(250); 
-			practiceBox.getChildren().addAll(practiceT,practiceSettings,startPractice,imageView);
+			practiceBox.getChildren().addAll(practiceT,practiceSettings,startPractice);
 		//	set up playBox
 			//	set up labels
 			//	TODO make sure everything is standard size

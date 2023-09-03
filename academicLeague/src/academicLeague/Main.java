@@ -33,14 +33,16 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	BorderPane mainMenu;
 	VBox leftMenu, practiceBox;
-	GridPane playBox;
-	HBox practiceSettings;
+	VBox playVBox;
+	HBox practiceSettings, buttonCenter;
 	static Scene scene;
-	Button practiceB, playGameB, importDeckB, exitB, startPractice;
+	Button practiceB, playGameB, importDeckB, exitB, startPractice, startPlay;
 	Label practiceT;
+	TextArea team1, team2;
 	ColorAdjust colorAdjust;
 	CheckBox shuffleCheck;
-	ComboBox<String> deckSelect;
+	ComboBox<String> deckSelect, deckSelectPlay;
+	int amountOfDecks;
 	static final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
 	static final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
 	static int stageHeight = 250;
@@ -57,7 +59,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
+		Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
 		//	standard insets 10,10,10,10; standard button separation 5
 		colorAdjust = new ColorAdjust();
 		colorAdjust.setBrightness(-.25);
@@ -82,7 +84,7 @@ public class Main extends Application {
 				practiceB.setEffect(null);
 				importDeckB.setEffect(null);
 				playGameB.setEffect(colorAdjust);
-				mainMenu.setCenter(playBox);
+				mainMenu.setCenter(playVBox);
 			});
 			
 			importDeckB = new Button("Import Deck");
@@ -113,18 +115,7 @@ public class Main extends Application {
 			//	set up Deck drop down
 			deckSelect = new ComboBox<>();
 			
-			Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
-			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
-				for (Path path : directoryStream) {
-					if (Files.isRegularFile(path)) {
-						String file = "" + path.getFileName();
-						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
-						}
-				}
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
+
 			deckSelect.setPromptText("Choose a Deck");
 			//	set up shuffle check box
 			shuffleCheck = new CheckBox("Shuffle Deck?");
@@ -143,22 +134,44 @@ public class Main extends Application {
 			//	TODO make sure everything is standard size
 			Label team1Label = new Label("Team 1 Name:");
 			team1Label.setMinWidth(150);
-			team1Label.setFont(Font.font(Main.titleSize));
+			team1Label.setFont(Font.font(fontSize * 1.25));
 			Label team2Label = new Label("Team 2 Name:");
-			team2Label.setFont(Font.font(Main.titleSize));
+			team2Label.setFont(Font.font(fontSize * 1.25));
+			Label startLabel = new Label("Play a Orrated Game");
+			startLabel.setFont(Font.font(titleSize));
 			//	set up textAreas
-			TextArea team1 = new TextArea();
+			team1 = new TextArea();
 			team1.setPrefRowCount(1);
 			team1.setPromptText("Enter Name");
-			TextArea team2 = new TextArea();
+			team2 = new TextArea();
 			team2.setPrefRowCount(1);
 			team2.setPromptText("Enter Name");
 			//	set up drop down
-			ComboBox<String> deckSelectPlay = new ComboBox<>();
+			deckSelectPlay = new ComboBox<>();
 			deckSelectPlay.setPromptText("Decks");
+
+			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
+				for (Path path : directoryStream) {
+					if (Files.isRegularFile(path)) {
+						String file = "" + path.getFileName();
+						amountOfDecks ++;
+						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
+						deckSelectPlay.getItems().add(("" + file.substring(0,file.length()-4)));
+						}
+				}
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
 			
+			//	set up start button
+			Button startPlay = new Button("Play");
+			startPlay.setMinWidth(100);
+			startPlay.setOnAction(e-> startPlay(primaryStage));
 			//	set up grid pane
-			playBox = new GridPane();
+			GridPane playBox = new GridPane();
+			playBox.setVgap(5);
+			playBox.setHgap(5);
 			GridPane.setConstraints(team1Label, 0, 0);
 			GridPane.setConstraints(team1, 1, 0);
 			GridPane.setConstraints(team2Label, 0, 1);
@@ -167,6 +180,9 @@ public class Main extends Application {
 			playBox.setAlignment(Pos.TOP_CENTER);
 			playBox.setPadding(new Insets(10,10,10,10));
 			playBox.getChildren().addAll(team1Label,team1,team2Label,team2,deckSelectPlay);
+			playVBox = new VBox(10);
+			playVBox.setAlignment(Pos.TOP_CENTER);
+			playVBox.getChildren().addAll(startLabel,playBox,startPlay);
 			// set up main menu
 			mainMenu = new BorderPane();
 			mainMenu.setLeft(leftMenu);
@@ -184,6 +200,15 @@ public class Main extends Application {
 		String deck = deckSelect.getValue(); 
 		if (deck != null)
 			new Practice(stage,shuffleCheck.isSelected(),deck+".txt");
+		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");
+			
+	}
+	
+	private void startPlay(Stage stage) {
+		String[] deck = new String[amountOfDecks];
+		deck[0] = deckSelectPlay.getValue();
+		if (deck[0] != null)
+			new PlayGame(stage,deck,team1.getText(),team2.getText());
 		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");
 			
 	}

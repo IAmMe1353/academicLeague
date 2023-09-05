@@ -15,6 +15,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -31,6 +33,7 @@ public class Practice {
 	String[] questions;
 	boolean shuffle;
 	boolean[] ran;
+	VBox mainBox;
 	String questionsWrong = "";
 	Stage window;
 	Button save,exit;
@@ -57,6 +60,7 @@ public class Practice {
 			else question.setText(questions[0]);
 			question.setFont(Font.font(Main.titleSize));
 			question.setWrapText(true);
+
 			//	create answer area
 			answerT = new TextArea();
 			answerT.setPromptText("Press Enter When Finished");
@@ -66,13 +70,24 @@ public class Practice {
 				if(e.getCode() == KeyCode.ENTER) check();
 			});
 			//	set up VBox and create scene
-			VBox mainBox = new VBox(25);
+			mainBox = new VBox(5);
 			mainBox.setAlignment(Pos.TOP_CENTER);
 			mainBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
 			mainBox.setPadding(new Insets(10,10,10,10));
 			mainBox.getChildren().addAll(question,answerT);
+			//	create image
+			//	if there is an image
+			if(!questions[2].trim().equals("")) {
+				ImageView imageView = new ImageView(new Image(System.getProperty("user.dir")+"/resources/images/" + questions[2].trim()));
+			    imageView.setPreserveRatio(true);
+			    imageView.setFitHeight(Main.stageHeight*.7); 
+			    imageView.setFitWidth(Main.stageHeight*.7);
+			    mainBox.getChildren().add(imageView);
+		    }
+			//	make scene
 			scene = new Scene(mainBox,Main.stageHeight*2,Main.stageHeight);
 		//	set window to question
+		window.setTitle("Practice");
 		window.setScene(scene);
 	
 		//
@@ -123,7 +138,7 @@ public class Practice {
 			correctLabel.setFont(Font.font(Main.titleSize));
 		//	create continue button
 			Button button = new Button("Continue");
-			button.setOnAction(e -> window.setScene(scene));
+			button.setOnAction(e ->  continueToScene());
 		//	create VBox
 			VBox correctBox = new VBox(25);
 			correctBox.setAlignment(Pos.TOP_CENTER);
@@ -142,7 +157,7 @@ public class Practice {
 			correctAnswer.setFont(Font.font(Main.titleSize));
 		//	create continue button
 			Button button = new Button("Continue");
-			button.setOnAction(e -> window.setScene(scene));
+			button.setOnAction(e ->  continueToScene());
 		//	create VBox
 			VBox wrongBox = new VBox(25);
 			wrongBox.setAlignment(Pos.TOP_CENTER);
@@ -151,15 +166,30 @@ public class Practice {
 			wrongBox.setPadding(new Insets(10,10,10,10));
 		wrongScene = new Scene(wrongBox,Main.stageHeight*2,Main.stageHeight);
 	}
+	private void continueToScene() {
+	if (line < questions.length)
+		window.setScene(scene);
+	else {
+		if (this.correct == (int)(questions.length/3.0+.5))
+			window.setScene(createComplete(true));
+		else
+			window.setScene(createComplete(false));
+		}
+	}
 	private String[] readFileAsArray(String fileName) {
 		Path filePath = Paths.get(System.getProperty("user.dir"),"resources","decks",fileName);
+		String fileContents;
 		try {
-			return (new String(Files.readAllBytes(filePath))).split("\n");
+			fileContents = new String(Files.readAllBytes(filePath));
 		}
 		catch (IOException e){
 			e.printStackTrace();
 			return null;
 		}
+		if (fileContents.endsWith("\r\n"))
+			return fileContents.split("\r\n");
+		else 
+			return fileContents.split("\n");
 	}
 	private Scene save(String text,boolean finishedDeck) {
 		HBox deckSave = new HBox(25);
@@ -207,14 +237,15 @@ public class Practice {
 			}
 		}
 		else {
-			System.out.println("none selected");
+
 			Alert.display("Choose Deck","Please Choose a Deck to Save To");}
 	}
 	private void check() {
 		boolean correct = false;
 	    //	get and check answer
 	    String answer = answerT.getText();
-	    answer = answer.substring(0,answer.length()-1);
+	    answer = answer.replaceAll("\\r\\n|\\r|\\n", "");
+
 	    //	move line to answer
 	    line++;
 	    if (shuffle) {
@@ -243,35 +274,45 @@ public class Practice {
 	    line += 2;
 	    if (correct)
 	    	this.correct++;
-	    //	checks if finished
-	    if(line >= questions.length) {
-	    	//	if perfect score
-	    	if (this.correct == (int)(questions.length/3.0+.5))
-	    		window.setScene(createComplete(true));
-	    	//	if imperfect score
-	    	else
-	    		window.setScene(createComplete(false));
-	    }
-	    else {
-	    if (shuffle){
-	    	ran[shuffleLine] = true;
-	    	shuffleLine = (int)(Math.random()*(numQuestions));
-	    	while(ran[shuffleLine]) {
-	    		shuffleLine = (int)(Math.random()*(numQuestions));
-	    	}
-	    	question.setText(questions[shuffleLine*3]);
-	    }
-	    else
-	    	question.setText(questions[line]);
-	    answerT.clear();
-	    	}
-	    }
-
+	    
+	    if (line < questions.length) {
+		    if (shuffle){
+		    	ran[shuffleLine] = true;
+		    	shuffleLine = (int)(Math.random()*(numQuestions));
+		    	while(ran[shuffleLine]) {
+		    		shuffleLine = (int)(Math.random()*(numQuestions));
+		    	}
+		    	question.setText(questions[shuffleLine*3]);
+		    	remakeScene(shuffleLine*3+2);
+		    }
+		    else {
+		    	question.setText(questions[line]);
+		    	remakeScene(line+2);
+		    }
+		    answerT.clear();
+		}
+	}
+	
+	private void remakeScene(int line) {
+		//	creating and adding image
+		mainBox.getChildren().clear();
+		mainBox.getChildren().addAll(question, answerT);
+		
+		ImageView imageView;
+		if (!questions[line].trim().equals("")) {
+			System.out.println("has image: " + questions[line]);
+		  imageView = new ImageView(new Image(System.getProperty("user.dir")+"/resources/images/" + questions[line].trim()));
+		    imageView.setPreserveRatio(true);
+		    imageView.setFitHeight(Main.stageHeight*.65); 
+		    imageView.setFitWidth(Main.stageHeight*.65);
+		    mainBox.getChildren().add(imageView);
+		}
+	}
 	private boolean checkAnswer(String answer, String answerLine) {
 	    String[] answers = answerLine.split(";");
-
+	    
 	    for (String i : answers) {
-	      if (i.toUpperCase().equals(answer.toUpperCase())) {
+	      if (i.replaceAll("\\r\\n|\\r|\\n", "").toUpperCase().equals(answer.toUpperCase())) {
 	        return true;
 	      }
 	    }

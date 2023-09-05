@@ -45,8 +45,8 @@ public class Main extends Application {
 	int amountOfDecks;
 	static final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
 	static final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
-	static int stageHeight = 250;
-	static int buttonHeight = (stageHeight-35)/4;
+	static int stageHeight = 500;
+	static int buttonHeight = (stageHeight)/9;
 	static int buttonWidth = buttonHeight*2;
 	static int fontSize = buttonHeight/4;
 	static double titleSize = fontSize * (1.5);
@@ -65,8 +65,8 @@ public class Main extends Application {
 		colorAdjust.setBrightness(-.25);
 		//	set up left Menu
 			practiceB = new Button("Practice Deck");
-			practiceB.setPrefHeight(buttonHeight);
-			practiceB.setPrefWidth(buttonWidth);
+			practiceB.setPrefHeight(buttonHeight*1.5);
+			practiceB.setPrefWidth(buttonWidth*1.5);
 			practiceB.setFont(Font.font(fontSize));
 			practiceB.setOnAction(e -> {
 				playGameB.setEffect(null);
@@ -77,8 +77,8 @@ public class Main extends Application {
 			practiceB.setEffect(colorAdjust);
 			
 			playGameB = new Button("Play Game");
-			playGameB.setPrefHeight(buttonHeight);
-			playGameB.setPrefWidth(buttonWidth);
+			playGameB.setPrefHeight(buttonHeight*1.5);
+			playGameB.setPrefWidth(buttonWidth*1.5);
 			playGameB.setFont(Font.font(fontSize));
 			playGameB.setOnAction(e -> {
 				practiceB.setEffect(null);
@@ -88,17 +88,17 @@ public class Main extends Application {
 			});
 			
 			importDeckB = new Button("Import Deck");
-			importDeckB.setPrefHeight(buttonHeight);
-			importDeckB.setPrefWidth(buttonWidth);
+			importDeckB.setPrefHeight(buttonHeight*1.5);
+			importDeckB.setPrefWidth(buttonWidth*1.5);
 			importDeckB.setFont(Font.font(fontSize));
 			
 			exitB = new Button("Exit");
-			exitB.setPrefHeight(buttonHeight);
-			exitB.setPrefWidth(buttonWidth);
+			exitB.setPrefHeight(buttonHeight*1.5);
+			exitB.setPrefWidth(buttonWidth*1.5);
 			exitB.setFont(Font.font(fontSize));
 			exitB.setOnAction(e-> primaryStage.close());
-			leftMenu = new VBox(5);
-			leftMenu.setPadding(new Insets(10, 10, 10, 10));
+			leftMenu = new VBox((stageHeight-(buttonHeight*6)-20)/7);
+			leftMenu.setPadding(new Insets(30, 10, 10, 10));
 			leftMenu.getChildren().addAll(practiceB,playGameB,importDeckB,exitB);
 			leftMenu.setBackground(new Background(new BackgroundFill(green, CornerRadii.EMPTY,Insets.EMPTY )));
 			
@@ -109,8 +109,8 @@ public class Main extends Application {
 			practiceT.setAlignment(Pos.CENTER);
 			//	set up button
 			startPractice = new Button("Start");
-			startPractice.setPrefHeight(buttonHeight/1.5);
-			startPractice.setPrefWidth(buttonWidth/1.5);
+			startPractice.setPrefHeight(buttonHeight);
+			startPractice.setPrefWidth(buttonWidth);
 			startPractice.setOnAction(e -> startPractice(primaryStage));
 			//	set up Deck drop down
 			deckSelect = new ComboBox<>();
@@ -133,10 +133,9 @@ public class Main extends Application {
 			//	set up labels
 			//	TODO make sure everything is standard size
 			Label team1Label = new Label("Team 1 Name:");
-			team1Label.setMinWidth(150);
-			team1Label.setFont(Font.font(fontSize * 1.25));
+			team1Label.setFont(Font.font(fontSize));
 			Label team2Label = new Label("Team 2 Name:");
-			team2Label.setFont(Font.font(fontSize * 1.25));
+			team2Label.setFont(Font.font(fontSize));
 			Label startLabel = new Label("Play a Orrated Game");
 			startLabel.setFont(Font.font(titleSize));
 			//	set up textAreas
@@ -166,7 +165,8 @@ public class Main extends Application {
 			
 			//	set up start button
 			Button startPlay = new Button("Play");
-			startPlay.setMinWidth(100);
+			startPlay.setMinWidth(buttonWidth);
+			startPlay.setMinHeight(buttonHeight);
 			startPlay.setOnAction(e-> startPlay(primaryStage));
 			//	set up grid pane
 			GridPane playBox = new GridPane();
@@ -179,10 +179,10 @@ public class Main extends Application {
 			GridPane.setConstraints(deckSelectPlay, 0, 2);
 			playBox.setAlignment(Pos.TOP_CENTER);
 			playBox.setPadding(new Insets(10,10,10,10));
-			playBox.getChildren().addAll(team1Label,team1,team2Label,team2,deckSelectPlay);
+			playBox.getChildren().addAll(team1Label,team1,team2Label,team2);
 			playVBox = new VBox(10);
 			playVBox.setAlignment(Pos.TOP_CENTER);
-			playVBox.getChildren().addAll(startLabel,playBox,startPlay);
+			playVBox.getChildren().addAll(startLabel,playBox, deckSelectPlay, startPlay);
 			// set up main menu
 			mainMenu = new BorderPane();
 			mainMenu.setLeft(leftMenu);
@@ -208,7 +208,7 @@ public class Main extends Application {
 		String[] deck = new String[amountOfDecks];
 		deck[0] = deckSelectPlay.getValue();
 		if (deck[0] != null)
-			new PlayGame(stage,deck,team1.getText(),team2.getText());
+			new PlayGame(stage, deck,team1.getText(),team2.getText());
 		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");
 			
 	}

@@ -1,0 +1,56 @@
+What river runs through Paris? 
+The Seine River;The Seine;Seine
+
+What is the largest river in South America? 
+The Amazon River;The Amazon;Amazon
+
+What river flows through Budapest? 
+The Danube River;The Danube;Danube
+
+What is the largest river in India? 
+The Ganges River;The Ganges;Ganges
+
+What river is Rome situated on? 
+The Tiber River;The Tiber;Tiber
+
+What is the longest river in Europe? 
+The Volga River;The Volga;Volga
+
+What river is the historical boundary between the East and West in Berlin? 
+The River Spree;The Spree;Spree
+
+What river flows through Vienna? 
+The Danube River;The Danube;Danube
+
+What river runs through London? 
+The River Thames;The Thames;Thames
+
+What river flows through Amsterdam? 
+The Amstel River;The Amstel;Amstel
+
+What is the longest river in the world? 
+The Nile River;The Nile;Nile
+
+What is the longest river in China? 
+The Yangtze River;The Yangtze;Yangtze
+
+What river forms the border between Mexico and the United States? 
+The Rio Grande;Rio Grande
+
+What is the longest river in Africa? 
+The Nile River;The Nile;Nile
+
+What river runs through the Grand Canyon in the United States? 
+The Colorado River;The Colorado;Colorado
+
+What is the second-longest river in Africa? 
+The Congo River;The Congo;Congo;Zaire
+
+What river forms part of the border between the United States and Canada? 
+The St. Lawrence River;The St. Lawrence;St. Lawerence; Saint Lawerence;
+
+What is the deepest river in the world? 
+The Congo River;The Congo;Congo
+
+
+

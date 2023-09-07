@@ -30,19 +30,24 @@ public class Practice {
 	Scene scene, correctScene, wrongScene;
 	Label question, correctAnswer, numCorrect;
 	TextArea answerT;
-	String[] questions;
-	boolean shuffle;
+	static String[] questions;
+	static boolean shuffle;
 	boolean[] ran;
 	VBox mainBox;
-	String questionsWrong = "";
+	static String questionsWrong = "";
 	Stage window;
 	Button save,exit;
-	int line, correct, numQuestions,shuffleLine;
+	static int line;
+	int correct, numQuestions,shuffleLine;
 	
 	
 	
 	public Practice(Stage window,boolean shuffle, String fileName) {
 
+		window.setOnCloseRequest(e ->{
+			e.consume();
+			close();
+		});
 		//	turn deck into array
 			questions = readFileAsArray(fileName); 
 			numQuestions = (int)(questions.length/3.0 +.5);
@@ -50,7 +55,7 @@ public class Practice {
 			line = 0;
 		//	set up question screen
 			//	create question label
-			this.shuffle = shuffle;
+			Practice.shuffle = shuffle;
 			question = new Label();
 			if (shuffle) {
 				ran = new boolean[numQuestions];
@@ -216,7 +221,7 @@ public class Practice {
 		saveBox.getChildren().addAll(deckSave,saveButton);
 		return new Scene(saveBox,Main.stageHeight*2,Main.stageHeight);
 	}
-	private void saveToFile(boolean overwrite,String text, String deck) {
+	public static void saveToFile(boolean overwrite,String text, String deck) {
 		if (deck != null) {
 			if (overwrite) {
 				text = text.substring(0,text.length()-1);
@@ -292,7 +297,10 @@ public class Practice {
 		    answerT.clear();
 		}
 	}
-	
+	private void close() {
+		Alert exit = new Alert();
+		exit.exit();
+	}
 	private void remakeScene(int line) {
 		//	creating and adding image
 		mainBox.getChildren().clear();

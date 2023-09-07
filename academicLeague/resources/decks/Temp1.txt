@@ -1,8 +1,159 @@
-Who is the current president of the US?
-Joe Biden;Biden
+Who is the author of Heart of Darkness?
+Joseph Conrad;Conrad
 
-Who shot JFK?
-Lee Harvey Oswald;Oswald
+Who is the author of The Stranger?
+Albert Camus;Camus
 
-Who is the "Hardest Working Man in Showbiz"?
-James Brown;Brown
+Who is the author of Beloved?
+Toni Morrison;Morrison
+
+Who is the author of Brave New World?
+Aldous Huxley;Huxley
+
+Who is the author of Black Boy?
+Richard Wright;Wright
+
+Who is the author of The Bluest Eye?
+Toni Morrison;Morrison
+ 
+Who is the author of Candide?
+Voltaire;M. de Voltaire;François-Marie Aroue
+ 
+Who is the author of Catch 22?
+Joseph Heller;Heller
+ 
+Who is the author of The Divine Comedy?
+Dante Alighieri;Dante;Alighieri
+ 
+Who is the author of Death of a Salesman? 
+Arthur Miller;Miller
+ 
+Who is the author of Don Quixote?
+Miguel de Cervantes;Cervantes
+ 
+Who is the author of Strange Case of Dr. Jekyll and Mr. Hyde?
+Robert Louis Stevenson;Stevenson
+ 
+Who is the author of Ethan Frome?
+Edith Wharton;Wharton
+ 
+Who is the author of Fahrenheit 451?
+Ray Bradbury;Bradbury
+ 
+Who is the author of A Farewell to Arms?
+Ernest Hemingway;Hemingway
+ 
+Who is the author of Frankenstein?
+Mary Shelley;Shelley
+ 
+Who is the author of Faust?
+Johann Wolfgang von Goethe;Goethe
+ 
+Who is the author of Grapes of Wrath?
+John Steinbeck;Steinbeck
+ 
+Who is the author of Gulliver’s Travels?
+Jonathan Swift;Swift
+ 
+Who is the author of In the Time of Butterflies?
+Julia Alvarez;Alvarez
+ 
+Who is the author of Invisible Man?
+Ralph Ellison;Ellison
+ 
+Who is the author of Jane Eyre?
+Charlotte Brontë;Charlotte Bronte;Brontë;Bronte
+ 
+Who is the author of Joy Luck Club?
+Amy Tan;Tan
+ 
+Who is the author of Like Water for Chocolate?
+Laura Esquivel;Esquivel
+ 
+Who is the author of Little Women?
+Louisa May Alcott;Alcott
+ 
+Who is the author of Metamorphosis?
+Franz Kafka;Kafka
+ 
+Who is the author of Moby Dick?
+Herman Melville;Melville
+ 
+Who is the author of One Hundred Years of Solitude?
+Gabriel García Márquez;Gabriel Garcia Marquez;Márquez;Marquez
+ 
+Who is the author of Slaughterhouse Five?
+Kurt Vonnegut;Vonnegut
+ 
+Who is the author of The Catcher in the Rye?
+J.D. Salinger;Salinger
+ 
+Who is the author of The Color Purple?
+Alice Walker;Walker
+ 
+Who is the author of The Crucible?
+Arthur Miller;Miller
+ 
+Who is the author of The Diary of Anne Frank?
+Anne Frank;Frank
+ 
+Who is the author of The Glass Menagerie?
+Tennessee Williams;Williams
+ 
+Who is the author of The Good Earth?
+Pearl S. Buck;Buck
+ 
+Who is the author of The Great Gatsby?
+F. Scott Fitzgerald;Fitzgerald
+ 
+Who is the author of The Handmaid’s Tale?
+Margaret Atwood;Atwood
+ 
+Who is the author of The Jungle?
+Upton Sinclair;Sinclair
+ 
+Who is the author of The Kite Runner?
+Khaled Hosseini;Hosseini
+ 
+Who is the author of The Little Prince?
+Antoine de Saint-Exupéry;Antoine de Saint-Exupery;Saint-Exupéry;Saint-Exupery
+ 
+Who is the author of The Lord of the Rings?
+J.R.R. Tolkien;Tolkien
+ 
+Who is the author of “The Lottery”?
+Shirley Jackson;Jackson
+ 
+Who is the author of The Poisonwood Bible?
+Barbara Kingsolver;Kingsolver
+ 
+Who is the author of The Odyssey?
+Homer
+ 
+Who is the author of The Road?
+Cormac McCarthy;McCarthy
+ 
+Who is the author of The Rime of the Ancient Mariner?
+Samuel Taylor Coleridge;Coleridge
+ 
+Who is the author of The Scarlet Letter?
+Nathaniel Hawthorne;Hawthorne
+ 
+Who is the author of The Sound and the Fury?
+William Faulkner;Faulkner
+ 
+Who is the author of The Sun Also Rises?
+Ernest Hemingway;Hemingway
+ 
+Who is the author of Their Eyes Were Watching God?
+Zora Neale Hurston;Hurston
+ 
+Who is the author of The Things They Carried?
+Tim O'Brien;Tim Obrien;Obrien;O'Brien
+ 
+Who is the author of To Kill a Mockingbird?
+Harper Lee;Lee
+ 
+Who is the author of Wuthering Heights?
+Emily Brontë;Emily Bronte;Bronte
+ 

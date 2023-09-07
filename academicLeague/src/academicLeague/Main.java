@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	BorderPane mainMenu;
+	public static Stage window;
 	VBox leftMenu, practiceBox;
 	VBox playVBox;
 	HBox practiceSettings, buttonCenter;
@@ -56,14 +57,17 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
+		window = primaryStage;
 		//	standard insets 10,10,10,10; standard button separation 5
 		colorAdjust = new ColorAdjust();
 		colorAdjust.setBrightness(-.25);
 		//	set up left Menu
+		
+			//	checkComboBox.CheckComboBox<String> check = new checkComboBox.CheckComboBox<>();
 			practiceB = new Button("Practice Deck");
 			practiceB.setPrefHeight(buttonHeight*1.5);
 			practiceB.setPrefWidth(buttonWidth*1.5);
@@ -97,8 +101,8 @@ public class Main extends Application {
 			exitB.setPrefWidth(buttonWidth*1.5);
 			exitB.setFont(Font.font(fontSize));
 			exitB.setOnAction(e-> primaryStage.close());
-			leftMenu = new VBox((stageHeight-(buttonHeight*6)-20)/7);
-			leftMenu.setPadding(new Insets(30, 10, 10, 10));
+			leftMenu = new VBox((stageHeight-(buttonHeight*6)-20)/4-20);
+			leftMenu.setPadding(new Insets(50, 10, 10, 10));
 			leftMenu.getChildren().addAll(practiceB,playGameB,importDeckB,exitB);
 			leftMenu.setBackground(new Background(new BackgroundFill(green, CornerRadii.EMPTY,Insets.EMPTY )));
 			
@@ -207,6 +211,7 @@ public class Main extends Application {
 	private void startPlay(Stage stage) {
 		String[] deck = new String[amountOfDecks];
 		deck[0] = deckSelectPlay.getValue();
+		System.out.println(deck[0]);
 		if (deck[0] != null)
 			new PlayGame(stage, deck,team1.getText(),team2.getText());
 		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");

@@ -67,8 +67,6 @@ public class Main extends Application {
 		colorAdjust = new ColorAdjust();
 		colorAdjust.setBrightness(-.25);
 		//	set up left Menu
-		
-			checkCombo = new checkComboBox.CheckComboBox<>();
 			practiceB = new Button("Practice Deck");
 			practiceB.setPrefHeight(buttonHeight*1.5);
 			practiceB.setPrefWidth(buttonWidth*1.5);
@@ -119,8 +117,6 @@ public class Main extends Application {
 			startPractice.setOnAction(e -> startPractice(primaryStage));
 			//	set up Deck drop down
 			deckSelect = new ComboBox<>();
-			
-
 			deckSelect.setPromptText("Choose a Deck");
 			//	set up shuffle check box
 			shuffleCheck = new CheckBox("Shuffle Deck?");
@@ -151,6 +147,9 @@ public class Main extends Application {
 			team2.setPrefRowCount(1);
 			team2.setPromptText("Enter Name");
 			//	set up drop down
+			checkCombo = new checkComboBox.CheckComboBox<>();
+			checkCombo.setMaxWidth(buttonWidth*2);
+			
 			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
 				for (Path path : directoryStream) {
 					if (Files.isRegularFile(path)) {
@@ -209,7 +208,8 @@ public class Main extends Application {
 	private void startPlay(Stage stage) {
 		//	make right size
 		String[] deck = checkCombo.getCheckModel().getCheckedItems().toArray(new String[0]);
-		if (deck[0] != null)
+		
+		if (deck.length > 0)
 			new PlayGame(stage, deck,team1.getText(),team2.getText());
 		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");
 			

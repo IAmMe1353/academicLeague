@@ -42,7 +42,8 @@ public class Main extends Application {
 	TextArea team1, team2;
 	ColorAdjust colorAdjust;
 	CheckBox shuffleCheck;
-	ComboBox<String> deckSelect, deckSelectPlay;
+	ComboBox<String> deckSelect;
+	checkComboBox.CheckComboBox<String> checkCombo;
 	int amountOfDecks;
 	static final Color green = new Color(42.0/255, 130.0/255, 65.0/255, 1.0);
 	static final Color gray =  new Color(227.0/255, 227.0/255, 227.0/255, 1.0);
@@ -67,7 +68,7 @@ public class Main extends Application {
 		colorAdjust.setBrightness(-.25);
 		//	set up left Menu
 		
-			//	checkComboBox.CheckComboBox<String> check = new checkComboBox.CheckComboBox<>();
+			checkCombo = new checkComboBox.CheckComboBox<>();
 			practiceB = new Button("Practice Deck");
 			practiceB.setPrefHeight(buttonHeight*1.5);
 			practiceB.setPrefWidth(buttonWidth*1.5);
@@ -150,16 +151,13 @@ public class Main extends Application {
 			team2.setPrefRowCount(1);
 			team2.setPromptText("Enter Name");
 			//	set up drop down
-			deckSelectPlay = new ComboBox<>();
-			deckSelectPlay.setPromptText("Decks");
-
 			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
 				for (Path path : directoryStream) {
 					if (Files.isRegularFile(path)) {
 						String file = "" + path.getFileName();
 						amountOfDecks ++;
 						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
-						deckSelectPlay.getItems().add(("" + file.substring(0,file.length()-4)));
+						checkCombo.getItems().add(("" + file.substring(0,file.length()-4)));
 						}
 				}
 			}
@@ -180,13 +178,13 @@ public class Main extends Application {
 			GridPane.setConstraints(team1, 1, 0);
 			GridPane.setConstraints(team2Label, 0, 1);
 			GridPane.setConstraints(team2,1,1);
-			GridPane.setConstraints(deckSelectPlay, 0, 2);
+			GridPane.setConstraints(checkCombo, 0, 2);
 			playBox.setAlignment(Pos.TOP_CENTER);
 			playBox.setPadding(new Insets(10,10,10,10));
 			playBox.getChildren().addAll(team1Label,team1,team2Label,team2);
 			playVBox = new VBox(10);
 			playVBox.setAlignment(Pos.TOP_CENTER);
-			playVBox.getChildren().addAll(startLabel,playBox, deckSelectPlay, startPlay);
+			playVBox.getChildren().addAll(startLabel,playBox, checkCombo, startPlay);
 			// set up main menu
 			mainMenu = new BorderPane();
 			mainMenu.setLeft(leftMenu);
@@ -209,9 +207,8 @@ public class Main extends Application {
 	}
 	
 	private void startPlay(Stage stage) {
-		String[] deck = new String[amountOfDecks];
-		deck[0] = deckSelectPlay.getValue();
-		System.out.println(deck[0]);
+		//	make right size
+		String[] deck = checkCombo.getCheckModel().getCheckedItems().toArray(new String[0]);
 		if (deck[0] != null)
 			new PlayGame(stage, deck,team1.getText(),team2.getText());
 		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");

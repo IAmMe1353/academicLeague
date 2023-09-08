@@ -51,7 +51,6 @@ public class PlayGame {
 	}
 	private void createMegaDeck(String[] decks) {
 		for(String deck : decks) {
-			
 			for(String line : readFileAsArray(deck + ".txt")) {
 				allDecks.add(line);
 			}

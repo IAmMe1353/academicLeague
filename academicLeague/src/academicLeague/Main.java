@@ -94,6 +94,12 @@ public class Main extends Application {
 			importDeckB.setPrefHeight(buttonHeight*1.5);
 			importDeckB.setPrefWidth(buttonWidth*1.5);
 			importDeckB.setFont(Font.font(fontSize));
+			importDeckB.setOnAction(e->{
+				practiceB.setEffect(null);
+				playGameB.setEffect(null);
+				importDeckB.setEffect(colorAdjust);
+				copyFile();
+			});
 			
 			exitB = new Button("Exit");
 			exitB.setPrefHeight(buttonHeight*1.5);
@@ -150,19 +156,7 @@ public class Main extends Application {
 			checkCombo = new checkComboBox.CheckComboBox<>();
 			checkCombo.setMaxWidth(buttonWidth*2);
 			
-			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
-				for (Path path : directoryStream) {
-					if (Files.isRegularFile(path)) {
-						String file = "" + path.getFileName();
-						amountOfDecks ++;
-						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
-						checkCombo.getItems().add(("" + file.substring(0,file.length()-4)));
-						}
-				}
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
+			refreshDropDowns();
 			
 			//	set up start button
 			Button startPlay = new Button("Play");
@@ -196,7 +190,38 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 	}
-	
+	private void refreshDropDowns() {
+		Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
+		deckSelect.getItems().clear();
+		checkCombo.getItems().clear();
+		
+		try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
+			for (Path path : directoryStream) {
+				if (Files.isRegularFile(path)) {
+					String file = "" + path.getFileName();
+					amountOfDecks ++;
+					deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
+					checkCombo.getItems().add(("" + file.substring(0,file.length()-4)));
+					}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private void copyFile() {
+		List<File> files = new FileChooser().showOpenMultipleDialog(window);
+		for (File srcFile:files) {
+			File newFile = new File(System.getProperty("user.dir")+"/resources/decks/" + srcFile.getName());
+			try {
+
+				Files.copy(srcFile.toPath(),newFile.toPath());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			importDeckB.setEffect(null);
+			refreshDropDowns();
+		}
+	}
 	private void startPractice(Stage stage) {
 		String deck = deckSelect.getValue(); 
 		if (deck != null)

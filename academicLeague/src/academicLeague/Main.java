@@ -1,10 +1,12 @@
 package academicLeague;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -26,6 +28,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
@@ -53,15 +56,13 @@ public class Main extends Application {
 	static int fontSize = buttonHeight/4;
 	static double titleSize = fontSize * (1.5);
 	
-	
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
+		
 		window = primaryStage;
 		//	standard insets 10,10,10,10; standard button separation 5
 		colorAdjust = new ColorAdjust();
@@ -94,6 +95,12 @@ public class Main extends Application {
 			importDeckB.setPrefHeight(buttonHeight*1.5);
 			importDeckB.setPrefWidth(buttonWidth*1.5);
 			importDeckB.setFont(Font.font(fontSize));
+			importDeckB.setOnAction(e->{
+				practiceB.setEffect(null);
+				playGameB.setEffect(null);
+				importDeckB.setEffect(colorAdjust);
+				copyFile();
+			});
 			
 			exitB = new Button("Exit");
 			exitB.setPrefHeight(buttonHeight*1.5);
@@ -150,19 +157,7 @@ public class Main extends Application {
 			checkCombo = new checkComboBox.CheckComboBox<>();
 			checkCombo.setMaxWidth(buttonWidth*2);
 			
-			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
-				for (Path path : directoryStream) {
-					if (Files.isRegularFile(path)) {
-						String file = "" + path.getFileName();
-						amountOfDecks ++;
-						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
-						checkCombo.getItems().add(("" + file.substring(0,file.length()-4)));
-						}
-				}
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
+			refreshDropDowns();
 			
 			//	set up start button
 			Button startPlay = new Button("Play");
@@ -197,6 +192,42 @@ public class Main extends Application {
 			primaryStage.show();
 	}
 	
+	private void refreshDropDowns() {
+		Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
+		deckSelect.getItems().clear();
+		checkCombo.getItems().clear();
+		
+		try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
+			for (Path path : directoryStream) {
+				if (Files.isRegularFile(path)) {
+					String file = "" + path.getFileName();
+					amountOfDecks ++;
+					deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
+					checkCombo.getItems().add(("" + file.substring(0,file.length()-4)));
+					}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private void copyFile() {
+		List<File> files = new FileChooser().showOpenMultipleDialog(window);
+		for (File srcFile:files) {
+			
+			File newFile = new File(System.getProperty("user.dir")+"/resources/decks/" + srcFile.getName());
+			
+			
+			try {
+
+				Files.copy(srcFile.toPath(),newFile.toPath());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			importDeckB.setEffect(null);
+			refreshDropDowns();
+
+		}
+	}
 	private void startPractice(Stage stage) {
 		String deck = deckSelect.getValue(); 
 		if (deck != null)

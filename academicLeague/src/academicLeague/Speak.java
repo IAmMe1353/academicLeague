@@ -1,51 +1,30 @@
 package academicLeague;
 
-import java.util.Locale;
 
-import javax.speech.Central;
-import javax.speech.synthesis.Synthesizer;
-import javax.speech.synthesis.SynthesizerModeDesc;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
+
+
 
 public class Speak {
-	public Speak(String script) {
-		 try {
-	            // Set property as Kevin Dictionary
-			 //	http://festvox.org/index.html
-	            System.setProperty(
-	                "freetts.voices",
-	                "com.sun.speech.freetts.en.us"
-	                    + ".cmu_us_kal.KevinVoiceDirectory");
-	  
-	            // Register Engine
-	            Central.registerEngineCentral(
-	                "com.sun.speech.freetts"
-	                + ".jsapi.FreeTTSEngineCentral");
-	  
-	            // Create a Synthesizer
-	            Synthesizer synthesizer
-	                = Central.createSynthesizer(
-	                    new SynthesizerModeDesc(Locale.US));
-	  
-	            // Allocate synthesizer
-	            synthesizer.allocate();
-	  
-	            // Resume Synthesizer
-	            synthesizer.resume();
-	  
-	            // Speaks the given text
-	            // until the queue is empty.
-	            
-	            synthesizer.speakPlainText(
-	                script, null);
-	            synthesizer.waitEngineState(
-	                Synthesizer.QUEUE_EMPTY);
-	  
-	            // Deallocate the Synthesizer.
-	            synthesizer.deallocate();
+
+	public Speak(String words) {
+	    System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+	    Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+	    if (voice != null) {
+	        voice.allocate();// Allocating Voice
+	        try {
+	            voice.setRate(190);// Setting the rate of the voice
+	            voice.setPitch(150);// Setting the Pitch of the voice
+	            voice.setVolume(3);// Setting the volume of the voice
+	            voice.speak(words);// Calling speak() method
+
+	        } catch (Exception e1) {
+	            e1.printStackTrace();
 	        }
-	  
-	        catch (Exception e) {
-	            e.printStackTrace();
-	        }
+
+	    } else {
+	        throw new IllegalStateException("Cannot find voice: kevin16");
+	    }
 	}
 }

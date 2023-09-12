@@ -1,0 +1,48 @@
+Which artist painted the work Starry Night?
+Vincent van Gogh;van Gogh
+Starry.jpg
+Which artist painted the work Water Lilies?
+Claude Monet;Monet
+WaterLilies.jpg
+Which artist painted the work Impression, Sunrise?
+Claude Monet;Monet
+Impression.jpg
+Which artist painted The Child's Bath? 
+Mary Cassatt;Cassatt
+ChildBath.jpg
+Which artist painted the work The Dance at Le Moulin de la Galette?
+Pierre-Auguste Renoir;Renoir
+DanceGalette.jpg
+Which artist painted the work The Dance Class?
+Edgar Degas;Degas
+DanceClass.jpg
+Which artist painted the work A Sunday Afternoon on the Island of La Grande Jatte?
+Georges Seurat;Seurat
+SundayAfternoon.jpg
+Which artist painted the work The Bedroom?
+Vincent van Gogh;van Gogh
+Bedroom.jpg
+Which artist painted the work The Luncheon of the Boating Party?
+Pierre-Auguste Renoir;Renoir
+Luncheon.jpg
+Which artist painted The Card Players? 
+Paul Cezanne;Cezanne
+CardPlayers.jpg
+Which artist painted the work Woman with a Parasol - Madame Monet and Her Son?
+Claude Monet;Monet
+Parasol.jpg
+Which artist painted the work The Absinthe Drinker?
+Edgar Degas;Degas
+Absinthe.jpeg
+Which artist painted the work The Café Terrace at Night?
+Vincent van Gogh;van Gogh
+CafeTerrace.jpg
+Which artist painted the work Dance at Bougival?
+Pierre-Auguste Renoir;Renoir
+DanceBougival.jpg
+Which artist painted the work The Gleaners?
+Jean-François Millet;Millet
+Gleaners.jpg
+Which artist painted the work A Bar at the Folies-Bergère?
+Édouard Manet;Manet 
+BarFolies.jpg

@@ -1,0 +1,60 @@
+Which artist painted the work American Gothic?
+Grant Wood;Wood
+Gothic.jpg
+Which artist painted the work Nighthawks?
+Edward Hopper;Hopper
+Nighthawks.jpg
+Which artist painted the work Whistler's Mother?
+James McNeill Whistler;Whistler
+Whistlers.jpg
+Which artist painted the work Christina's World?
+Andrew Wyeth;Wyeth
+Christinas.jpg
+Which artist painted the work Washington Crossing the Delaware?
+Emanuel Leutze;Leutze
+Washington.jfif
+Which artist painted the work No. 5, 1948?
+Jackson Pollock;Pollock
+No5.jpg
+Which artist painted the work The Oxbow?
+Thomas Cole;Cole
+Oxbow.jpg
+Which artist painted the work Little Girl in a Blue Armchair?
+Mary Cassatt;Cassatt
+BlueArmchair.jpg
+Which artist painted the work Cow's Skull: Red White and Blue?
+Georgia O'Keefe;O'Keefe
+CowsSkull.jpg
+Which artist painted the work Dogs Playing Poker (a series)?
+Cassius Marcellus Coolidge;Coolidge
+DogPoker.png
+Which artist painted the work Whaam!?
+Roy Lichtenstein;Lichtenstein
+Whaam.jpg
+Which artist painted the work Breezing Up (A Fair Wind)?
+Winslow Homer;Homer
+Breezing.jpg
+Which artist painted the work Portrait of Madame X?
+John Singer Sargent;Sargent
+MadameX.jpg
+Which artist painted the work The Problem We All Live With?
+Norman Rockwell;Rockwell
+Problem.jfif
+Which artist painted the work Blue Poles?
+Jackson Pollock;Pollock
+BluePoles.jpg
+Which artist painted the work Crying Girl?
+Roy Lichtenstein;Lichtenstein
+Crying.png
+Which artist painted the work Peaceable Kingdom?
+Edward Hicks;Hicks
+Peaceable.jfif
+Which artist painted the work Lavender Mist: Number 1, 1950?
+Jackson Pollock;Pollock
+Lavender.jpg
+Which artist painted the work Flag?
+Jasper Johns;Johns
+Flag.jpg
+Which artist painted the work Campbell's Soup Cans (a series)?
+Andy Warhol;Warhol
+Soup.jpg

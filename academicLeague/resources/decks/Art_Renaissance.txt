@@ -7,3 +7,27 @@ Athens.jpg
 Who painted The Last Supper, a mural depicting Jesus and his disciples at the last supper?
 Leonardo da Vinci;da Vinci
 LastSupper.jpg
+Which artist painted the Mona Lisa, which currently hangs in the Louvre Museum in Paris?
+Leonardo da Vinci;da Vinci
+Mona.jpg
+Which artist sculpted The David, the first colossal marble statue made during the Renaissance era?
+Michelangelo
+David.jpg
+Which artist painted the work The Creation of Adam, a fresco on the ceiling of the Sistine Chapel?
+Michelangelo
+Adam.jpg
+Which artist, from the Netherlands, painted the triptych oil painting The Garden of Earthly Delights?
+Hieronymus Bosch;Bosch
+GardenEarthly.jpg
+Which artist painted the work The Arnolfini Portrait, which depicts an Italian merchant and his wife?
+Jan van Eyck;van Eyck
+Arnolfini.jpg
+Which artist drew the work The Vitruvian Man, which was inspired by the writings of the ancient Roman architect Vitruvius?
+Leonardo da Vinci;da Vinci
+Vitruvian.jpg
+Which artist painted the work Primavera ("Spring") which shows nine figures from classical mythology in an orange grove?
+Sandro Botticelli;Botticelli
+Primavera.jpg
+Which artist painted the work The Adoration of the Magi, an unfinished painting that now hangs in the Uffizi Gallery in Florence?
+Leonardo da Vinci;da Vinci 
+Magi.jpg

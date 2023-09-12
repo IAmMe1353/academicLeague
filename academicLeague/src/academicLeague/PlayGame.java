@@ -26,19 +26,27 @@ public class PlayGame {
 	Stage window;
 	boolean[] ran;
 	ArrayList<String> allDecks = new ArrayList<>();
+	int score1, score2, line;
 	
 	
 	public PlayGame(Stage window, String[] decks, String team1, String team2) {
 		this.window = window;
 		createMegaDeck(decks);
+		
+		Thread speak = new Thread(() ->{
+			new Speak(allDecks.get(line*3));
+		});
+		
 	//	set up Labels
-		Label team1Label = new Label(team1);
+		Label team1Label = new Label(team1 + ": " + score1);
 		team1Label.setFont(Font.font(Main.titleSize));
-		Label team2Label = new Label(team2);
+		Label team2Label = new Label(team2 + ": " + score2);
 		team2Label.setFont(Font.font(Main.titleSize));
 	//	set up Button
 		Button buzz = new Button("Buzz!");
-		buzz.setOnAction(null);
+		buzz.setMinSize(300, 150);
+		buzz.setOnAction(e-> speak.interrupt());
+		buzz.setFont(Font.font(Main.stageHeight/5));
 	//	set up VBox and create scene
 		VBox mainBox = new VBox(25);
 		mainBox.setAlignment(Pos.TOP_CENTER);
@@ -46,7 +54,12 @@ public class PlayGame {
 		mainBox.setPadding(new Insets(10,10,10,10));
 		mainBox.getChildren().addAll(team1Label,team2Label,buzz);
 		scene = new Scene(mainBox,Main.stageHeight*2,Main.stageHeight);
-	//	set window to question
+	//	set up questions
+		int numQuestions = (int)(allDecks.size()/3 +.5);
+		ran = new boolean[numQuestions];
+		line = (int)(Math.random()*(numQuestions));
+		speak.start();
+	//	set scene
 		window.setScene(scene);
 	}
 	private void createMegaDeck(String[] decks) {

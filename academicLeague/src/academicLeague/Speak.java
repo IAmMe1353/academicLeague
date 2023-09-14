@@ -1,30 +1,21 @@
 package academicLeague;
 
+import marytts.LocalMaryInterface;
+import marytts.util.data.audio.AudioPlayer;
 
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
-
-
+import javax.sound.sampled.*;
 
 public class Speak {
+    public Speak(String sentance, String voice) {
+        try {
+            // Initialize MaryTTS and generate audio
+            LocalMaryInterface mary = new LocalMaryInterface();
+            AudioInputStream audio = mary.generateAudio(sentance);
 
-	public Speak(String words) {
-	    System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-	    Voice voice = VoiceManager.getInstance().getVoice("kevin16");
-	    if (voice != null) {
-	        voice.allocate();// Allocating Voice
-	        try {
-	            voice.setRate(190);// Setting the rate of the voice
-	            voice.setPitch(150);// Setting the Pitch of the voice
-	            voice.setVolume(3);// Setting the volume of the voice
-	            voice.speak(words);// Calling speak() method
+            AudioPlayer tts = new AudioPlayer(audio);
+            tts.start();
 
-	        } catch (Exception e1) {
-	            e1.printStackTrace();
-	        }
-
-	    } else {
-	        throw new IllegalStateException("Cannot find voice: kevin16");
-	    }
-	}
-}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }

@@ -229,14 +229,19 @@ public class Main extends Application {
 	private void copyFile() {
 		List<File> files = new FileChooser().showOpenMultipleDialog(window);
 		for (File srcFile:files) {
+			
 			File newFile = new File(System.getProperty("user.dir")+"/resources/decks/" + srcFile.getName());
+			
+			
 			try {
+
 				Files.copy(srcFile.toPath(),newFile.toPath());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			importDeckB.setEffect(null);
 			refreshDropDowns();
+
 		}
 	}
 	private void startPractice(Stage stage) {

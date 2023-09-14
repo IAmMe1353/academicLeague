@@ -1,0 +1,44 @@
+Which organelle is responsible for producing energy in the form of ATP through cellular respiration?
+Mitochondria
+
+Which organelle processes, modifies, and packages proteins and lipids for transport within and outside the cell?
+Golgi apparatus
+
+Which cellular structure is the site of protein synthesis in the cell, where amino acids are assembled into polypeptide chains?
+Ribosome
+
+What is the name of the organelle that stores water, nutrients, and waste products, providing turgor pressure in plant cells?
+Vacuole
+
+Which organelle is responsible for photosynthesis in plant cells, converting sunlight into chemical energy?
+Chloroplast
+
+What is the name of the extensive network of membranes involved in the synthesis of lipids and proteins in the cell?
+Endoplasmic reticulum
+
+Which substructure within the nucleus is responsible for the production of ribosomal RNA (rRNA)?
+Nucleolus
+
+What is the name of the organelle that plays a crucial role in cell division by organizing microtubules in animal cells?
+Centriole
+
+Which small, membrane-bound sac is involved in the transport of various molecules within and outside the cell?
+Vesicle
+
+Which plastid, found in plant cells, is responsible for the synthesis and storage of starches and other carbohydrates?
+Leucoplast
+
+Which hair-like structures extend from the surface of certain cells, aiding in movement or the movement of substances over the cell's surface?
+Cilia
+
+What is the name of the plastid responsible for storing pigments, giving color to fruits, flowers, and some leaves?
+Chromoplast
+
+Which organelle contains enzymes responsible for breaking down cellular waste and debris, serving as the cell's "garbage disposal"?
+Lysosome
+
+Which semi-fluid substance fills the cell, serving as the medium in which organelles are suspended and where many cellular processes occur?
+Cytoplasm
+
+What is the central organelle in eukaryotic cells that contains the cell's genetic material and controls cell activities?
+Nucleus

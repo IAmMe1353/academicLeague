@@ -226,7 +226,7 @@ public class Practice {
 			if (overwrite) {
 				text = text.substring(0,text.length()-1);
 				try {
-					Files.write(Paths.get(System.getProperty("user.dir"),"resources","decks", deck +".txt"), text.getBytes());
+					Files.write(Paths.get(System.getProperty("user.dir"),"resources","decks", "temps", deck +".txt"), text.getBytes());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -235,7 +235,7 @@ public class Practice {
 				text = "\n" + text;
 				text = text.substring(0,text.length()-1);
 				try {
-					Files.write(Paths.get(System.getProperty("user.dir"),"resources","decks", deck +".txt"), text.getBytes(), StandardOpenOption.APPEND);
+					Files.write(Paths.get(System.getProperty("user.dir"),"resources","decks", "temps", deck +".txt"), text.getBytes(), StandardOpenOption.APPEND);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

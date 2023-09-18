@@ -1,6 +1,5 @@
 package academicLeague;
 
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,126 +22,172 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class PlayGame {
-	
+
 	Scene scene, questionScene;
 	Stage window;
+	// in questions not lines
 	boolean[] ran;
 	ArrayList<String> allDecks = new ArrayList<>();
 	int score1, score2, line;
 	String[] decks;
+	// in lines not questions
 	int[] deckSizes;
 
-	
 	public PlayGame(Stage window, String[] decks, String team1, String team2) {
 		this.window = window;
 		this.decks = decks;
 		createMegaDeck(decks);
-		int numQuestions = (int)(allDecks.size()/3.0 +.5);
-		
-		Thread speak = new Thread(() ->{
-			new Speak(allDecks.get(line*3));
+		int numQuestions = (int) (allDecks.size() / 3.0 + .5);
+
+		Thread speak = new Thread(() -> {
+			new Speak(allDecks.get(line * 3));
 		});
-		
-	//	set up Labels
-		if (team1.equals("")) team1 = "Team 1";
-		if (team2.equals("")) team2 = "Team 2";
+
+		// set up Labels
+		if (team1.equals(""))
+			team1 = "Team 1";
+		if (team2.equals(""))
+			team2 = "Team 2";
 		Label team1Label = new Label(team1 + ": " + score1);
 		team1Label.setFont(Font.font(Main.titleSize));
 		Label team2Label = new Label(team2 + ": " + score2);
 		team2Label.setFont(Font.font(Main.titleSize));
-	//	set up Button
+		// set up Button
 		Button buzz = new Button("Buzz!");
 		buzz.setMinSize(300, 150);
-		buzz.setOnAction(e-> window.setScene(questionScene));
-		buzz.setFont(Font.font(Main.stageHeight/5));
-	//	set up VBox and create scene
+		buzz.setOnAction(e -> doBonusQuestion());
+		buzz.setFont(Font.font(Main.stageHeight / 5));
+		// set up VBox and create scene
 		VBox mainBox = new VBox(25);
 		mainBox.setAlignment(Pos.TOP_CENTER);
-		mainBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
-		mainBox.setPadding(new Insets(10,10,10,10));
-		mainBox.getChildren().addAll(team1Label,team2Label,buzz);
-		scene = new Scene(mainBox,Main.stageHeight*2,Main.stageHeight);
-	//	set up questions
+		mainBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY, Insets.EMPTY)));
+		mainBox.setPadding(new Insets(10, 10, 10, 10));
+		mainBox.getChildren().addAll(team1Label, team2Label, buzz);
+		scene = new Scene(mainBox, Main.stageHeight * 2, Main.stageHeight);
+		// set up questions
 		ran = new boolean[numQuestions];
-		line = (int)(Math.random()*(numQuestions));
+		line = (int) (Math.random() * (numQuestions));
 		speak.start();
-	//	set scene
+		// set scene
 		window.setScene(scene);
-		
-	//	create answer Scene
+
+		// create answer Scene
 		TextArea answerT = new TextArea();
 		answerT.setPromptText("Press Enter When Finished");
 		answerT.setPrefRowCount(2);
-		//	if enter is pressed check answer
-		answerT.setOnKeyPressed(e ->{
-			if(e.getCode() == KeyCode.ENTER) check(answerT.getText().replaceAll("\\r\\n|\\r|\\n", ""));});
-		//	set up new label
+		// if enter is pressed check answer
+		answerT.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ENTER)
+				check(answerT.getText().replaceAll("\\r\\n|\\r|\\n", ""));
+		});
+		// set up new label
 		Label team1LabelQ = new Label(team1 + ": " + score1);
 		team1LabelQ.setFont(Font.font(Main.titleSize));
 		Label team2LabelQ = new Label(team2 + ": " + score2);
 		team2LabelQ.setFont(Font.font(Main.titleSize));
-		//	set up VBox
+		// set up VBox
 		VBox QuestionBox = new VBox(5);
 		QuestionBox.setAlignment(Pos.TOP_CENTER);
-		QuestionBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY,Insets.EMPTY )));
-		QuestionBox.setPadding(new Insets(10,10,10,10));
-		QuestionBox.getChildren().addAll(team1LabelQ,team2LabelQ,answerT);
-		questionScene = new Scene(QuestionBox,Main.stageHeight*2,Main.stageHeight);
+		QuestionBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY, Insets.EMPTY)));
+		QuestionBox.setPadding(new Insets(10, 10, 10, 10));
+		QuestionBox.getChildren().addAll(team1LabelQ, team2LabelQ, answerT);
+		questionScene = new Scene(QuestionBox, Main.stageHeight * 2, Main.stageHeight);  
+	}
+
+	private void doBonusQuestion() {
+		// TODO create a scene with three answer slots and a enter button
+		// speak type (everything before _ in deck title)
+		if (checkIfBonusQuestions()) {
+			new Speak("The Next Question is a Bonus question");		
+			// select deck
+			int deckNum = (int) (Math.random() * (decks.length - 1));
+			//	making sure there are enough remaining questions
+			while(deckSizes[deckNum] < 3) {
+				deckNum = (int) (Math.random() * (decks.length - 1));
+			}
+			int[] lines = new int[3];
+			
+			for (int i = 0; i < 3; i++) {
+				lines[i] = (int)(Math.random()*deckSizes[deckNum]);
+				while (ran[getAdress(deckNum,lines[i])/3]) {
+					lines[i] = (int)(Math.random()*deckSizes[deckNum]);
+				}
+			}
+			for (int i:lines)
+				new Speak(allDecks.get(getAdress(deckNum,i)));
+		}
+		else {
+			new Speak("There are not remaining bonus Questions");
+		}
+	}
+	private boolean checkIfBonusQuestions(){
+		for(int i:deckSizes) {
+			if (i >=3) {
+				return true;
+			}
+		}
+		return false;
 	}
 	private void check(String answer) {
 		ran[line] = true;
-		String correctAnswers = allDecks.get(line*3+1);
-		//	if correct
-		if(checkAnswer(answer,correctAnswers)) {
+		// decrease deck length array
+		int sum = 0;
+		for (int i = 0; i < deckSizes.length; i++) {
+			sum += deckSizes[i];
+			if (line < sum) {
+				deckSizes[i] -= 3;
+				break;
+			}
+		}
+		String correctAnswers = allDecks.get(line * 3 + 1);
+		// if correct
+		if (checkAnswer(answer, correctAnswers)) {
 			score1++;
 			new Speak("Correct");
 			doBonusQuestion();
 		}
-		
-		
 	}
-	private void doBonusQuestion() {
-		new Speak("Next Question is a Bonus question");
-		//	create boolean[] similar to ran
- 		//	choose deck whose size is > 3 questions
-		//	choose a question from that deck from firstQuestion-(lastQuestion-3)
-		//	run it and two next questions
-		//	TODO create a scene with three answer slots
-		new Thread(() ->{
-			new Speak(allDecks.get(line*3));
-		}).start();
-	}
+
 	private boolean checkAnswer(String answer, String answerLine) {
-	    String[] answers = answerLine.split(";");
-	    
-	    for (String i : answers) {
-	      if (i.replaceAll("\\r\\n|\\r|\\n", "").toUpperCase().equals(answer.toUpperCase())) {
-	        return true;
-	      }
-	    }
-	    return false;
+		String[] answers = answerLine.split(";");
+
+		for (String i : answers) {
+			if (i.replaceAll("\\r\\n|\\r|\\n", "").toUpperCase().equals(answer.toUpperCase())) {
+				return true;
+			}
+		}
+		return false;
 	}
+
 	private void createMegaDeck(String[] decks) {
 		deckSizes = new int[decks.length];
-		for(int i = 0; i < decks.length;i++) {
-			//	TODO get file sizes
+		for (int i = 0; i < decks.length; i++) {
+			// TODO get file sizes
 			String[] deckArray = readFileAsArray(decks[i] + ".txt");
 			deckSizes[i] = deckArray.length;
-			for(String line : deckArray) {
+			for (String line : deckArray) {
 				allDecks.add(line);
 			}
 		}
 	}
 
 	private String[] readFileAsArray(String fileName) {
-		Path filePath = Paths.get(System.getProperty("user.dir"),"resources","decks",fileName);
+		Path filePath = Paths.get(System.getProperty("user.dir"), "resources", "decks", fileName);
 		try {
 			return (new String(Files.readAllBytes(filePath))).split("\n");
-		}
-		catch (IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	private int getAdress(int deckNum, int line) {
+		int adress = 0;
+		for (int i = 0; i < deckNum; i++) {
+			adress += deckSizes[i];
+		}
+		adress += line;
+		return adress;
 	}
 }
 //	TODO create showText checkBox

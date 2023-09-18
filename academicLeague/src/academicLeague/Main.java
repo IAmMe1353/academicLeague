@@ -63,6 +63,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
+		Speak speaky = new Speak();
+		speaky.test("Somebody once told me the world was gonna roll me, I ain't the sharpest tool in the shed");		
 		//	standard insets 10,10,10,10; standard button separation 5
 		colorAdjust = new ColorAdjust();
 		colorAdjust.setBrightness(-.25);
@@ -120,7 +122,7 @@ public class Main extends Application {
 			startPractice = new Button("Start");
 			startPractice.setPrefHeight(buttonHeight);
 			startPractice.setPrefWidth(buttonWidth);
-			startPractice.setOnAction(e -> startPractice(primaryStage));
+			startPractice.setOnAction(e -> {speaky.clip.stop();startPractice(primaryStage);});
 			//	set up Deck drop down
 			deckSelect = new ComboBox<>();
 			deckSelect.setPromptText("Choose a Deck");
@@ -156,24 +158,7 @@ public class Main extends Application {
 			checkCombo = new checkComboBox.CheckComboBox<>();
 			checkCombo.setMaxWidth(buttonWidth*2);
 
-
 			refreshDropDowns();
-
-			Path userFilesDirectory = Paths.get(System.getProperty("user.dir"), "resources","decks");
-			try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(userFilesDirectory)){
-				for (Path path : directoryStream) {
-					if (Files.isRegularFile(path)) {
-						String file = "" + path.getFileName();
-						amountOfDecks ++;
-						deckSelect.getItems().add(("" + file.substring(0,file.length()-4)));
-						checkCombo.getItems().add(("" + file.substring(0,file.length()-4)));
-						}
-				}
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-
 			
 			//	set up start button
 			Button startPlay = new Button("Play");
@@ -225,6 +210,8 @@ public class Main extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		deckSelect.getItems().addAll("Temp1","Temp2","Temp3");
+		checkCombo.getItems().addAll("Temp1","Temp2","Temp3");
 	}
 	private void copyFile() {
 		List<File> files = new FileChooser().showOpenMultipleDialog(window);

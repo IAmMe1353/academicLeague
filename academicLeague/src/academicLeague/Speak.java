@@ -1,11 +1,14 @@
 package academicLeague;
 
 import marytts.LocalMaryInterface;
+
 import marytts.util.data.audio.AudioPlayer;
 
 import javax.sound.sampled.*;
 
 public class Speak {
+	public Clip clip;
+	
     public Speak(String sentance, String voice) {
         try {
             // Initialize MaryTTS and generate audio
@@ -19,3 +22,24 @@ public class Speak {
             e.printStackTrace();
         }
     }
+    public Speak(String sentance) {
+    	this(sentance,null);
+    }
+    public Speak() {
+    	
+    }
+    public void test(String sentance){
+        try {
+            // Initialize MaryTTS and generate audio
+            LocalMaryInterface mary = new LocalMaryInterface();
+            AudioInputStream audio = mary.generateAudio(sentance);
+            clip =  AudioSystem.getClip();
+            clip.open(audio);
+            clip.start();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

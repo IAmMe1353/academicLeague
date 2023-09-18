@@ -32,8 +32,10 @@ public class PlayGame {
 	String[] decks;
 	// in lines not questions
 	int[] deckSizes;
+	Speak speak;
 
 	public PlayGame(Stage window, String[] decks, String team1, String team2) {
+		speak = new Speak();
 		this.window = window;
 		this.decks = decks;
 		createMegaDeck(decks);
@@ -91,14 +93,15 @@ public class PlayGame {
 		QuestionBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY, Insets.EMPTY)));
 		QuestionBox.setPadding(new Insets(10, 10, 10, 10));
 		QuestionBox.getChildren().addAll(team1LabelQ, team2LabelQ, answerT);
-		questionScene = new Scene(QuestionBox, Main.stageHeight * 2, Main.stageHeight);  
+		questionScene = new Scene(QuestionBox, Main.stageHeight * 2, Main.stageHeight);
+		//	create question scene
+		
 	}
 
 	private void doBonusQuestion() {
 		// TODO create a scene with three answer slots and a enter button
 		// speak type (everything before _ in deck title)
-		if (checkIfBonusQuestions()) {
-			new Speak("The Next Question is a Bonus question");		
+		if (checkIfBonusQuestions()) {	
 			// select deck
 			int deckNum = (int) (Math.random() * (decks.length - 1));
 			//	making sure there are enough remaining questions
@@ -106,18 +109,42 @@ public class PlayGame {
 				deckNum = (int) (Math.random() * (decks.length - 1));
 			}
 			int[] lines = new int[3];
-			
+			//	get lines for questions
 			for (int i = 0; i < 3; i++) {
-				lines[i] = (int)(Math.random()*deckSizes[deckNum]);
-				while (ran[getAdress(deckNum,lines[i])/3]) {
-					lines[i] = (int)(Math.random()*deckSizes[deckNum]);
+				boolean notValid = true;
+				while (notValid) {
+					int unroundedNum =(int)(Math.random()*deckSizes[deckNum]);
+					lines[i] = (((int)(unroundedNum+1.5))/3)*3;
+					notValid = false;
+					//	check that that question has not been done
+					if (ran[getAdress(deckNum,lines[i])/3])
+						notValid = true;
+					//	check that each question is different
+					if (i==1)
+						if(lines[1] == lines[0])
+							notValid = true;
+					if (i==2)
+						if(lines[2] == lines[1]||lines[2] == lines[0])
+							notValid = true;
 				}
 			}
-			for (int i:lines)
-				new Speak(allDecks.get(getAdress(deckNum,i)));
+			//	create dialog to speak
+			String dialog = "The Next Question is a Bonus question (_)(_)";
+			for (int i:lines) {
+				System.out.println("Line: " + i);
+				System.out.println("deckNum: " + deckNum);
+				System.out.println("Adress: " + getAdress(deckNum,i));
+				System.out.println("Question: " +  allDecks.get(getAdress(deckNum,i)));
+				
+				dialog += allDecks.get(getAdress(deckNum,i));
+				dialog += "(_)(_)";
+			}
+			//	remove trailing pause
+			dialog = dialog.substring(0,dialog.length()-3);
+			speak.speak(dialog);
 		}
 		else {
-			new Speak("There are not remaining bonus Questions");
+			new Speak("There are no remaining bonus Questions");
 		}
 	}
 	private boolean checkIfBonusQuestions(){
@@ -191,6 +218,8 @@ public class PlayGame {
 	}
 }
 //	TODO create showText checkBox
+//	TODO make sure index is not out of bounds in bonus questions (ran[] and otherwise) (change range of random?)
+//	TODO make sure question isn't done twice in bonus (line[i] != line[i-1])
 //	TODO make buzz sound
 //	TODO make voice interruptible
 //	TODO figure way not to do same bonus question twice 

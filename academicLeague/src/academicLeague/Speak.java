@@ -7,6 +7,7 @@ import marytts.util.data.audio.AudioPlayer;
 import javax.sound.sampled.*;
 
 public class Speak {
+	//	this.clip.stop() stops audio from playing
 	public Clip clip;
 	
     public Speak(String sentance, String voice) {
@@ -26,17 +27,17 @@ public class Speak {
     	this(sentance,null);
     }
     public Speak() {
+
     	
     }
-    public void test(String sentance){
+    public void speak(String sentance){
         try {
+        	clip =  AudioSystem.getClip();
             // Initialize MaryTTS and generate audio
             LocalMaryInterface mary = new LocalMaryInterface();
             AudioInputStream audio = mary.generateAudio(sentance);
-            clip =  AudioSystem.getClip();
             clip.open(audio);
             clip.start();
-
 
         } catch (Exception e) {
             e.printStackTrace();

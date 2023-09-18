@@ -63,8 +63,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
-		Speak speaky = new Speak();
-		speaky.test("Somebody once told me the world was gonna roll me, I ain't the sharpest tool in the shed");		
 		//	standard insets 10,10,10,10; standard button separation 5
 		colorAdjust = new ColorAdjust();
 		colorAdjust.setBrightness(-.25);
@@ -122,7 +120,7 @@ public class Main extends Application {
 			startPractice = new Button("Start");
 			startPractice.setPrefHeight(buttonHeight);
 			startPractice.setPrefWidth(buttonWidth);
-			startPractice.setOnAction(e -> {speaky.clip.stop();startPractice(primaryStage);});
+			startPractice.setOnAction(e -> {startPractice(primaryStage);});
 			//	set up Deck drop down
 			deckSelect = new ComboBox<>();
 			deckSelect.setPromptText("Choose a Deck");

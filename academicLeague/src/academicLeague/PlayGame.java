@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class PlayGame {
 
-	Scene scene, questionScene;
+	Scene scene, questionScene, bonusScene;
 	Stage window;
 	// in questions not lines
 	boolean[] ran;
@@ -41,10 +41,6 @@ public class PlayGame {
 		createMegaDeck(decks);
 		int numQuestions = (int) (allDecks.size() / 3.0 + .5);
 
-		Thread speak = new Thread(() -> {
-			new Speak(allDecks.get(line * 3));
-		});
-
 		// set up Labels
 		if (team1.equals(""))
 			team1 = "Team 1";
@@ -57,7 +53,10 @@ public class PlayGame {
 		// set up Button
 		Button buzz = new Button("Buzz!");
 		buzz.setMinSize(300, 150);
-		buzz.setOnAction(e -> doBonusQuestion());
+		buzz.setOnAction(e ->{
+			window.setScene(questionScene);
+			speak.clip.stop();
+		});
 		buzz.setFont(Font.font(Main.stageHeight / 5));
 		// set up VBox and create scene
 		VBox mainBox = new VBox(25);
@@ -69,10 +68,9 @@ public class PlayGame {
 		// set up questions
 		ran = new boolean[numQuestions];
 		line = (int) (Math.random() * (numQuestions));
-		speak.start();
 		// set scene
 		window.setScene(scene);
-
+		speak.speak(allDecks.get(line * 3));
 		// create answer Scene
 		TextArea answerT = new TextArea();
 		answerT.setPromptText("Press Enter When Finished");
@@ -95,7 +93,17 @@ public class PlayGame {
 		QuestionBox.getChildren().addAll(team1LabelQ, team2LabelQ, answerT);
 		questionScene = new Scene(QuestionBox, Main.stageHeight * 2, Main.stageHeight);
 		//	create question scene
-		
+		Button q1 = new Button("Question 1");
+		q1.setMaxSize(20, 20);
+		Button q2 = new Button("Question 2");
+		Button q3 = new Button("Question 3");
+		Button answer = new Button("Answer");
+		TextArea a1 = new TextArea();
+		TextArea a2 = new TextArea();
+		TextArea a3 = new TextArea();
+		VBox bonusBox = new VBox(5);
+		bonusBox.getChildren().addAll(q1,a1,q2,a2,q3,a3, answer);
+		bonusScene = new Scene(bonusBox,Main.stageHeight * 2, Main.stageHeight);
 	}
 
 	private void doBonusQuestion() {
@@ -142,6 +150,7 @@ public class PlayGame {
 			//	remove trailing pause
 			dialog = dialog.substring(0,dialog.length()-3);
 			speak.speak(dialog);
+			window.setScene(bonusScene);
 		}
 		else {
 			new Speak("There are no remaining bonus Questions");
@@ -156,6 +165,7 @@ public class PlayGame {
 		return false;
 	}
 	private void check(String answer) {
+		System.out.println("checked");
 		ran[line] = true;
 		// decrease deck length array
 		int sum = 0;
@@ -172,6 +182,10 @@ public class PlayGame {
 			score1++;
 			new Speak("Correct");
 			doBonusQuestion();
+		}
+		else {
+			new Speak("Incorrect");
+			window.setScene(scene);
 		}
 	}
 
@@ -218,6 +232,7 @@ public class PlayGame {
 	}
 }
 //	TODO create showText checkBox
+//	TODO make sure questions are random
 //	TODO make sure index is not out of bounds in bonus questions (ran[] and otherwise) (change range of random?)
 //	TODO make sure question isn't done twice in bonus (line[i] != line[i-1])
 //	TODO make buzz sound

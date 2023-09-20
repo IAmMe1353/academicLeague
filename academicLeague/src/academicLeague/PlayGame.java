@@ -28,24 +28,29 @@ public class PlayGame {
 	// in questions not lines
 	boolean[] ran;
 	ArrayList<String> allDecks = new ArrayList<>();
-	int score1, score2, line;
+	int score1, score2, line, numQuestions;
 	String[] decks;
+	String team1, team2;
 	// in lines not questions
 	int[] deckSizes;
 	Speak speak;
 
-	public PlayGame(Stage window, String[] decks, String team1, String team2) {
+	public PlayGame(Stage window, String[] decks, String team1In, String team2In) {
 		speak = new Speak();
 		this.window = window;
 		this.decks = decks;
 		createMegaDeck(decks);
-		int numQuestions = (int) (allDecks.size() / 3.0 + .5);
+		numQuestions = (int) (allDecks.size() / 3.0 + .5);
 
 		// set up Labels
-		if (team1.equals(""))
+		if (team1In.equals(""))
 			team1 = "Team 1";
-		if (team2.equals(""))
+		else
+			team1 = team1In;
+		if (team2In.equals(""))
 			team2 = "Team 2";
+		else
+			team2 = team2In;
 		Label team1Label = new Label(team1 + ": " + score1);
 		team1Label.setFont(Font.font(Main.titleSize));
 		Label team2Label = new Label(team2 + ": " + score2);
@@ -77,8 +82,11 @@ public class PlayGame {
 		answerT.setPrefRowCount(2);
 		// if enter is pressed check answer
 		answerT.setOnKeyPressed(e -> {
-			if (e.getCode() == KeyCode.ENTER)
+			if (e.getCode() == KeyCode.ENTER) {
 				check(answerT.getText().replaceAll("\\r\\n|\\r|\\n", ""));
+				team1Label.setText(team1 + ": " + score1);
+				answerT.clear();
+			}
 		});
 		// set up new label
 		Label team1LabelQ = new Label(team1 + ": " + score1);
@@ -149,8 +157,9 @@ public class PlayGame {
 			}
 			//	remove trailing pause
 			dialog = dialog.substring(0,dialog.length()-3);
-			speak.speak(dialog);
 			window.setScene(bonusScene);
+			speak.speak(dialog);
+			
 		}
 		else {
 			new Speak("There are no remaining bonus Questions");
@@ -165,6 +174,7 @@ public class PlayGame {
 		return false;
 	}
 	private void check(String answer) {
+		
 		System.out.println("checked");
 		ran[line] = true;
 		// decrease deck length array
@@ -179,14 +189,23 @@ public class PlayGame {
 		String correctAnswers = allDecks.get(line * 3 + 1);
 		// if correct
 		if (checkAnswer(answer, correctAnswers)) {
-			score1++;
+			score1 += 3;
 			new Speak("Correct");
 			doBonusQuestion();
 		}
 		else {
 			new Speak("Incorrect");
+			score1 --;
+			
 			window.setScene(scene);
 		}
+		
+		//	change question
+		line = (int) (Math.random() * (numQuestions));
+		while(ran[line]) {
+			line = (int) (Math.random() * (numQuestions));
+		}
+		speak.speak(allDecks.get(line*3));
 	}
 
 	private boolean checkAnswer(String answer, String answerLine) {

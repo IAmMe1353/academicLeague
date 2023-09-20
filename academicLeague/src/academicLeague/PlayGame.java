@@ -31,7 +31,7 @@ public class PlayGame {
 	int score1, score2, line, numQuestions;
 	String[] decks;
 	String team1, team2;
-	// in lines not questions
+	// in questions not questions
 	int[] deckSizes;
 	Speak speak;
 
@@ -102,14 +102,20 @@ public class PlayGame {
 		questionScene = new Scene(QuestionBox, Main.stageHeight * 2, Main.stageHeight);
 		//	create question scene
 		Button q1 = new Button("Question 1");
-		q1.setMaxSize(20, 20);
 		Button q2 = new Button("Question 2");
 		Button q3 = new Button("Question 3");
 		Button answer = new Button("Answer");
 		TextArea a1 = new TextArea();
+		a1.setPrefRowCount(2);
+		a1.setMaxWidth(Main.stageHeight);
 		TextArea a2 = new TextArea();
+		a2.setPrefRowCount(2);
+		a2.setMaxWidth(Main.stageHeight);
 		TextArea a3 = new TextArea();
+		a3.setPrefRowCount(2);
+		a3.setMaxWidth(Main.stageHeight);
 		VBox bonusBox = new VBox(5);
+		bonusBox.setAlignment(Pos.TOP_CENTER);
 		bonusBox.getChildren().addAll(q1,a1,q2,a2,q3,a3, answer);
 		bonusScene = new Scene(bonusBox,Main.stageHeight * 2, Main.stageHeight);
 	}
@@ -129,8 +135,8 @@ public class PlayGame {
 			for (int i = 0; i < 3; i++) {
 				boolean notValid = true;
 				while (notValid) {
-					int unroundedNum =(int)(Math.random()*deckSizes[deckNum]);
-					lines[i] = (((int)(unroundedNum+1.5))/3)*3;
+					int  questionNum =(int)(Math.random()*deckSizes[deckNum]);
+					lines[i] = questionNum*3;
 					notValid = false;
 					//	check that that question has not been done
 					if (ran[getAdress(deckNum,lines[i])/3])
@@ -176,13 +182,13 @@ public class PlayGame {
 	private void check(String answer) {
 		
 		System.out.println("checked");
-		ran[line] = true;
+		ran[line/3] = true;
 		// decrease deck length array
 		int sum = 0;
 		for (int i = 0; i < deckSizes.length; i++) {
-			sum += deckSizes[i];
+			sum += deckSizes[i]*3;
 			if (line < sum) {
-				deckSizes[i] -= 3;
+				deckSizes[i] -= 1;
 				break;
 			}
 		}
@@ -202,9 +208,10 @@ public class PlayGame {
 		
 		//	change question
 		line = (int) (Math.random() * (numQuestions));
-		while(ran[line]) {
+		while(ran[line/3]) {
 			line = (int) (Math.random() * (numQuestions));
 		}
+		System.out.println(allDecks.get(line*3));
 		speak.speak(allDecks.get(line*3));
 	}
 
@@ -224,7 +231,7 @@ public class PlayGame {
 		for (int i = 0; i < decks.length; i++) {
 			// TODO get file sizes
 			String[] deckArray = readFileAsArray(decks[i] + ".txt");
-			deckSizes[i] = deckArray.length;
+			deckSizes[i] = (int)(deckArray.length/3.0 + .5);
 			for (String line : deckArray) {
 				allDecks.add(line);
 			}
@@ -244,13 +251,14 @@ public class PlayGame {
 	private int getAdress(int deckNum, int line) {
 		int adress = 0;
 		for (int i = 0; i < deckNum; i++) {
-			adress += deckSizes[i];
+			adress += deckSizes[i]*3;
 		}
 		adress += line;
 		return adress;
 	}
 }
 //	TODO create showText checkBox
+//	TODO subtract 3 from deckSizes when bonus question
 //	TODO make sure questions are random
 //	TODO make sure index is not out of bounds in bonus questions (ran[] and otherwise) (change range of random?)
 //	TODO make sure question isn't done twice in bonus (line[i] != line[i-1])

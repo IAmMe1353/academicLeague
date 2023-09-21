@@ -28,11 +28,11 @@ public class PlayGame {
 	// in questions not lines
 	boolean[] ran;
 	ArrayList<String> allDecks = new ArrayList<>();
-	int score1, score2, line, numQuestions;
+	int score1, score2, line, numQuestions, deckNum;
 	String[] decks;
 	String team1, team2;
 	// in questions not questions
-	int[] deckSizes;
+	int[] deckSizes, lines;
 	Speak speak;
 
 	public PlayGame(Stage window, String[] decks, String team1In, String team2In) {
@@ -102,8 +102,20 @@ public class PlayGame {
 		questionScene = new Scene(QuestionBox, Main.stageHeight * 2, Main.stageHeight);
 		//	create question scene
 		Button q1 = new Button("Question 1");
+		q1.setOnAction(e->{
+			speak.clip.stop();
+			speak.speak(allDecks.get(getAdress(deckNum,lines[1])));
+		});
 		Button q2 = new Button("Question 2");
+		q2.setOnAction(e->{
+			speak.clip.stop();
+			speak.speak(allDecks.get(getAdress(deckNum,lines[2])));
+		});
 		Button q3 = new Button("Question 3");
+		q3.setOnAction(e->{
+			speak.clip.stop();
+			speak.speak(allDecks.get(getAdress(deckNum,lines[3])));
+		});
 		Button answer = new Button("Answer");
 		TextArea a1 = new TextArea();
 		a1.setPrefRowCount(2);

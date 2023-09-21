@@ -34,6 +34,7 @@ public class PlayGame {
 	// in questions not questions
 	int[] deckSizes, lines;
 	Speak speak;
+	public TextArea a1,a2,a3;
 
 	public PlayGame(Stage window, String[] decks, String team1In, String team2In) {
 		speak = new Speak();
@@ -117,13 +118,14 @@ public class PlayGame {
 			speak.speak(allDecks.get(getAdress(deckNum,lines[3])));
 		});
 		Button answer = new Button("Answer");
-		TextArea a1 = new TextArea();
+		answer.setOnAction(e-> checkBonus());
+		a1 = new TextArea();
 		a1.setPrefRowCount(2);
 		a1.setMaxWidth(Main.stageHeight);
-		TextArea a2 = new TextArea();
+		a2 = new TextArea();
 		a2.setPrefRowCount(2);
 		a2.setMaxWidth(Main.stageHeight);
-		TextArea a3 = new TextArea();
+		a3 = new TextArea();
 		a3.setPrefRowCount(2);
 		a3.setMaxWidth(Main.stageHeight);
 		VBox bonusBox = new VBox(5);
@@ -181,6 +183,27 @@ public class PlayGame {
 		}
 		else {
 			new Speak("There are no remaining bonus Questions");
+		}
+	}
+	private void checkBonus() {
+		int correct = 0;
+
+		if(checkAnswer(a1.getText(),allDecks.get(getAdress(deckNum,lines[0]))));
+			correct++;
+		if(checkAnswer(a2.getText(),allDecks.get(getAdress(deckNum,lines[1]))));
+			correct++;
+		if(checkAnswer(a3.getText(),allDecks.get(getAdress(deckNum,lines[2]))));
+			correct++;
+		if (correct == 2)
+			correct = 3;
+		else if (correct == 3)
+			correct =5;
+		score1 += correct;
+		
+		//	change question
+		line = (int) (Math.random() * (numQuestions));
+		while(ran[line/3]) {
+			line = (int) (Math.random() * (numQuestions));
 		}
 	}
 	private boolean checkIfBonusQuestions(){

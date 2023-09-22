@@ -187,24 +187,49 @@ public class PlayGame {
 	}
 	private void checkBonus() {
 		int correct = 0;
-
-		if(checkAnswer(a1.getText(),allDecks.get(getAdress(deckNum,lines[0]))));
+		String dialog = "";
+		if(checkAnswer(a1.getText(),allDecks.get(getAdress(deckNum,lines[0])+1)))
 			correct++;
-		if(checkAnswer(a2.getText(),allDecks.get(getAdress(deckNum,lines[1]))));
+		else
+			dialog += "The correct answer for question one was " + allDecks.get(getAdress(deckNum,lines[0])+1).split(";")[0] + "(_)(_)";
+		if(checkAnswer(a2.getText(),allDecks.get(getAdress(deckNum,lines[1])+1)))
 			correct++;
-		if(checkAnswer(a3.getText(),allDecks.get(getAdress(deckNum,lines[2]))));
+		else
+			dialog += "The correct answer for question two was " + allDecks.get(getAdress(deckNum,lines[1])+1).split(";")[0] + "(_)(_)";
+		if(checkAnswer(a3.getText(),allDecks.get(getAdress(deckNum,lines[2])+1)))
 			correct++;
-		if (correct == 2)
+		else
+			dialog += "The correct answer for question three was " + allDecks.get(getAdress(deckNum,lines[2])+1).split(";")[0] + "(_)(_)";
+		if (correct == 1)
+			dialog += " One answer was correct";
+		else if (correct == 2) {
 			correct = 3;
-		else if (correct == 3)
+			dialog += " All but one answer was correct";
+		}
+		else if (correct == 3) {
 			correct =5;
+			dialog += "all answers were correct";
+		}
 		score1 += correct;
-		
+		//	change ran[]
+		for (int i:lines)
+			ran[getAdress(deckNum,i)/3] = true;
+		//	decrease deckLength
+		int sum = 0;
+		for (int i = 0; i < deckSizes.length; i++) {
+			sum += deckSizes[i]*3;
+			if (lines[0] < sum) {
+				deckSizes[i] -= 3;
+				break;
+			}
+		}
 		//	change question
 		line = (int) (Math.random() * (numQuestions));
 		while(ran[line/3]) {
 			line = (int) (Math.random() * (numQuestions));
 		}
+		speak.speak(dialog);
+		window.setScene(scene);
 	}
 	private boolean checkIfBonusQuestions(){
 		for(int i:deckSizes) {

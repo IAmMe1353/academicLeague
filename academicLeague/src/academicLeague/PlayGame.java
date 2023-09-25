@@ -104,18 +104,18 @@ public class PlayGame {
 		//	create question scene
 		Button q1 = new Button("Question 1");
 		q1.setOnAction(e->{
-			speak.clip.stop();
-			speak.speak(allDecks.get(getAdress(deckNum,lines[1])));
+			speak.clip.close();
+			speak.speak(allDecks.get(getAdress(deckNum,lines[0])));
 		});
 		Button q2 = new Button("Question 2");
 		q2.setOnAction(e->{
-			speak.clip.stop();
-			speak.speak(allDecks.get(getAdress(deckNum,lines[2])));
+			speak.clip.close();
+			speak.speak(allDecks.get(getAdress(deckNum,lines[1])));
 		});
 		Button q3 = new Button("Question 3");
 		q3.setOnAction(e->{
-			speak.clip.stop();
-			speak.speak(allDecks.get(getAdress(deckNum,lines[3])));
+			speak.clip.close();
+			speak.speak(allDecks.get(getAdress(deckNum,lines[2])));
 		});
 		Button answer = new Button("Answer");
 		answer.setOnAction(e-> checkBonus());
@@ -144,7 +144,7 @@ public class PlayGame {
 			while(deckSizes[deckNum] < 3) {
 				deckNum = (int) (Math.random() * (decks.length - 1));
 			}
-			int[] lines = new int[3];
+			lines = new int[3];
 			//	get lines for questions
 			for (int i = 0; i < 3; i++) {
 				boolean notValid = true;
@@ -318,10 +318,9 @@ public class PlayGame {
 	}
 }
 //	TODO create showText checkBox
-//	TODO subtract 3 from deckSizes when bonus question
 //	TODO make sure questions are random
 //	TODO make sure index is not out of bounds in bonus questions (ran[] and otherwise) (change range of random?)
-//	TODO make sure question isn't done twice in bonus (line[i] != line[i-1])
 //	TODO make buzz sound
-//	TODO make voice interruptible
-//	TODO figure way not to do same bonus question twice 
+//	TODO speak question buttons don't work
+//	TODO check answer for bonus is wrong
+//	TODO saying multiple things at once

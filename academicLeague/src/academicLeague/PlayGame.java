@@ -135,7 +135,6 @@ public class PlayGame {
 	}
 
 	private void doBonusQuestion() {
-		// TODO create a scene with three answer slots and a enter button
 		// speak type (everything before _ in deck title)
 		if (checkIfBonusQuestions()) {	
 			// select deck
@@ -241,7 +240,6 @@ public class PlayGame {
 	}
 	private void check(String answer) {
 		
-		System.out.println("checked");
 		ran[line/3] = true;
 		// decrease deck length array
 		int sum = 0;
@@ -271,9 +269,9 @@ public class PlayGame {
 		while(ran[line/3]) {
 			line = (int) (Math.random() * (numQuestions));
 		}
-		System.out.println(allDecks.get(line*3));
 		speak.speak(allDecks.get(line*3));
 	}
+
 
 	private boolean checkAnswer(String answer, String answerLine) {
 		String[] answers = answerLine.split(";");
@@ -289,7 +287,6 @@ public class PlayGame {
 	private void createMegaDeck(String[] decks) {
 		deckSizes = new int[decks.length];
 		for (int i = 0; i < decks.length; i++) {
-			// TODO get file sizes
 			String[] deckArray = readFileAsArray(decks[i] + ".txt");
 			deckSizes[i] = (int)(deckArray.length/3.0 + .5);
 			for (String line : deckArray) {
@@ -324,3 +321,4 @@ public class PlayGame {
 //	TODO speak question buttons don't work
 //	TODO check answer for bonus is wrong
 //	TODO saying multiple things at once
+//	TODO make sure all questions are run

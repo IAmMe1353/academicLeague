@@ -36,13 +36,13 @@ public class PlayGame {
 	Speak speak;
 	public TextArea a1,a2,a3;
 
-	public PlayGame(Stage window, String[] decks, String team1In, String team2In) {
+	public PlayGame(Stage window, String[] decks, String team1In, String team2In, String sizeLimit) {
 		speak = new Speak();
 		this.window = window;
 		this.decks = decks;
 		createMegaDeck(decks);
 		numQuestions = (int) (allDecks.size() / 3.0 + .5);
-
+		int sizeLimitInt = Integer.parseInt(sizeLimit);
 		// set up Labels
 		if (team1In.equals(""))
 			team1 = "Team 1";
@@ -104,17 +104,17 @@ public class PlayGame {
 		//	create question scene
 		Button q1 = new Button("Question 1");
 		q1.setOnAction(e->{
-			speak.clip.close();
+			speak.clip.stop();
 			speak.speak(allDecks.get(getAdress(deckNum,lines[0])));
 		});
 		Button q2 = new Button("Question 2");
 		q2.setOnAction(e->{
-			speak.clip.close();
+			speak.clip.stop();
 			speak.speak(allDecks.get(getAdress(deckNum,lines[1])));
 		});
 		Button q3 = new Button("Question 3");
 		q3.setOnAction(e->{
-			speak.clip.close();
+			speak.clip.stop();
 			speak.speak(allDecks.get(getAdress(deckNum,lines[2])));
 		});
 		Button answer = new Button("Answer");
@@ -322,3 +322,4 @@ public class PlayGame {
 //	TODO check answer for bonus is wrong
 //	TODO saying multiple things at once
 //	TODO make sure all questions are run
+//	TODO create time limit

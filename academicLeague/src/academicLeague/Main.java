@@ -42,7 +42,7 @@ public class Main extends Application {
 	static Scene scene;
 	Button practiceB, playGameB, importDeckB, exitB, startPractice, startPlay;
 	Label practiceT;
-	TextArea team1, team2;
+	TextArea team1, team2, sizeLimit;
 	ColorAdjust colorAdjust;
 	CheckBox shuffleCheck;
 	ComboBox<String> deckSelect;
@@ -152,6 +152,10 @@ public class Main extends Application {
 			team2 = new TextArea();
 			team2.setPrefRowCount(1);
 			team2.setPromptText("Enter Name");
+			sizeLimit = new TextArea();
+			sizeLimit.setMaxWidth(buttonWidth*2);
+			sizeLimit.setPrefRowCount(1);
+			sizeLimit.setPromptText("set time limit for game (minutes)");
 			//	set up drop down
 			checkCombo = new checkComboBox.CheckComboBox<>();
 			checkCombo.setMaxWidth(buttonWidth*2);
@@ -177,7 +181,7 @@ public class Main extends Application {
 			playBox.getChildren().addAll(team1Label,team1,team2Label,team2);
 			playVBox = new VBox(10);
 			playVBox.setAlignment(Pos.TOP_CENTER);
-			playVBox.getChildren().addAll(startLabel,playBox, checkCombo, startPlay);
+			playVBox.getChildren().addAll(startLabel,playBox,sizeLimit, checkCombo, startPlay);
 			// set up main menu
 			mainMenu = new BorderPane();
 			mainMenu.setLeft(leftMenu);
@@ -242,7 +246,7 @@ public class Main extends Application {
 		String[] deck = checkCombo.getCheckModel().getCheckedItems().toArray(new String[0]);
 		
 		if (deck.length > 0)
-			new PlayGame(stage, deck,team1.getText(),team2.getText());
+			new PlayGame(stage, deck,team1.getText(),team2.getText(), sizeLimit.getText());
 		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");
 			
 	}

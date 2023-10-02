@@ -82,8 +82,12 @@ public class Practice {
 			mainBox.getChildren().addAll(question,answerT);
 			//	create image
 			//	if there is an image
-			if(!questions[2].trim().equals("")) {
-				ImageView imageView = new ImageView(new Image(System.getProperty("user.dir")+"/resources/images/" + questions[2].trim()));
+			int firstImage = 2;
+			if (shuffle)
+				firstImage = shuffleLine*3 + 2;
+			if(!questions[firstImage].trim().equals("")) {
+				System.out.println(questions[firstImage]);
+				ImageView imageView = new ImageView(new Image(System.getProperty("user.dir")+"/resources/images/" + questions[firstImage].trim()));
 			    imageView.setPreserveRatio(true);
 			    imageView.setFitHeight(Main.stageHeight*.7); 
 			    imageView.setFitWidth(Main.stageHeight*.7);

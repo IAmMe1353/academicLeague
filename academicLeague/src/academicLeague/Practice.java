@@ -186,7 +186,12 @@ public class Practice {
 		}
 	}
 	private String[] readFileAsArray(String fileName) {
-		Path filePath = Paths.get(System.getProperty("user.dir"),"resources","decks",fileName);
+		Path filePath;
+		System.out.println(fileName);
+		if (fileName.substring(0,4).equals("Temp"))
+			filePath = Paths.get(System.getProperty("user.dir"),"resources","decks","temps",fileName);
+		else
+			filePath = Paths.get(System.getProperty("user.dir"),"resources","decks",fileName);
 		String fileContents;
 		try {
 			fileContents = new String(Files.readAllBytes(filePath));

@@ -19532,3 +19532,615 @@
 2023-09-26 10:12:30,998 [Thread-4] INFO  marytts.HTSEngine Module shut down.
 2023-09-26 10:12:30,998 [Thread-4] INFO  marytts.Praat TextGrid generator Module shut down.
 2023-09-26 10:12:30,999 [Thread-4] INFO  marytts.main Shutdown complete.
+2023-10-05 14:51:52,283 [JavaFX Application Thread] INFO  marytts.main Mary starting up...
+2023-10-05 14:51:52,287 [JavaFX Application Thread] INFO  marytts.main Specification version 5.2
+2023-10-05 14:51:52,287 [JavaFX Application Thread] INFO  marytts.main Implementation version unknown
+2023-10-05 14:51:52,287 [JavaFX Application Thread] INFO  marytts.main Running on a Java 17.0.8 implementation by Eclipse Adoptium, on a Windows 10 platform (amd64, 10.0)
+2023-10-05 14:51:52,371 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.language.en.JTokeniser'
+2023-10-05 14:51:52,375 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.language.en.Preprocess'
+2023-10-05 14:51:52,500 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.JPhonemiser(en_US.)'
+2023-10-05 14:51:52,501 [JavaFX Application Thread] INFO  marytts.JPhonemiser User dictionary '.\user-dictionaries\userdict-en_US.txt' for locale 'en_US' does not exist. Ignoring.
+2023-10-05 14:51:52,555 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.JPhonemiser(en_GB.)'
+2023-10-05 14:51:52,555 [JavaFX Application Thread] INFO  marytts.JPhonemiser User dictionary '.\user-dictionaries\userdict-en_GB.txt' for locale 'en_GB' does not exist. Ignoring.
+2023-10-05 14:51:52,587 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.language.en.Prosody'
+2023-10-05 14:51:52,591 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.SimplePhoneme2AP(en_US)'
+2023-10-05 14:51:52,591 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.language.en.PronunciationModel'
+2023-10-05 14:51:52,593 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.OpenNLPPosTagger(en,en.pos)'
+2023-10-05 14:51:52,593 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.Synthesis'
+2023-10-05 14:51:52,594 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.TextToMaryXML'
+2023-10-05 14:51:52,594 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.SableParser'
+2023-10-05 14:51:52,595 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.SSMLParser'
+2023-10-05 14:51:52,595 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.APMLParser'
+2023-10-05 14:51:52,595 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.EmotionmlParser'
+2023-10-05 14:51:52,596 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.JTokeniser'
+2023-10-05 14:51:52,596 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.DummyTokens2Words'
+2023-10-05 14:51:52,596 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.ProsodyGeneric'
+2023-10-05 14:51:52,596 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.PronunciationModel'
+2023-10-05 14:51:52,596 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.TargetFeatureLister'
+2023-10-05 14:51:52,597 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.HalfPhoneTargetFeatureLister'
+2023-10-05 14:51:52,597 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.AcousticModeller'
+2023-10-05 14:51:52,598 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.RealisedAcoustparamsExtractor'
+2023-10-05 14:51:52,598 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.RealisedDurationsExtractor'
+2023-10-05 14:51:52,599 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.HTSEngine'
+2023-10-05 14:51:52,600 [JavaFX Application Thread] INFO  marytts.ModuleRegistry Now initiating mary module 'marytts.modules.PraatTextGridGenerator'
+2023-10-05 14:51:52,602 [JavaFX Application Thread] INFO  marytts.JTokeniser Module started (RAWMARYXML->TOKENS, locale en).
+2023-10-05 14:51:52,635 [JavaFX Application Thread] INFO  marytts.JTokeniser Starting power-on self test.
+2023-10-05 14:51:52,638 [JavaFX Application Thread] INFO  marytts.JTokeniser Power-on self test complete.
+2023-10-05 14:51:52,638 [JavaFX Application Thread] INFO  marytts.Preprocess Module started (TOKENS->WORDS, locale en).
+2023-10-05 14:51:52,638 [JavaFX Application Thread] INFO  marytts.Preprocess Starting power-on self test.
+2023-10-05 14:51:52,638 [JavaFX Application Thread] INFO  marytts.Preprocess Power-on self test complete.
+2023-10-05 14:51:52,638 [JavaFX Application Thread] INFO  marytts.JPhonemiser Module started (PARTSOFSPEECH->PHONEMES, locale en_US).
+2023-10-05 14:51:52,641 [JavaFX Application Thread] INFO  marytts.JPhonemiser Starting power-on self test.
+2023-10-05 14:51:52,641 [JavaFX Application Thread] INFO  marytts.JPhonemiser Power-on self test complete.
+2023-10-05 14:51:52,641 [JavaFX Application Thread] INFO  marytts.JPhonemiser Module started (PARTSOFSPEECH->PHONEMES, locale en_GB).
+2023-10-05 14:51:52,641 [JavaFX Application Thread] INFO  marytts.JPhonemiser Starting power-on self test.
+2023-10-05 14:51:52,642 [JavaFX Application Thread] INFO  marytts.JPhonemiser Power-on self test complete.
+2023-10-05 14:51:52,651 [JavaFX Application Thread] INFO  marytts.Prosody Module started (PHONEMES->INTONATION, locale en).
+2023-10-05 14:51:52,651 [JavaFX Application Thread] INFO  marytts.Prosody Starting power-on self test.
+2023-10-05 14:51:52,651 [JavaFX Application Thread] INFO  marytts.Prosody Power-on self test complete.
+2023-10-05 14:51:52,652 [JavaFX Application Thread] INFO  marytts.SimplePhoneme2AP Module started (SIMPLEPHONEMES->ACOUSTPARAMS, locale en_US).
+2023-10-05 14:51:52,652 [JavaFX Application Thread] INFO  marytts.SimplePhoneme2AP Starting power-on self test.
+2023-10-05 14:51:52,659 [JavaFX Application Thread] INFO  marytts.SimplePhoneme2AP Power-on self test complete.
+2023-10-05 14:51:52,659 [JavaFX Application Thread] INFO  marytts.PronunciationModel Module started (INTONATION->ALLOPHONES, locale en).
+2023-10-05 14:51:52,659 [JavaFX Application Thread] INFO  marytts.PronunciationModel Starting power-on self test.
+2023-10-05 14:51:52,659 [JavaFX Application Thread] INFO  marytts.PronunciationModel Power-on self test complete.
+2023-10-05 14:51:52,660 [JavaFX Application Thread] INFO  marytts.OpenNLPPosTagger Module started (WORDS->PARTSOFSPEECH, locale en).
+2023-10-05 14:51:53,148 [JavaFX Application Thread] INFO  marytts.OpenNLPPosTagger Starting power-on self test.
+2023-10-05 14:51:53,148 [JavaFX Application Thread] INFO  marytts.OpenNLPPosTagger Power-on self test complete.
+2023-10-05 14:51:53,150 [JavaFX Application Thread] INFO  marytts.UnitSelectionSynthesizer started.
+2023-10-05 14:51:53,150 [JavaFX Application Thread] INFO  marytts.TargetFeatureLister Module started (ACOUSTPARAMS->TARGETFEATURES, locale null).
+2023-10-05 14:51:53,151 [JavaFX Application Thread] INFO  marytts.HTSEngine Module started (TARGETFEATURES->AUDIO, locale null).
+2023-10-05 14:51:53,170 [JavaFX Application Thread] INFO  marytts.HMMData Loading Tree Set in CARTs:
+2023-10-05 14:51:53,212 [JavaFX Application Thread] INFO  marytts.HMMData Loading GV Model Set:
+2023-10-05 14:51:53,316 [JavaFX Application Thread] INFO  marytts.Voice Registering voice `cmu-slt-hsmm': female, locale en_US
+2023-10-05 14:51:53,316 [JavaFX Application Thread] INFO  marytts.Voice New default voice for locale en_US: cmu-slt-hsmm (desire 0)
+2023-10-05 14:51:53,316 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer started.
+2023-10-05 14:51:53,316 [JavaFX Application Thread] INFO  marytts.Synthesis Module started (ACOUSTPARAMS->AUDIO, locale null).
+2023-10-05 14:51:53,317 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer Starting power-on self test.
+2023-10-05 14:51:53,327 [JavaFX Application Thread] INFO  marytts.HTSEngine Using prosody from acoustparams.
+2023-10-05 14:51:53,329 [JavaFX Application Thread] INFO  marytts.HTSEngine Number of models in sentence numModel=7  Total number of states numState=35
+2023-10-05 14:51:53,329 [JavaFX Application Thread] INFO  marytts.HTSEngine Total number of frames=147  Number of voiced frames=89
+2023-10-05 14:51:53,333 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for MGC: 
+2023-10-05 14:51:53,333 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 107
+2023-10-05 14:51:53,335 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=23
+2023-10-05 14:51:53,339 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=54
+2023-10-05 14:51:53,342 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=38
+2023-10-05 14:51:53,342 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=20
+2023-10-05 14:51:53,343 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=13
+2023-10-05 14:51:53,344 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (5)  number of iterations=21
+2023-10-05 14:51:53,345 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (6)  number of iterations=7
+2023-10-05 14:51:53,345 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (7)  number of iterations=4
+2023-10-05 14:51:53,346 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (8)  number of iterations=11
+2023-10-05 14:51:53,347 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (9)  number of iterations=19
+2023-10-05 14:51:53,348 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (10)  number of iterations=16
+2023-10-05 14:51:53,348 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (11)  number of iterations=9
+2023-10-05 14:51:53,348 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (12)  number of iterations=2
+2023-10-05 14:51:53,349 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (13)  number of iterations=13
+2023-10-05 14:51:53,349 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (14)  number of iterations=12
+2023-10-05 14:51:53,349 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (15)  number of iterations=14
+2023-10-05 14:51:53,349 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (16)  number of iterations=15
+2023-10-05 14:51:53,350 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (17)  number of iterations=14
+2023-10-05 14:51:53,350 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (18)  number of iterations=19
+2023-10-05 14:51:53,350 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (19)  number of iterations=12
+2023-10-05 14:51:53,351 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (20)  number of iterations=17
+2023-10-05 14:51:53,352 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (21)  number of iterations=23
+2023-10-05 14:51:53,352 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (22)  number of iterations=12
+2023-10-05 14:51:53,352 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (23)  number of iterations=18
+2023-10-05 14:51:53,353 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (24)  number of iterations=12
+2023-10-05 14:51:53,353 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (25)  number of iterations=11
+2023-10-05 14:51:53,353 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (26)  number of iterations=13
+2023-10-05 14:51:53,354 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (27)  number of iterations=9
+2023-10-05 14:51:53,354 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (28)  number of iterations=13
+2023-10-05 14:51:53,354 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (29)  number of iterations=8
+2023-10-05 14:51:53,354 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (30)  number of iterations=11
+2023-10-05 14:51:53,355 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (31)  number of iterations=12
+2023-10-05 14:51:53,355 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (32)  number of iterations=7
+2023-10-05 14:51:53,355 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (33)  number of iterations=8
+2023-10-05 14:51:53,356 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (34)  number of iterations=12
+2023-10-05 14:51:53,356 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Using f0 from maryXML acoustparams
+2023-10-05 14:51:53,356 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 107
+2023-10-05 14:51:53,356 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=16
+2023-10-05 14:51:53,357 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=2
+2023-10-05 14:51:53,357 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=2
+2023-10-05 14:51:53,357 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=8
+2023-10-05 14:51:53,357 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=26
+2023-10-05 14:51:53,368 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer Power-on self test complete.
+2023-10-05 14:51:53,368 [JavaFX Application Thread] INFO  marytts.TextToMaryXML Module started (TEXT->RAWMARYXML, locale null).
+2023-10-05 14:51:53,368 [JavaFX Application Thread] INFO  marytts.TextToMaryXML Starting power-on self test.
+2023-10-05 14:51:53,369 [JavaFX Application Thread] WARN  marytts.TextToMaryXML Locale is null, overriding with en_US
+2023-10-05 14:51:53,370 [JavaFX Application Thread] WARN  marytts.TextToMaryXML Locale is null, overriding with en_US
+2023-10-05 14:51:53,370 [JavaFX Application Thread] INFO  marytts.TextToMaryXML Power-on self test complete.
+2023-10-05 14:51:53,564 [JavaFX Application Thread] INFO  marytts.SableParser Module started (SABLE->RAWMARYXML, locale null).
+2023-10-05 14:51:53,564 [JavaFX Application Thread] INFO  marytts.SableParser Starting power-on self test.
+2023-10-05 14:51:53,564 [JavaFX Application Thread] INFO  marytts.SableParser Power-on self test complete.
+2023-10-05 14:51:53,611 [JavaFX Application Thread] INFO  marytts.SSMLParser Module started (SSML->RAWMARYXML, locale null).
+2023-10-05 14:51:53,611 [JavaFX Application Thread] INFO  marytts.SSMLParser Starting power-on self test.
+2023-10-05 14:51:53,611 [JavaFX Application Thread] INFO  marytts.SSMLParser Power-on self test complete.
+2023-10-05 14:51:53,647 [JavaFX Application Thread] INFO  marytts.APMLParser Module started (APML->RAWMARYXML, locale null).
+2023-10-05 14:51:53,647 [JavaFX Application Thread] INFO  marytts.APMLParser Starting power-on self test.
+2023-10-05 14:51:53,647 [JavaFX Application Thread] INFO  marytts.APMLParser Power-on self test complete.
+2023-10-05 14:51:53,670 [JavaFX Application Thread] INFO  marytts.EmotionmlParser Module started (EMOTIONML->RAWMARYXML, locale null).
+2023-10-05 14:51:53,670 [JavaFX Application Thread] INFO  marytts.EmotionmlParser Starting power-on self test.
+2023-10-05 14:51:53,670 [JavaFX Application Thread] INFO  marytts.EmotionmlParser Power-on self test complete.
+2023-10-05 14:51:53,670 [JavaFX Application Thread] INFO  marytts.JTokeniser Module started (RAWMARYXML->TOKENS, locale null).
+2023-10-05 14:51:53,680 [JavaFX Application Thread] INFO  marytts.JTokeniser Starting power-on self test.
+2023-10-05 14:51:53,680 [JavaFX Application Thread] INFO  marytts.JTokeniser Power-on self test complete.
+2023-10-05 14:51:53,680 [JavaFX Application Thread] INFO  marytts.DummyTokens2Words Module started (TOKENS->WORDS, locale null).
+2023-10-05 14:51:53,680 [JavaFX Application Thread] INFO  marytts.DummyTokens2Words Starting power-on self test.
+2023-10-05 14:51:53,680 [JavaFX Application Thread] INFO  marytts.DummyTokens2Words Power-on self test complete.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.Prosody Module started (PHONEMES->INTONATION, locale null).
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.Prosody Starting power-on self test.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.Prosody Power-on self test complete.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.PronunciationModel Module started (INTONATION->ALLOPHONES, locale null).
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.PronunciationModel Starting power-on self test.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.PronunciationModel Power-on self test complete.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.TargetFeatureLister Starting power-on self test.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.TargetFeatureLister Power-on self test complete.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.TargetFeatureLister Module started (ACOUSTPARAMS->HALFPHONE_TARGETFEATURES, locale null).
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.TargetFeatureLister Starting power-on self test.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.TargetFeatureLister Power-on self test complete.
+2023-10-05 14:51:53,683 [JavaFX Application Thread] INFO  marytts.AcousticModeller Module started (ALLOPHONES->ACOUSTPARAMS, locale null).
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.AcousticModeller Starting power-on self test.
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.AcousticModeller Power-on self test complete.
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.Realised acoustparams extractor Module started (AUDIO->REALISED_ACOUSTPARAMS, locale null).
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.Realised acoustparams extractor Starting power-on self test.
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.Realised acoustparams extractor Power-on self test complete.
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.Realised durations extractor Module started (AUDIO->REALISED_DURATIONS, locale null).
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.Realised durations extractor Starting power-on self test.
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.Realised durations extractor Power-on self test complete.
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.Praat TextGrid generator Module started (REALISED_ACOUSTPARAMS->PRAAT_TEXTGRID, locale null).
+2023-10-05 14:51:53,684 [JavaFX Application Thread] INFO  marytts.Praat TextGrid generator Starting power-on self test.
+2023-10-05 14:51:53,685 [JavaFX Application Thread] INFO  marytts.Praat TextGrid generator Power-on self test complete.
+2023-10-05 14:51:53,686 [JavaFX Application Thread] INFO  marytts.main Startup complete.
+2023-10-05 14:51:53,691 [JavaFX Application Thread] INFO  marytts.R 1 New request (input type "TEXT", output type "AUDIO", voice "cmu-slt-hsmm", audio "WAVE")
+2023-10-05 14:51:53,691 [JavaFX Application Thread] INFO  marytts.R 1 Handling request using the following modules:
+2023-10-05 14:51:53,692 [JavaFX Application Thread] INFO  marytts.R 1 - TextToMaryXML (marytts.modules.TextToMaryXML)
+2023-10-05 14:51:53,692 [JavaFX Application Thread] INFO  marytts.R 1 Next module: TextToMaryXML
+2023-10-05 14:51:53,693 [JavaFX Application Thread] INFO  marytts.R 1 Handling request using the following modules:
+2023-10-05 14:51:53,693 [JavaFX Application Thread] INFO  marytts.R 1 - JTokeniser (marytts.language.en.JTokeniser)
+2023-10-05 14:51:53,693 [JavaFX Application Thread] INFO  marytts.R 1 - Preprocess (marytts.language.en.Preprocess)
+2023-10-05 14:51:53,693 [JavaFX Application Thread] INFO  marytts.R 1 - OpenNLPPosTagger (marytts.modules.OpenNLPPosTagger)
+2023-10-05 14:51:53,694 [JavaFX Application Thread] INFO  marytts.R 1 - JPhonemiser (marytts.modules.JPhonemiser)
+2023-10-05 14:51:53,694 [JavaFX Application Thread] INFO  marytts.R 1 - Prosody (marytts.language.en.Prosody)
+2023-10-05 14:51:53,694 [JavaFX Application Thread] INFO  marytts.R 1 - PronunciationModel (marytts.language.en.PronunciationModel)
+2023-10-05 14:51:53,694 [JavaFX Application Thread] INFO  marytts.R 1 - AcousticModeller (marytts.modules.AcousticModeller)
+2023-10-05 14:51:53,694 [JavaFX Application Thread] INFO  marytts.R 1 - Synthesis (marytts.modules.Synthesis)
+2023-10-05 14:51:53,694 [JavaFX Application Thread] INFO  marytts.R 1 Next module: JTokeniser
+2023-10-05 14:51:53,697 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Preprocess
+2023-10-05 14:51:53,705 [JavaFX Application Thread] INFO  marytts.R 1 Next module: OpenNLPPosTagger
+2023-10-05 14:51:53,714 [JavaFX Application Thread] INFO  marytts.R 1 Next module: JPhonemiser
+2023-10-05 14:51:53,717 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Prosody
+2023-10-05 14:51:53,722 [JavaFX Application Thread] INFO  marytts.R 1 Next module: PronunciationModel
+2023-10-05 14:51:53,724 [JavaFX Application Thread] INFO  marytts.R 1 Next module: AcousticModeller
+2023-10-05 14:51:53,753 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for LF0: 
+2023-10-05 14:51:53,753 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 746
+2023-10-05 14:51:53,758 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=42
+2023-10-05 14:51:53,777 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Synthesis
+2023-10-05 14:51:53,797 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer Synthesizing one sentence.
+2023-10-05 14:51:53,798 [JavaFX Application Thread] INFO  marytts.HTSEngine Using prosody from acoustparams.
+2023-10-05 14:51:53,800 [JavaFX Application Thread] INFO  marytts.HTSEngine Number of models in sentence numModel=79  Total number of states numState=395
+2023-10-05 14:51:53,800 [JavaFX Application Thread] INFO  marytts.HTSEngine Total number of frames=1457  Number of voiced frames=746
+2023-10-05 14:51:53,804 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for MGC: 
+2023-10-05 14:51:53,804 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 1215
+2023-10-05 14:51:53,814 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=53
+2023-10-05 14:51:53,820 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=30
+2023-10-05 14:51:53,823 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=2
+2023-10-05 14:51:53,825 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=3
+2023-10-05 14:51:53,828 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=4
+2023-10-05 14:51:53,832 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (5)  number of iterations=23
+2023-10-05 14:51:53,834 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (6)  number of iterations=2
+2023-10-05 14:51:53,836 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (7)  number of iterations=4
+2023-10-05 14:51:53,838 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (8)  number of iterations=4
+2023-10-05 14:51:53,842 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (9)  number of iterations=20
+2023-10-05 14:51:53,846 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (10)  number of iterations=18
+2023-10-05 14:51:53,849 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (11)  number of iterations=16
+2023-10-05 14:51:53,853 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (12)  number of iterations=17
+2023-10-05 14:51:53,862 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (13)  number of iterations=31
+2023-10-05 14:51:53,866 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (14)  number of iterations=19
+2023-10-05 14:51:53,872 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (15)  number of iterations=26
+2023-10-05 14:51:53,876 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (16)  number of iterations=20
+2023-10-05 14:51:53,880 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (17)  number of iterations=17
+2023-10-05 14:51:53,885 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (18)  number of iterations=23
+2023-10-05 14:51:53,890 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (19)  number of iterations=12
+2023-10-05 14:51:53,893 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (20)  number of iterations=15
+2023-10-05 14:51:53,898 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (21)  number of iterations=24
+2023-10-05 14:51:53,902 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (22)  number of iterations=20
+2023-10-05 14:51:53,907 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (23)  number of iterations=16
+2023-10-05 14:51:53,910 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (24)  number of iterations=10
+2023-10-05 14:51:53,913 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (25)  number of iterations=10
+2023-10-05 14:51:53,915 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (26)  number of iterations=12
+2023-10-05 14:51:53,918 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (27)  number of iterations=12
+2023-10-05 14:51:53,921 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (28)  number of iterations=8
+2023-10-05 14:51:53,923 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (29)  number of iterations=16
+2023-10-05 14:51:53,925 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (30)  number of iterations=12
+2023-10-05 14:51:53,926 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (31)  number of iterations=13
+2023-10-05 14:51:53,927 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (32)  number of iterations=8
+2023-10-05 14:51:53,928 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (33)  number of iterations=8
+2023-10-05 14:51:53,930 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (34)  number of iterations=24
+2023-10-05 14:51:53,930 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Using f0 from maryXML acoustparams
+2023-10-05 14:51:53,932 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 1215
+2023-10-05 14:51:53,934 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=25
+2023-10-05 14:51:53,936 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=12
+2023-10-05 14:51:53,937 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=14
+2023-10-05 14:51:53,938 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=4
+2023-10-05 14:51:53,939 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=16
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1 Request processed in 249 ms.
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1    TextToMaryXML took 0 ms
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1    JTokeniser took 3 ms
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1    Preprocess took 8 ms
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1    OpenNLPPosTagger took 9 ms
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1    JPhonemiser took 3 ms
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1    Prosody took 5 ms
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1    PronunciationModel took 2 ms
+2023-10-05 14:51:53,940 [JavaFX Application Thread] INFO  marytts.R 1    AcousticModeller took 53 ms
+2023-10-05 14:51:53,941 [JavaFX Application Thread] INFO  marytts.R 1    Synthesis took 163 ms
+2023-10-05 14:52:07,850 [JavaFX Application Thread] INFO  marytts.R 1 New request (input type "TEXT", output type "AUDIO", voice "cmu-slt-hsmm", audio "WAVE")
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 Handling request using the following modules:
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 - TextToMaryXML (marytts.modules.TextToMaryXML)
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 Next module: TextToMaryXML
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 Handling request using the following modules:
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 - JTokeniser (marytts.language.en.JTokeniser)
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 - Preprocess (marytts.language.en.Preprocess)
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 - OpenNLPPosTagger (marytts.modules.OpenNLPPosTagger)
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 - JPhonemiser (marytts.modules.JPhonemiser)
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 - Prosody (marytts.language.en.Prosody)
+2023-10-05 14:52:07,851 [JavaFX Application Thread] INFO  marytts.R 1 - PronunciationModel (marytts.language.en.PronunciationModel)
+2023-10-05 14:52:07,852 [JavaFX Application Thread] INFO  marytts.R 1 - AcousticModeller (marytts.modules.AcousticModeller)
+2023-10-05 14:52:07,852 [JavaFX Application Thread] INFO  marytts.R 1 - Synthesis (marytts.modules.Synthesis)
+2023-10-05 14:52:07,852 [JavaFX Application Thread] INFO  marytts.R 1 Next module: JTokeniser
+2023-10-05 14:52:07,852 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Preprocess
+2023-10-05 14:52:07,853 [JavaFX Application Thread] INFO  marytts.R 1 Next module: OpenNLPPosTagger
+2023-10-05 14:52:07,853 [JavaFX Application Thread] INFO  marytts.R 1 Next module: JPhonemiser
+2023-10-05 14:52:07,853 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Prosody
+2023-10-05 14:52:07,854 [JavaFX Application Thread] INFO  marytts.R 1 Next module: PronunciationModel
+2023-10-05 14:52:07,854 [JavaFX Application Thread] INFO  marytts.R 1 Next module: AcousticModeller
+2023-10-05 14:52:07,855 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for LF0: 
+2023-10-05 14:52:07,855 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 74
+2023-10-05 14:52:07,856 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=1
+2023-10-05 14:52:07,856 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Synthesis
+2023-10-05 14:52:07,856 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer Synthesizing one sentence.
+2023-10-05 14:52:07,857 [JavaFX Application Thread] INFO  marytts.HTSEngine Using prosody from acoustparams.
+2023-10-05 14:52:07,857 [JavaFX Application Thread] INFO  marytts.HTSEngine Number of models in sentence numModel=6  Total number of states numState=30
+2023-10-05 14:52:07,857 [JavaFX Application Thread] INFO  marytts.HTSEngine Total number of frames=270  Number of voiced frames=74
+2023-10-05 14:52:07,857 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for MGC: 
+2023-10-05 14:52:07,857 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 191
+2023-10-05 14:52:07,858 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=24
+2023-10-05 14:52:07,858 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=26
+2023-10-05 14:52:07,858 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=2
+2023-10-05 14:52:07,859 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=21
+2023-10-05 14:52:07,859 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=23
+2023-10-05 14:52:07,859 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (5)  number of iterations=23
+2023-10-05 14:52:07,860 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (6)  number of iterations=22
+2023-10-05 14:52:07,861 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (7)  number of iterations=19
+2023-10-05 14:52:07,861 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (8)  number of iterations=2
+2023-10-05 14:52:07,861 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (9)  number of iterations=15
+2023-10-05 14:52:07,862 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (10)  number of iterations=14
+2023-10-05 14:52:07,862 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (11)  number of iterations=2
+2023-10-05 14:52:07,862 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (12)  number of iterations=3
+2023-10-05 14:52:07,862 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (13)  number of iterations=18
+2023-10-05 14:52:07,863 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (14)  number of iterations=23
+2023-10-05 14:52:07,863 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (15)  number of iterations=16
+2023-10-05 14:52:07,863 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (16)  number of iterations=11
+2023-10-05 14:52:07,863 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (17)  number of iterations=19
+2023-10-05 14:52:07,864 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (18)  number of iterations=17
+2023-10-05 14:52:07,864 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (19)  number of iterations=51
+2023-10-05 14:52:07,865 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (20)  number of iterations=6
+2023-10-05 14:52:07,866 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (21)  number of iterations=22
+2023-10-05 14:52:07,866 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (22)  number of iterations=5
+2023-10-05 14:52:07,866 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (23)  number of iterations=3
+2023-10-05 14:52:07,866 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (24)  number of iterations=3
+2023-10-05 14:52:07,866 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (25)  number of iterations=9
+2023-10-05 14:52:07,867 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (26)  number of iterations=14
+2023-10-05 14:52:07,867 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (27)  number of iterations=3
+2023-10-05 14:52:07,867 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (28)  number of iterations=19
+2023-10-05 14:52:07,867 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (29)  number of iterations=3
+2023-10-05 14:52:07,867 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (30)  number of iterations=3
+2023-10-05 14:52:07,867 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (31)  number of iterations=3
+2023-10-05 14:52:07,868 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (32)  number of iterations=2
+2023-10-05 14:52:07,868 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (33)  number of iterations=12
+2023-10-05 14:52:07,868 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (34)  number of iterations=3
+2023-10-05 14:52:07,868 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Using f0 from maryXML acoustparams
+2023-10-05 14:52:07,868 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 191
+2023-10-05 14:52:07,869 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=2
+2023-10-05 14:52:07,869 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=2
+2023-10-05 14:52:07,869 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=8
+2023-10-05 14:52:07,869 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=2
+2023-10-05 14:52:07,871 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=18
+2023-10-05 14:52:07,871 [JavaFX Application Thread] INFO  marytts.R 1 Request processed in 20 ms.
+2023-10-05 14:52:07,871 [JavaFX Application Thread] INFO  marytts.R 1    TextToMaryXML took 0 ms
+2023-10-05 14:52:07,871 [JavaFX Application Thread] INFO  marytts.R 1    JTokeniser took 0 ms
+2023-10-05 14:52:07,872 [JavaFX Application Thread] INFO  marytts.R 1    Preprocess took 0 ms
+2023-10-05 14:52:07,872 [JavaFX Application Thread] INFO  marytts.R 1    OpenNLPPosTagger took 1 ms
+2023-10-05 14:52:07,872 [JavaFX Application Thread] INFO  marytts.R 1    JPhonemiser took 0 ms
+2023-10-05 14:52:07,872 [JavaFX Application Thread] INFO  marytts.R 1    Prosody took 1 ms
+2023-10-05 14:52:07,872 [JavaFX Application Thread] INFO  marytts.R 1    PronunciationModel took 0 ms
+2023-10-05 14:52:07,872 [JavaFX Application Thread] INFO  marytts.R 1    AcousticModeller took 2 ms
+2023-10-05 14:52:07,872 [JavaFX Application Thread] INFO  marytts.R 1    Synthesis took 15 ms
+2023-10-05 14:52:07,904 [JavaFX Application Thread] INFO  marytts.R 1 New request (input type "TEXT", output type "AUDIO", voice "cmu-slt-hsmm", audio "WAVE")
+2023-10-05 14:52:07,904 [JavaFX Application Thread] INFO  marytts.R 1 Handling request using the following modules:
+2023-10-05 14:52:07,904 [JavaFX Application Thread] INFO  marytts.R 1 - TextToMaryXML (marytts.modules.TextToMaryXML)
+2023-10-05 14:52:07,904 [JavaFX Application Thread] INFO  marytts.R 1 Next module: TextToMaryXML
+2023-10-05 14:52:07,905 [JavaFX Application Thread] INFO  marytts.R 1 Handling request using the following modules:
+2023-10-05 14:52:07,905 [JavaFX Application Thread] INFO  marytts.R 1 - JTokeniser (marytts.language.en.JTokeniser)
+2023-10-05 14:52:07,905 [JavaFX Application Thread] INFO  marytts.R 1 - Preprocess (marytts.language.en.Preprocess)
+2023-10-05 14:52:07,905 [JavaFX Application Thread] INFO  marytts.R 1 - OpenNLPPosTagger (marytts.modules.OpenNLPPosTagger)
+2023-10-05 14:52:07,905 [JavaFX Application Thread] INFO  marytts.R 1 - JPhonemiser (marytts.modules.JPhonemiser)
+2023-10-05 14:52:07,905 [JavaFX Application Thread] INFO  marytts.R 1 - Prosody (marytts.language.en.Prosody)
+2023-10-05 14:52:07,906 [JavaFX Application Thread] INFO  marytts.R 1 - PronunciationModel (marytts.language.en.PronunciationModel)
+2023-10-05 14:52:07,906 [JavaFX Application Thread] INFO  marytts.R 1 - AcousticModeller (marytts.modules.AcousticModeller)
+2023-10-05 14:52:07,906 [JavaFX Application Thread] INFO  marytts.R 1 - Synthesis (marytts.modules.Synthesis)
+2023-10-05 14:52:07,906 [JavaFX Application Thread] INFO  marytts.R 1 Next module: JTokeniser
+2023-10-05 14:52:07,910 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Preprocess
+2023-10-05 14:52:07,935 [JavaFX Application Thread] INFO  marytts.R 1 Next module: OpenNLPPosTagger
+2023-10-05 14:52:07,950 [JavaFX Application Thread] INFO  marytts.R 1 Next module: JPhonemiser
+2023-10-05 14:52:07,974 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Prosody
+2023-10-05 14:52:07,989 [JavaFX Application Thread] INFO  marytts.R 1 Next module: PronunciationModel
+2023-10-05 14:52:07,992 [JavaFX Application Thread] INFO  marytts.R 1 Next module: AcousticModeller
+2023-10-05 14:52:08,054 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for LF0: 
+2023-10-05 14:52:08,054 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 2207
+2023-10-05 14:52:08,057 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=15
+2023-10-05 14:52:08,068 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Synthesis
+2023-10-05 14:52:08,068 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer Synthesizing one sentence.
+2023-10-05 14:52:08,070 [JavaFX Application Thread] INFO  marytts.HTSEngine Using prosody from acoustparams.
+2023-10-05 14:52:08,072 [JavaFX Application Thread] INFO  marytts.HTSEngine Number of models in sentence numModel=122  Total number of states numState=610
+2023-10-05 14:52:08,072 [JavaFX Application Thread] INFO  marytts.HTSEngine Total number of frames=2290  Number of voiced frames=1130
+2023-10-05 14:52:08,077 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for MGC: 
+2023-10-05 14:52:08,077 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 1810
+2023-10-05 14:52:08,085 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=56
+2023-10-05 14:52:08,086 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=2
+2023-10-05 14:52:08,088 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=2
+2023-10-05 14:52:08,090 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=22
+2023-10-05 14:52:08,092 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=22
+2023-10-05 14:52:08,095 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (5)  number of iterations=23
+2023-10-05 14:52:08,097 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (6)  number of iterations=4
+2023-10-05 14:52:08,099 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (7)  number of iterations=22
+2023-10-05 14:52:08,102 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (8)  number of iterations=20
+2023-10-05 14:52:08,105 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (9)  number of iterations=18
+2023-10-05 14:52:08,108 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (10)  number of iterations=20
+2023-10-05 14:52:08,111 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (11)  number of iterations=17
+2023-10-05 14:52:08,114 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (12)  number of iterations=18
+2023-10-05 14:52:08,117 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (13)  number of iterations=23
+2023-10-05 14:52:08,120 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (14)  number of iterations=18
+2023-10-05 14:52:08,123 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (15)  number of iterations=15
+2023-10-05 14:52:08,126 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (16)  number of iterations=20
+2023-10-05 14:52:08,129 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (17)  number of iterations=18
+2023-10-05 14:52:08,132 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (18)  number of iterations=18
+2023-10-05 14:52:08,135 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (19)  number of iterations=11
+2023-10-05 14:52:08,137 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (20)  number of iterations=14
+2023-10-05 14:52:08,140 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (21)  number of iterations=18
+2023-10-05 14:52:08,143 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (22)  number of iterations=19
+2023-10-05 14:52:08,146 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (23)  number of iterations=13
+2023-10-05 14:52:08,148 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (24)  number of iterations=9
+2023-10-05 14:52:08,151 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (25)  number of iterations=10
+2023-10-05 14:52:08,152 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (26)  number of iterations=10
+2023-10-05 14:52:08,155 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (27)  number of iterations=12
+2023-10-05 14:52:08,157 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (28)  number of iterations=8
+2023-10-05 14:52:08,160 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (29)  number of iterations=14
+2023-10-05 14:52:08,162 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (30)  number of iterations=11
+2023-10-05 14:52:08,165 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (31)  number of iterations=13
+2023-10-05 14:52:08,167 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (32)  number of iterations=8
+2023-10-05 14:52:08,170 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (33)  number of iterations=8
+2023-10-05 14:52:08,172 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (34)  number of iterations=10
+2023-10-05 14:52:08,172 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Using f0 from maryXML acoustparams
+2023-10-05 14:52:08,175 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 1810
+2023-10-05 14:52:08,176 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=8
+2023-10-05 14:52:08,177 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=2
+2023-10-05 14:52:08,178 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=11
+2023-10-05 14:52:08,180 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=11
+2023-10-05 14:52:08,181 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=8
+2023-10-05 14:52:08,182 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer Synthesizing one sentence.
+2023-10-05 14:52:08,184 [JavaFX Application Thread] INFO  marytts.HTSEngine Using prosody from acoustparams.
+2023-10-05 14:52:08,185 [JavaFX Application Thread] INFO  marytts.HTSEngine Number of models in sentence numModel=45  Total number of states numState=225
+2023-10-05 14:52:08,185 [JavaFX Application Thread] INFO  marytts.HTSEngine Total number of frames=885  Number of voiced frames=428
+2023-10-05 14:52:08,187 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for MGC: 
+2023-10-05 14:52:08,187 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 646
+2023-10-05 14:52:08,188 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=38
+2023-10-05 14:52:08,189 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=2
+2023-10-05 14:52:08,189 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=2
+2023-10-05 14:52:08,190 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=21
+2023-10-05 14:52:08,190 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=2
+2023-10-05 14:52:08,191 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (5)  number of iterations=24
+2023-10-05 14:52:08,193 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (6)  number of iterations=22
+2023-10-05 14:52:08,193 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (7)  number of iterations=21
+2023-10-05 14:52:08,194 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (8)  number of iterations=19
+2023-10-05 14:52:08,195 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (9)  number of iterations=19
+2023-10-05 14:52:08,195 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (10)  number of iterations=4
+2023-10-05 14:52:08,196 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (11)  number of iterations=18
+2023-10-05 14:52:08,197 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (12)  number of iterations=18
+2023-10-05 14:52:08,198 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (13)  number of iterations=23
+2023-10-05 14:52:08,199 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (14)  number of iterations=19
+2023-10-05 14:52:08,199 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (15)  number of iterations=14
+2023-10-05 14:52:08,200 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (16)  number of iterations=19
+2023-10-05 14:52:08,201 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (17)  number of iterations=20
+2023-10-05 14:52:08,201 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (18)  number of iterations=19
+2023-10-05 14:52:08,202 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (19)  number of iterations=12
+2023-10-05 14:52:08,203 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (20)  number of iterations=16
+2023-10-05 14:52:08,203 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (21)  number of iterations=16
+2023-10-05 14:52:08,204 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (22)  number of iterations=5
+2023-10-05 14:52:08,204 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (23)  number of iterations=14
+2023-10-05 14:52:08,205 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (24)  number of iterations=10
+2023-10-05 14:52:08,205 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (25)  number of iterations=12
+2023-10-05 14:52:08,206 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (26)  number of iterations=10
+2023-10-05 14:52:08,206 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (27)  number of iterations=14
+2023-10-05 14:52:08,207 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (28)  number of iterations=8
+2023-10-05 14:52:08,207 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (29)  number of iterations=14
+2023-10-05 14:52:08,207 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (30)  number of iterations=3
+2023-10-05 14:52:08,208 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (31)  number of iterations=3
+2023-10-05 14:52:08,208 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (32)  number of iterations=3
+2023-10-05 14:52:08,208 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (33)  number of iterations=12
+2023-10-05 14:52:08,209 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (34)  number of iterations=12
+2023-10-05 14:52:08,209 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Using f0 from maryXML acoustparams
+2023-10-05 14:52:08,210 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 646
+2023-10-05 14:52:08,211 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=20
+2023-10-05 14:52:08,212 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=7
+2023-10-05 14:52:08,213 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=8
+2023-10-05 14:52:08,214 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=4
+2023-10-05 14:52:08,214 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=6
+2023-10-05 14:52:08,215 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer Synthesizing one sentence.
+2023-10-05 14:52:08,217 [JavaFX Application Thread] INFO  marytts.HTSEngine Using prosody from acoustparams.
+2023-10-05 14:52:08,218 [JavaFX Application Thread] INFO  marytts.HTSEngine Number of models in sentence numModel=61  Total number of states numState=305
+2023-10-05 14:52:08,218 [JavaFX Application Thread] INFO  marytts.HTSEngine Total number of frames=1357  Number of voiced frames=656
+2023-10-05 14:52:08,221 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for MGC: 
+2023-10-05 14:52:08,221 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 959
+2023-10-05 14:52:08,222 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=27
+2023-10-05 14:52:08,223 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=2
+2023-10-05 14:52:08,223 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=1
+2023-10-05 14:52:08,224 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=21
+2023-10-05 14:52:08,225 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=5
+2023-10-05 14:52:08,226 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (5)  number of iterations=25
+2023-10-05 14:52:08,227 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (6)  number of iterations=1
+2023-10-05 14:52:08,228 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (7)  number of iterations=5
+2023-10-05 14:52:08,229 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (8)  number of iterations=2
+2023-10-05 14:52:08,230 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (9)  number of iterations=19
+2023-10-05 14:52:08,232 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (10)  number of iterations=17
+2023-10-05 14:52:08,233 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (11)  number of iterations=17
+2023-10-05 14:52:08,234 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (12)  number of iterations=17
+2023-10-05 14:52:08,235 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (13)  number of iterations=19
+2023-10-05 14:52:08,237 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (14)  number of iterations=19
+2023-10-05 14:52:08,238 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (15)  number of iterations=14
+2023-10-05 14:52:08,239 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (16)  number of iterations=17
+2023-10-05 14:52:08,241 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (17)  number of iterations=17
+2023-10-05 14:52:08,242 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (18)  number of iterations=17
+2023-10-05 14:52:08,243 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (19)  number of iterations=11
+2023-10-05 14:52:08,245 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (20)  number of iterations=14
+2023-10-05 14:52:08,246 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (21)  number of iterations=18
+2023-10-05 14:52:08,248 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (22)  number of iterations=19
+2023-10-05 14:52:08,249 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (23)  number of iterations=14
+2023-10-05 14:52:08,250 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (24)  number of iterations=10
+2023-10-05 14:52:08,251 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (25)  number of iterations=10
+2023-10-05 14:52:08,252 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (26)  number of iterations=10
+2023-10-05 14:52:08,253 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (27)  number of iterations=13
+2023-10-05 14:52:08,253 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (28)  number of iterations=8
+2023-10-05 14:52:08,254 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (29)  number of iterations=14
+2023-10-05 14:52:08,255 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (30)  number of iterations=13
+2023-10-05 14:52:08,256 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (31)  number of iterations=14
+2023-10-05 14:52:08,257 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (32)  number of iterations=8
+2023-10-05 14:52:08,257 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (33)  number of iterations=8
+2023-10-05 14:52:08,258 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (34)  number of iterations=13
+2023-10-05 14:52:08,258 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Using f0 from maryXML acoustparams
+2023-10-05 14:52:08,260 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 959
+2023-10-05 14:52:08,263 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=42
+2023-10-05 14:52:08,264 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=10
+2023-10-05 14:52:08,265 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=2
+2023-10-05 14:52:08,266 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=10
+2023-10-05 14:52:08,266 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=8
+2023-10-05 14:52:08,267 [JavaFX Application Thread] WARN  marytts.Synthesis No PHONE segments found in this section; will not attempt to synthesize it!
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1 Request processed in 363 ms.
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    TextToMaryXML took 1 ms
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    JTokeniser took 4 ms
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    Preprocess took 25 ms
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    OpenNLPPosTagger took 15 ms
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    JPhonemiser took 24 ms
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    Prosody took 15 ms
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    PronunciationModel took 3 ms
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    AcousticModeller took 76 ms
+2023-10-05 14:52:08,267 [JavaFX Application Thread] INFO  marytts.R 1    Synthesis took 199 ms
+2023-10-05 14:52:10,037 [JavaFX Application Thread] INFO  marytts.R 1 New request (input type "TEXT", output type "AUDIO", voice "cmu-slt-hsmm", audio "WAVE")
+2023-10-05 14:52:10,037 [JavaFX Application Thread] INFO  marytts.R 1 Handling request using the following modules:
+2023-10-05 14:52:10,037 [JavaFX Application Thread] INFO  marytts.R 1 - TextToMaryXML (marytts.modules.TextToMaryXML)
+2023-10-05 14:52:10,037 [JavaFX Application Thread] INFO  marytts.R 1 Next module: TextToMaryXML
+2023-10-05 14:52:10,037 [JavaFX Application Thread] INFO  marytts.R 1 Handling request using the following modules:
+2023-10-05 14:52:10,037 [JavaFX Application Thread] INFO  marytts.R 1 - JTokeniser (marytts.language.en.JTokeniser)
+2023-10-05 14:52:10,037 [JavaFX Application Thread] INFO  marytts.R 1 - Preprocess (marytts.language.en.Preprocess)
+2023-10-05 14:52:10,038 [JavaFX Application Thread] INFO  marytts.R 1 - OpenNLPPosTagger (marytts.modules.OpenNLPPosTagger)
+2023-10-05 14:52:10,038 [JavaFX Application Thread] INFO  marytts.R 1 - JPhonemiser (marytts.modules.JPhonemiser)
+2023-10-05 14:52:10,038 [JavaFX Application Thread] INFO  marytts.R 1 - Prosody (marytts.language.en.Prosody)
+2023-10-05 14:52:10,038 [JavaFX Application Thread] INFO  marytts.R 1 - PronunciationModel (marytts.language.en.PronunciationModel)
+2023-10-05 14:52:10,038 [JavaFX Application Thread] INFO  marytts.R 1 - AcousticModeller (marytts.modules.AcousticModeller)
+2023-10-05 14:52:10,038 [JavaFX Application Thread] INFO  marytts.R 1 - Synthesis (marytts.modules.Synthesis)
+2023-10-05 14:52:10,038 [JavaFX Application Thread] INFO  marytts.R 1 Next module: JTokeniser
+2023-10-05 14:52:10,038 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Preprocess
+2023-10-05 14:52:10,040 [JavaFX Application Thread] INFO  marytts.R 1 Next module: OpenNLPPosTagger
+2023-10-05 14:52:10,041 [JavaFX Application Thread] INFO  marytts.R 1 Next module: JPhonemiser
+2023-10-05 14:52:10,042 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Prosody
+2023-10-05 14:52:10,044 [JavaFX Application Thread] INFO  marytts.R 1 Next module: PronunciationModel
+2023-10-05 14:52:10,044 [JavaFX Application Thread] INFO  marytts.R 1 Next module: AcousticModeller
+2023-10-05 14:52:10,057 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for LF0: 
+2023-10-05 14:52:10,058 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 588
+2023-10-05 14:52:10,058 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=21
+2023-10-05 14:52:10,060 [JavaFX Application Thread] INFO  marytts.R 1 Next module: Synthesis
+2023-10-05 14:52:10,060 [JavaFX Application Thread] INFO  marytts.HMMSynthesizer Synthesizing one sentence.
+2023-10-05 14:52:10,061 [JavaFX Application Thread] INFO  marytts.HTSEngine Using prosody from acoustparams.
+2023-10-05 14:52:10,062 [JavaFX Application Thread] INFO  marytts.HTSEngine Number of models in sentence numModel=70  Total number of states numState=350
+2023-10-05 14:52:10,062 [JavaFX Application Thread] INFO  marytts.HTSEngine Total number of frames=1084  Number of voiced frames=588
+2023-10-05 14:52:10,063 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Parameter generation for MGC: 
+2023-10-05 14:52:10,064 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 1003
+2023-10-05 14:52:10,065 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=42
+2023-10-05 14:52:10,066 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=2
+2023-10-05 14:52:10,066 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=1
+2023-10-05 14:52:10,067 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=22
+2023-10-05 14:52:10,068 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=23
+2023-10-05 14:52:10,069 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (5)  number of iterations=24
+2023-10-05 14:52:10,070 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (6)  number of iterations=24
+2023-10-05 14:52:10,071 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (7)  number of iterations=21
+2023-10-05 14:52:10,072 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (8)  number of iterations=21
+2023-10-05 14:52:10,073 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (9)  number of iterations=23
+2023-10-05 14:52:10,074 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (10)  number of iterations=18
+2023-10-05 14:52:10,075 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (11)  number of iterations=17
+2023-10-05 14:52:10,076 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (12)  number of iterations=17
+2023-10-05 14:52:10,079 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (13)  number of iterations=51
+2023-10-05 14:52:10,081 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (14)  number of iterations=21
+2023-10-05 14:52:10,082 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (15)  number of iterations=16
+2023-10-05 14:52:10,083 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (16)  number of iterations=20
+2023-10-05 14:52:10,085 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (17)  number of iterations=38
+2023-10-05 14:52:10,086 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (18)  number of iterations=19
+2023-10-05 14:52:10,086 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (19)  number of iterations=10
+2023-10-05 14:52:10,087 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (20)  number of iterations=16
+2023-10-05 14:52:10,088 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (21)  number of iterations=18
+2023-10-05 14:52:10,089 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (22)  number of iterations=21
+2023-10-05 14:52:10,090 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (23)  number of iterations=14
+2023-10-05 14:52:10,091 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (24)  number of iterations=12
+2023-10-05 14:52:10,092 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (25)  number of iterations=14
+2023-10-05 14:52:10,092 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (26)  number of iterations=20
+2023-10-05 14:52:10,093 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (27)  number of iterations=15
+2023-10-05 14:52:10,094 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (28)  number of iterations=9
+2023-10-05 14:52:10,095 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (29)  number of iterations=17
+2023-10-05 14:52:10,096 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (30)  number of iterations=12
+2023-10-05 14:52:10,097 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (31)  number of iterations=13
+2023-10-05 14:52:10,097 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (32)  number of iterations=3
+2023-10-05 14:52:10,098 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (33)  number of iterations=16
+2023-10-05 14:52:10,099 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (34)  number of iterations=18
+2023-10-05 14:52:10,099 [JavaFX Application Thread] INFO  marytts.ParameterGeneration Using f0 from maryXML acoustparams
+2023-10-05 14:52:10,100 [JavaFX Application Thread] INFO  marytts.PStream Context-dependent global variance optimization: gvLength = 1003
+2023-10-05 14:52:10,102 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (0)  number of iterations=58
+2023-10-05 14:52:10,103 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (1)  number of iterations=32
+2023-10-05 14:52:10,104 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (2)  number of iterations=9
+2023-10-05 14:52:10,104 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (3)  number of iterations=8
+2023-10-05 14:52:10,105 [JavaFX Application Thread] INFO  marytts.PStream Gradient GV optimization for feature: (4)  number of iterations=6
+2023-10-05 14:52:10,106 [JavaFX Application Thread] INFO  marytts.R 1 Request processed in 69 ms.
+2023-10-05 14:52:10,106 [JavaFX Application Thread] INFO  marytts.R 1    TextToMaryXML took 0 ms
+2023-10-05 14:52:10,106 [JavaFX Application Thread] INFO  marytts.R 1    JTokeniser took 0 ms
+2023-10-05 14:52:10,106 [JavaFX Application Thread] INFO  marytts.R 1    Preprocess took 2 ms
+2023-10-05 14:52:10,108 [JavaFX Application Thread] INFO  marytts.R 1    OpenNLPPosTagger took 1 ms
+2023-10-05 14:52:10,108 [JavaFX Application Thread] INFO  marytts.R 1    JPhonemiser took 1 ms
+2023-10-05 14:52:10,108 [JavaFX Application Thread] INFO  marytts.R 1    Prosody took 2 ms
+2023-10-05 14:52:10,108 [JavaFX Application Thread] INFO  marytts.R 1    PronunciationModel took 0 ms
+2023-10-05 14:52:10,108 [JavaFX Application Thread] INFO  marytts.R 1    AcousticModeller took 16 ms
+2023-10-05 14:52:10,108 [JavaFX Application Thread] INFO  marytts.R 1    Synthesis took 46 ms
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.main Shutting down modules...
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.JTokeniser Module shut down.
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.Preprocess Module shut down.
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.JPhonemiser Module shut down.
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.JPhonemiser Module shut down.
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.Prosody Module shut down.
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.SimplePhoneme2AP Module shut down.
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.PronunciationModel Module shut down.
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.OpenNLPPosTagger Module shut down.
+2023-10-05 14:52:13,861 [Thread-4] INFO  marytts.Synthesis Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.TextToMaryXML Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.SableParser Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.SSMLParser Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.APMLParser Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.EmotionmlParser Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.JTokeniser Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.DummyTokens2Words Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.Prosody Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.PronunciationModel Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.TargetFeatureLister Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.TargetFeatureLister Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.AcousticModeller Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.Realised acoustparams extractor Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.Realised durations extractor Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.HTSEngine Module shut down.
+2023-10-05 14:52:13,862 [Thread-4] INFO  marytts.Praat TextGrid generator Module shut down.
+2023-10-05 14:52:13,863 [Thread-4] INFO  marytts.main Shutdown complete.

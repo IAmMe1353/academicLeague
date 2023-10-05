@@ -315,9 +315,11 @@ public class PlayGame {
 	}
 }
 //	TODO create showText checkBox
+//	TODO check inputed time can be parsed
 //	TODO make sure questions are random
 //	TODO make sure index is not out of bounds in bonus questions (ran[] and otherwise) (change range of random?)
 //	TODO make buzz sound
+//	TODO problem went temp length is 1
 //	TODO speak question buttons don't work
 //	TODO check answer for bonus is wrong
 //	TODO saying multiple things at once

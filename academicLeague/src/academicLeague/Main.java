@@ -244,10 +244,20 @@ public class Main extends Application {
 	private void startPlay(Stage stage) {
 		//	make right size
 		String[] deck = checkCombo.getCheckModel().getCheckedItems().toArray(new String[0]);
-		
-		if (deck.length > 0)
-			new PlayGame(stage, deck,team1.getText(),team2.getText(), sizeLimit.getText());
-		else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");
+		int limit = 1;
+		if (sizeLimit.getText().equals(""))
+			limit = 0;
+		try {
+			if (limit != 0)
+				limit = Integer.parseInt(sizeLimit.getText());
+			if (deck.length > 0)
+				new PlayGame(stage, deck,team1.getText(),team2.getText(), limit);
+			else Alert.display("No Deck Selected", "Please Select a Deck Before Starting");
+		}
+		catch(NumberFormatException e) {
+			Alert.display("Enter an Integer", "Please either leave the time limit field blank, or enter an integer");
+		}
+
 			
 	}
 

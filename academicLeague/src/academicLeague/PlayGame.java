@@ -31,18 +31,19 @@ public class PlayGame {
 	int score1, score2, line, numQuestions, deckNum;
 	String[] decks;
 	String team1, team2;
+	Label team1Label, team2Label;
 	// in questions not questions
 	int[] deckSizes, lines;
 	Speak speak;
 	public TextArea a1,a2,a3;
 
-	public PlayGame(Stage window, String[] decks, String team1In, String team2In, String sizeLimit) {
+	public PlayGame(Stage window, String[] decks, String team1In, String team2In, int limit) {
 		speak = new Speak();
+		System.out.println(limit);
 		this.window = window;
 		this.decks = decks;
 		createMegaDeck(decks);
 		numQuestions = (int) (allDecks.size() / 3.0 + .5);
-		int sizeLimitInt = Integer.parseInt(sizeLimit);
 		// set up Labels
 		if (team1In.equals(""))
 			team1 = "Team 1";
@@ -52,9 +53,9 @@ public class PlayGame {
 			team2 = "Team 2";
 		else
 			team2 = team2In;
-		Label team1Label = new Label(team1 + ": " + score1);
+		team1Label = new Label(team1 + ": " + score1);
 		team1Label.setFont(Font.font(Main.titleSize));
-		Label team2Label = new Label(team2 + ": " + score2);
+		team2Label = new Label(team2 + ": " + score2);
 		team2Label.setFont(Font.font(Main.titleSize));
 		// set up Button
 		Button buzz = new Button("Buzz!");
@@ -164,18 +165,7 @@ public class PlayGame {
 				}
 			}
 			//	create dialog to speak
-			String dialog = "The Next Question is a Bonus question (_)(_)";
-			for (int i:lines) {
-				System.out.println("Line: " + i);
-				System.out.println("deckNum: " + deckNum);
-				System.out.println("Adress: " + getAdress(deckNum,i));
-				System.out.println("Question: " +  allDecks.get(getAdress(deckNum,i)));
-				
-				dialog += allDecks.get(getAdress(deckNum,i));
-				dialog += "(_)(_)";
-			}
-			//	remove trailing pause
-			dialog = dialog.substring(0,dialog.length()-3);
+			String dialog = "The Next Question is a Bonus question";
 			window.setScene(bonusScene);
 			speak.speak(dialog);
 			
@@ -210,6 +200,7 @@ public class PlayGame {
 			dialog += "all answers were correct";
 		}
 		score1 += correct;
+		team1Label.setText( team1 + ": " + score1) ;
 		//	change ran[]
 		for (int i:lines)
 			ran[getAdress(deckNum,i)/3] = true;
@@ -227,6 +218,7 @@ public class PlayGame {
 		while(ran[line/3]) {
 			line = (int) (Math.random() * (numQuestions));
 		}
+		dialog += "(_)(_)" + allDecks.get(line*3 );
 		speak.speak(dialog);
 		window.setScene(scene);
 	}
@@ -260,8 +252,8 @@ public class PlayGame {
 		else {
 			new Speak("Incorrect");
 			score1 --;
-			
 			window.setScene(scene);
+			speak.speak(allDecks.get(line*3));
 		}
 		
 		//	change question
@@ -269,7 +261,7 @@ public class PlayGame {
 		while(ran[line/3]) {
 			line = (int) (Math.random() * (numQuestions));
 		}
-		speak.speak(allDecks.get(line*3));
+
 	}
 
 
@@ -315,13 +307,9 @@ public class PlayGame {
 	}
 }
 //	TODO create showText checkBox
-//	TODO check inputed time can be parsed
-//	TODO make sure questions are random
-//	TODO make sure index is not out of bounds in bonus questions (ran[] and otherwise) (change range of random?)
 //	TODO make buzz sound
-//	TODO problem went temp length is 1
-//	TODO speak question buttons don't work
-//	TODO check answer for bonus is wrong
-//	TODO saying multiple things at once
+//	TODO make sure alarm doesn't interrupt voice
+//	TODO problem when temp length is 1
 //	TODO make sure all questions are run
+//	TODO create opponent
 //	TODO create time limit

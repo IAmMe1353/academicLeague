@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -27,6 +29,7 @@ public class PlayGame {
 	Stage window;
 	// in questions not lines
 	boolean[] ran;
+	boolean timesUp;
 	ArrayList<String> allDecks = new ArrayList<>();
 	int score1, score2, line, numQuestions, deckNum;
 	String[] decks;
@@ -36,6 +39,9 @@ public class PlayGame {
 	int[] deckSizes, lines;
 	Speak speak;
 	public TextArea a1,a2,a3;
+	Timer timer;
+	TimerTask task;
+	Thread thread;
 
 	public PlayGame(Stage window, String[] decks, String team1In, String team2In, int limit) {
 		speak = new Speak();
@@ -133,6 +139,18 @@ public class PlayGame {
 		bonusBox.setAlignment(Pos.TOP_CENTER);
 		bonusBox.getChildren().addAll(q1,a1,q2,a2,q3,a3, answer);
 		bonusScene = new Scene(bonusBox,Main.stageHeight * 2, Main.stageHeight);
+	//	set up timer
+	//	is running
+		thread = new Thread(() ->{
+			while(!Thread.interrupted()||//buzzed )
+		}); 
+		timer = new Timer();
+		task = new TimerTask() {
+			public void run() {
+				//	TODO make timer correct
+				System.out.println("timesUp");
+			}
+		};
 	}
 
 	private void doBonusQuestion() {
@@ -167,6 +185,7 @@ public class PlayGame {
 			//	create dialog to speak
 			String dialog = "The Next Question is a Bonus question";
 			window.setScene(bonusScene);
+			timer.schedule(task, 2000);
 			speak.speak(dialog);
 			
 		}
@@ -309,7 +328,7 @@ public class PlayGame {
 //	TODO create showText checkBox
 //	TODO make buzz sound
 //	TODO make sure alarm doesn't interrupt voice
-//	TODO problem when temp length is 1
+//	TODO problem when file length is 1
 //	TODO make sure all questions are run
 //	TODO create opponent
 //	TODO create time limit

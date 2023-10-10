@@ -36,276 +36,292 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Minimum implementation of com.sun.javafx.scene.control.ReadOnlyUnbackedObservableList
+ * Minimum implementation of
+ * com.sun.javafx.scene.control.ReadOnlyUnbackedObservableList
  */
 public abstract class ReadOnlyUnbackedObservableList<E> extends ObservableListBase<E> {
 
-    public void callObservers(Change<E> c) {
-        fireChange(c);
-    }
-    
-    @Override public abstract E get(int i);
+	public void callObservers(Change<E> c) {
+		fireChange(c);
+	}
 
-    @Override public abstract int size();
+	@Override
+	public abstract E get(int i);
 
-    @Override public int indexOf(Object o) {
-        if (o == null) return -1;
+	@Override
+	public abstract int size();
 
-        for (int i = 0; i < size(); i++) {
-            Object obj = get(i);
-            if (o.equals(obj)) return i;
-        }
+	@Override
+	public int indexOf(Object o) {
+		if (o == null)
+			return -1;
 
-        return -1;
-    }
+		for (int i = 0; i < size(); i++) {
+			Object obj = get(i);
+			if (o.equals(obj))
+				return i;
+		}
 
-    @Override public int lastIndexOf(Object o) {
-        if (o == null) return -1;
+		return -1;
+	}
 
-        for (int i = size() - 1; i >= 0; i--) {
-            Object obj = get(i);
-            if (o.equals(obj)) return i;
-        }
+	@Override
+	public int lastIndexOf(Object o) {
+		if (o == null)
+			return -1;
 
-        return -1;
-    }
+		for (int i = size() - 1; i >= 0; i--) {
+			Object obj = get(i);
+			if (o.equals(obj))
+				return i;
+		}
 
-    @Override public boolean contains(Object o) {
-        return indexOf(o) != -1;
-    }
+		return -1;
+	}
 
-    @Override public boolean containsAll(Collection<?> c) {
-        for (Object o : c) {
-            if (! contains(o)) {
-                return false;
-            }
-        }
-        return true;
-    }
+	@Override
+	public boolean contains(Object o) {
+		return indexOf(o) != -1;
+	}
 
-    @Override public boolean isEmpty() {
-        return size() == 0;
-    }
+	@Override
+	public boolean containsAll(Collection<?> c) {
+		for (Object o : c) {
+			if (!contains(o)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
-    @Override public ListIterator<E> listIterator() {
-        return new ReadOnlyUnbackedObservableList.SelectionListIterator<>(this);
-    }
+	@Override
+	public boolean isEmpty() {
+		return size() == 0;
+	}
 
-    @Override public ListIterator<E> listIterator(int index) {
-        return new ReadOnlyUnbackedObservableList.SelectionListIterator<>(this, index);
-    }
+	@Override
+	public ListIterator<E> listIterator() {
+		return new ReadOnlyUnbackedObservableList.SelectionListIterator<>(this);
+	}
 
-    @Override
-    public Iterator<E> iterator() {
-        return new ReadOnlyUnbackedObservableList.SelectionListIterator<>(this);
-    }
+	@Override
+	public ListIterator<E> listIterator(int index) {
+		return new ReadOnlyUnbackedObservableList.SelectionListIterator<>(this, index);
+	}
 
-    /**
-     * NOTE: This method does not fulfill the subList contract from Collections,
-     * it simply returns a list containing the values in the given range.
-     */
-    @Override public List<E> subList(final int fromIndex, final int toIndex) {
+	@Override
+	public Iterator<E> iterator() {
+		return new ReadOnlyUnbackedObservableList.SelectionListIterator<>(this);
+	}
 
-        if (fromIndex < 0 || toIndex > size() || fromIndex > toIndex) {
-            throw new IndexOutOfBoundsException("[ fromIndex: " + fromIndex + ", toIndex: " + toIndex + ", size: " + size() + " ]");
-        }
+	/**
+	 * NOTE: This method does not fulfill the subList contract from Collections, it
+	 * simply returns a list containing the values in the given range.
+	 */
+	@Override
+	public List<E> subList(final int fromIndex, final int toIndex) {
 
-        final List<E> outer = this;
-        return new ReadOnlyUnbackedObservableList<>() {
+		if (fromIndex < 0 || toIndex > size() || fromIndex > toIndex) {
+			throw new IndexOutOfBoundsException(
+					"[ fromIndex: " + fromIndex + ", toIndex: " + toIndex + ", size: " + size() + " ]");
+		}
 
-            @Override
-            public E get(int i) {
-                return outer.get(i + fromIndex);
-            }
+		final List<E> outer = this;
+		return new ReadOnlyUnbackedObservableList<>() {
 
-            @Override
-            public int size() {
-                return toIndex - fromIndex;
-            }
-        };
-    }
+			@Override
+			public E get(int i) {
+				return outer.get(i + fromIndex);
+			}
 
-    @Override
-    public Object[] toArray() {
-        Object[] arr = new Object[size()];
-        for (int i = 0; i < size(); i++) {
-            arr[i] = get(i);
-        }
-        return arr;
-    }
+			@Override
+			public int size() {
+				return toIndex - fromIndex;
+			}
+		};
+	}
 
-    @SuppressWarnings({"unchecked", "SuspiciousSystemArraycopy"})
-    @Override
-    public <T> T[] toArray(T[] a) {
-        Object[] elementData = toArray();
-        int size = elementData.length;
+	@Override
+	public Object[] toArray() {
+		Object[] arr = new Object[size()];
+		for (int i = 0; i < size(); i++) {
+			arr[i] = get(i);
+		}
+		return arr;
+	}
 
-        if (a.length < size) {
-            return (T[]) Arrays.copyOf(elementData, size, a.getClass());
-        }
+	@SuppressWarnings({ "unchecked", "SuspiciousSystemArraycopy" })
+	@Override
+	public <T> T[] toArray(T[] a) {
+		Object[] elementData = toArray();
+		int size = elementData.length;
 
-        System.arraycopy(elementData, 0, a, 0, size);
+		if (a.length < size) {
+			return (T[]) Arrays.copyOf(elementData, size, a.getClass());
+		}
 
-        if (a.length > size) {
-            a[size] = null;
-        }
-        return a;
-    }
+		System.arraycopy(elementData, 0, a, 0, size);
 
-    @Override
-    public String toString() {
-        Iterator<E> i = iterator();
-        if (! i.hasNext())
-            return "[]";
+		if (a.length > size) {
+			a[size] = null;
+		}
+		return a;
+	}
 
-        StringBuilder sb = new StringBuilder();
-        sb.append('[');
-        for (;;) {
-            E e = i.next();
-            sb.append(e == this ? "(this Collection)" : e);
-            if (! i.hasNext())
-                return sb.append(']').toString();
-            sb.append(", ");
-        }
-    }
+	@Override
+	public String toString() {
+		Iterator<E> i = iterator();
+		if (!i.hasNext())
+			return "[]";
 
-    @Override
-    public boolean add(E e) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+		StringBuilder sb = new StringBuilder();
+		sb.append('[');
+		for (;;) {
+			E e = i.next();
+			sb.append(e == this ? "(this Collection)" : e);
+			if (!i.hasNext())
+				return sb.append(']').toString();
+			sb.append(", ");
+		}
+	}
 
-    @Override
-    public void add(int index, E element) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean add(E e) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean addAll(Collection<? extends E> c) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public void add(int index, E element) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean addAll(int index, Collection<? extends E> c) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean addAll(Collection<? extends E> c) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean addAll(E... elements) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean addAll(int index, Collection<? extends E> c) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public E set(int index, E element) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean addAll(E... elements) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean setAll(Collection<? extends E> col) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public E set(int index, E element) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean setAll(E... elements) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean setAll(Collection<? extends E> col) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public void clear() {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean setAll(E... elements) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public void clear() {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean remove(Object o) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public E remove(int index) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean remove(Object o) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean removeAll(Collection<?> c) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public void remove(int from, int to) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean retainAll(Collection<?> c) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean removeAll(E... elements) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public void remove(int from, int to) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    @Override
-    public boolean retainAll(E... elements) {
-        throw new UnsupportedOperationException("Not supported.");
-    }
+	@Override
+	public boolean removeAll(E... elements) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-    private static class SelectionListIterator<E> implements ListIterator<E> {
-        
-        private int index;
-        private final ReadOnlyUnbackedObservableList<E> list;
+	@Override
+	public boolean retainAll(E... elements) {
+		throw new UnsupportedOperationException("Not supported.");
+	}
 
-        public SelectionListIterator(ReadOnlyUnbackedObservableList<E> list) {
-            this(list, 0);
-        }
+	private static class SelectionListIterator<E> implements ListIterator<E> {
 
-        public SelectionListIterator(ReadOnlyUnbackedObservableList<E> list, int index) {
-            this.list = list;
-            this.index = index;
-        }
+		private int index;
+		private final ReadOnlyUnbackedObservableList<E> list;
 
-        @Override
-        public boolean hasNext() {
-            return index < list.size();
-        }
+		public SelectionListIterator(ReadOnlyUnbackedObservableList<E> list) {
+			this(list, 0);
+		}
 
-        @Override
-        public E next() {
-            return list.get(index++);
-        }
+		public SelectionListIterator(ReadOnlyUnbackedObservableList<E> list, int index) {
+			this.list = list;
+			this.index = index;
+		}
 
-        @Override
-        public boolean hasPrevious() {
-            return index > 0;
-        }
+		@Override
+		public boolean hasNext() {
+			return index < list.size();
+		}
 
-        @Override
-        public E previous() {
-            return list.get(index--);
-        }
+		@Override
+		public E next() {
+			return list.get(index++);
+		}
 
-        @Override
-        public int nextIndex() {
-            return index + 1;
-        }
+		@Override
+		public boolean hasPrevious() {
+			return index > 0;
+		}
 
-        @Override
-        public int previousIndex() {
-            return index - 1;
-        }
+		@Override
+		public E previous() {
+			return list.get(index--);
+		}
 
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException("Not supported.");
-        }
+		@Override
+		public int nextIndex() {
+			return index + 1;
+		}
 
-        @Override
-        public void set(E e) {
-            throw new UnsupportedOperationException("Not supported.");
-        }
+		@Override
+		public int previousIndex() {
+			return index - 1;
+		}
 
-        @Override
-        public void add(E e) {
-            throw new UnsupportedOperationException("Not supported.");
-        }
-    }
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException("Not supported.");
+		}
+
+		@Override
+		public void set(E e) {
+			throw new UnsupportedOperationException("Not supported.");
+		}
+
+		@Override
+		public void add(E e) {
+			throw new UnsupportedOperationException("Not supported.");
+		}
+	}
 }

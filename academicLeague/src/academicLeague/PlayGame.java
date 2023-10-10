@@ -29,18 +29,17 @@ public class PlayGame {
 	Stage window;
 	// in questions not lines
 	boolean[] ran;
-	boolean timesUp;
 	ArrayList<String> allDecks = new ArrayList<>();
 	int score1, score2, line, numQuestions, deckNum;
 	String[] decks;
 	String team1, team2;
-	Label team1Label, team2Label;
+	Label team1Label, team2Label, team1LabelQ, team2LabelQ;
 	// in questions not questions
 	int[] deckSizes, lines;
-	Speak speak;
-	public TextArea a1,a2,a3;
+	volatile Speak speak;
+	public TextArea a1, a2, a3;
 	Timer timer;
-	TimerTask task;
+	volatile TimerTask task;
 	Thread thread;
 
 	public PlayGame(Stage window, String[] decks, String team1In, String team2In, int limit) {
@@ -66,11 +65,32 @@ public class PlayGame {
 		// set up Button
 		Button buzz = new Button("Buzz!");
 		buzz.setMinSize(300, 150);
-		buzz.setOnAction(e ->{
+		buzz.setOnAction(e -> {
 			window.setScene(questionScene);
 			speak.clip.stop();
+			thread.interrupt();
+			timer.cancel();
 		});
 		buzz.setFont(Font.font(Main.stageHeight / 5));
+		// set up timer
+		thread = new Thread(() -> {
+			while (speak.clip.isActive()) {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e1) {
+					return;
+				}
+			}
+			timer.schedule(task, 5000);
+		});
+		
+		timer = new Timer();
+		task = new TimerTask() {
+			public void run() {
+				// TODO make timer correct
+				System.out.println("timesUp");
+			}
+		};
 		// set up VBox and create scene
 		VBox mainBox = new VBox(25);
 		mainBox.setAlignment(Pos.TOP_CENTER);
@@ -84,6 +104,7 @@ public class PlayGame {
 		// set scene
 		window.setScene(scene);
 		speak.speak(allDecks.get(line * 3));
+		thread.start();
 		// create answer Scene
 		TextArea answerT = new TextArea();
 		answerT.setPromptText("Press Enter When Finished");
@@ -97,35 +118,35 @@ public class PlayGame {
 			}
 		});
 		// set up new label
-		Label team1LabelQ = new Label(team1 + ": " + score1);
+		team1LabelQ = new Label(team1 + ": " + score1);
 		team1LabelQ.setFont(Font.font(Main.titleSize));
-		Label team2LabelQ = new Label(team2 + ": " + score2);
+		team2LabelQ = new Label(team2 + ": " + score2);
 		team2LabelQ.setFont(Font.font(Main.titleSize));
 		// set up VBox
-		VBox QuestionBox = new VBox(5);
+		VBox QuestionBox = new VBox(25);
 		QuestionBox.setAlignment(Pos.TOP_CENTER);
 		QuestionBox.setBackground(new Background(new BackgroundFill(Main.gray, CornerRadii.EMPTY, Insets.EMPTY)));
 		QuestionBox.setPadding(new Insets(10, 10, 10, 10));
 		QuestionBox.getChildren().addAll(team1LabelQ, team2LabelQ, answerT);
 		questionScene = new Scene(QuestionBox, Main.stageHeight * 2, Main.stageHeight);
-		//	create question scene
+		// create question scene
 		Button q1 = new Button("Question 1");
-		q1.setOnAction(e->{
+		q1.setOnAction(e -> {
 			speak.clip.stop();
-			speak.speak(allDecks.get(getAdress(deckNum,lines[0])));
+			speak.speak(allDecks.get(getAdress(deckNum, lines[0])));
 		});
 		Button q2 = new Button("Question 2");
-		q2.setOnAction(e->{
+		q2.setOnAction(e -> {
 			speak.clip.stop();
-			speak.speak(allDecks.get(getAdress(deckNum,lines[1])));
+			speak.speak(allDecks.get(getAdress(deckNum, lines[1])));
 		});
 		Button q3 = new Button("Question 3");
-		q3.setOnAction(e->{
+		q3.setOnAction(e -> {
 			speak.clip.stop();
-			speak.speak(allDecks.get(getAdress(deckNum,lines[2])));
+			speak.speak(allDecks.get(getAdress(deckNum, lines[2])));
 		});
 		Button answer = new Button("Answer");
-		answer.setOnAction(e-> checkBonus());
+		answer.setOnAction(e -> checkBonus());
 		a1 = new TextArea();
 		a1.setPrefRowCount(2);
 		a1.setMaxWidth(Main.stageHeight);
@@ -137,125 +158,118 @@ public class PlayGame {
 		a3.setMaxWidth(Main.stageHeight);
 		VBox bonusBox = new VBox(5);
 		bonusBox.setAlignment(Pos.TOP_CENTER);
-		bonusBox.getChildren().addAll(q1,a1,q2,a2,q3,a3, answer);
-		bonusScene = new Scene(bonusBox,Main.stageHeight * 2, Main.stageHeight);
-	//	set up timer
-	//	is running
-		thread = new Thread(() ->{
-			while(!Thread.interrupted()||//buzzed )
-		}); 
-		timer = new Timer();
-		task = new TimerTask() {
-			public void run() {
-				//	TODO make timer correct
-				System.out.println("timesUp");
-			}
-		};
+		bonusBox.getChildren().addAll(q1, a1, q2, a2, q3, a3, answer);
+		bonusScene = new Scene(bonusBox, Main.stageHeight * 2, Main.stageHeight);
+
 	}
 
 	private void doBonusQuestion() {
 		// speak type (everything before _ in deck title)
-		if (checkIfBonusQuestions()) {	
+		if (checkIfBonusQuestions()) {
 			// select deck
 			int deckNum = (int) (Math.random() * (decks.length - 1));
-			//	making sure there are enough remaining questions
-			while(deckSizes[deckNum] < 3) {
+			// making sure there are enough remaining questions
+			while (deckSizes[deckNum] < 3) {
 				deckNum = (int) (Math.random() * (decks.length - 1));
 			}
 			lines = new int[3];
-			//	get lines for questions
+			// get lines for questions
 			for (int i = 0; i < 3; i++) {
 				boolean notValid = true;
 				while (notValid) {
-					int  questionNum =(int)(Math.random()*deckSizes[deckNum]);
-					lines[i] = questionNum*3;
+					int questionNum = (int) (Math.random() * deckSizes[deckNum]);
+					lines[i] = questionNum * 3;
 					notValid = false;
-					//	check that that question has not been done
-					if (ran[getAdress(deckNum,lines[i])/3])
+					// check that that question has not been done
+					if (ran[getAdress(deckNum, lines[i]) / 3])
 						notValid = true;
-					//	check that each question is different
-					if (i==1)
-						if(lines[1] == lines[0])
+					// check that each question is different
+					if (i == 1)
+						if (lines[1] == lines[0])
 							notValid = true;
-					if (i==2)
-						if(lines[2] == lines[1]||lines[2] == lines[0])
+					if (i == 2)
+						if (lines[2] == lines[1] || lines[2] == lines[0])
 							notValid = true;
 				}
 			}
-			//	create dialog to speak
+			// create dialog to speak
 			String dialog = "The Next Question is a Bonus question";
 			window.setScene(bonusScene);
-			timer.schedule(task, 2000);
 			speak.speak(dialog);
-			
-		}
-		else {
+
+		} else {
 			new Speak("There are no remaining bonus Questions");
 		}
 	}
+
 	private void checkBonus() {
 		int correct = 0;
 		String dialog = "";
-		if(checkAnswer(a1.getText(),allDecks.get(getAdress(deckNum,lines[0])+1)))
+		if (checkAnswer(a1.getText(), allDecks.get(getAdress(deckNum, lines[0]) + 1)))
 			correct++;
 		else
-			dialog += "The correct answer for question one was " + allDecks.get(getAdress(deckNum,lines[0])+1).split(";")[0] + "(_)(_)";
-		if(checkAnswer(a2.getText(),allDecks.get(getAdress(deckNum,lines[1])+1)))
+			dialog += "The correct answer for question one was "
+					+ allDecks.get(getAdress(deckNum, lines[0]) + 1).split(";")[0] + "(_)(_)";
+		if (checkAnswer(a2.getText(), allDecks.get(getAdress(deckNum, lines[1]) + 1)))
 			correct++;
 		else
-			dialog += "The correct answer for question two was " + allDecks.get(getAdress(deckNum,lines[1])+1).split(";")[0] + "(_)(_)";
-		if(checkAnswer(a3.getText(),allDecks.get(getAdress(deckNum,lines[2])+1)))
+			dialog += "The correct answer for question two was "
+					+ allDecks.get(getAdress(deckNum, lines[1]) + 1).split(";")[0] + "(_)(_)";
+		if (checkAnswer(a3.getText(), allDecks.get(getAdress(deckNum, lines[2]) + 1)))
 			correct++;
 		else
-			dialog += "The correct answer for question three was " + allDecks.get(getAdress(deckNum,lines[2])+1).split(";")[0] + "(_)(_)";
+			dialog += "The correct answer for question three was "
+					+ allDecks.get(getAdress(deckNum, lines[2]) + 1).split(";")[0] + "(_)(_)";
 		if (correct == 1)
 			dialog += " One answer was correct";
 		else if (correct == 2) {
 			correct = 3;
 			dialog += " All but one answer was correct";
-		}
-		else if (correct == 3) {
-			correct =5;
+		} else if (correct == 3) {
+			correct = 5;
 			dialog += "all answers were correct";
 		}
 		score1 += correct;
-		team1Label.setText( team1 + ": " + score1) ;
-		//	change ran[]
-		for (int i:lines)
-			ran[getAdress(deckNum,i)/3] = true;
-		//	decrease deckLength
+		team1Label.setText(team1 + ": " + score1);
+		team1LabelQ.setText(team1 + ": " + score1);
+		// change ran[]
+		for (int i : lines)
+			ran[getAdress(deckNum, i) / 3] = true;
+		// decrease deckLength
 		int sum = 0;
 		for (int i = 0; i < deckSizes.length; i++) {
-			sum += deckSizes[i]*3;
+			sum += deckSizes[i] * 3;
 			if (lines[0] < sum) {
 				deckSizes[i] -= 3;
 				break;
 			}
 		}
-		//	change question
+		// change question
 		line = (int) (Math.random() * (numQuestions));
-		while(ran[line/3]) {
+		while (ran[line / 3]) {
 			line = (int) (Math.random() * (numQuestions));
 		}
-		dialog += "(_)(_)" + allDecks.get(line*3 );
+		dialog += "(_)(_)" + allDecks.get(line * 3);
 		speak.speak(dialog);
 		window.setScene(scene);
 	}
-	private boolean checkIfBonusQuestions(){
-		for(int i:deckSizes) {
-			if (i >=3) {
+
+	private boolean checkIfBonusQuestions() {
+		for (int i : deckSizes) {
+			if (i >= 3) {
 				return true;
 			}
 		}
 		return false;
 	}
+
 	private void check(String answer) {
-		
-		ran[line/3] = true;
+
+		ran[line / 3] = true;
 		// decrease deck length array
 		int sum = 0;
 		for (int i = 0; i < deckSizes.length; i++) {
-			sum += deckSizes[i]*3;
+			sum += deckSizes[i] * 3;
 			if (line < sum) {
 				deckSizes[i] -= 1;
 				break;
@@ -267,22 +281,20 @@ public class PlayGame {
 			score1 += 3;
 			new Speak("Correct");
 			doBonusQuestion();
-		}
-		else {
+		} else {
 			new Speak("Incorrect");
-			score1 --;
+			score1--;
 			window.setScene(scene);
-			speak.speak(allDecks.get(line*3));
+			speak.speak(allDecks.get(line * 3));
 		}
-		
-		//	change question
+
+		// change question
 		line = (int) (Math.random() * (numQuestions));
-		while(ran[line/3]) {
+		while (ran[line / 3]) {
 			line = (int) (Math.random() * (numQuestions));
 		}
 
 	}
-
 
 	private boolean checkAnswer(String answer, String answerLine) {
 		String[] answers = answerLine.split(";");
@@ -299,7 +311,7 @@ public class PlayGame {
 		deckSizes = new int[decks.length];
 		for (int i = 0; i < decks.length; i++) {
 			String[] deckArray = readFileAsArray(decks[i] + ".txt");
-			deckSizes[i] = (int)(deckArray.length/3.0 + .5);
+			deckSizes[i] = (int) (deckArray.length / 3.0 + .5);
 			for (String line : deckArray) {
 				allDecks.add(line);
 			}
@@ -319,7 +331,7 @@ public class PlayGame {
 	private int getAdress(int deckNum, int line) {
 		int adress = 0;
 		for (int i = 0; i < deckNum; i++) {
-			adress += deckSizes[i]*3;
+			adress += deckSizes[i] * 3;
 		}
 		adress += line;
 		return adress;

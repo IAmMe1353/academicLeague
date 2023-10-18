@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
@@ -25,12 +27,13 @@ import javafx.stage.Stage;
 
 public class PlayGame {
 
-	Scene scene, questionScene, bonusScene;
-	Stage window;
+	volatile Scene scene, questionScene, bonusScene;
+	volatile Stage window;
 	// in questions not lines
 	boolean[] ran;
 	ArrayList<String> allDecks = new ArrayList<>();
-	int score1, score2, line, numQuestions, deckNum;
+	int score2, line, numQuestions, deckNum;
+	volatile int score1;
 	String[] decks;
 	String team1, team2;
 	Label team1Label, team2Label, team1LabelQ, team2LabelQ;
@@ -41,6 +44,7 @@ public class PlayGame {
 	Timer timer;
 	volatile TimerTask task;
 	Thread thread;
+	Task<Void> clockTask;
 
 	public PlayGame(Stage window, String[] decks, String team1In, String team2In, int limit) {
 		speak = new Speak();
@@ -66,6 +70,7 @@ public class PlayGame {
 		Button buzz = new Button("Buzz!");
 		buzz.setMinSize(300, 150);
 		buzz.setOnAction(e -> {
+			System.out.println(score1);
 			window.setScene(questionScene);
 			speak.clip.stop();
 			thread.interrupt();
@@ -73,22 +78,26 @@ public class PlayGame {
 		});
 		buzz.setFont(Font.font(Main.stageHeight / 5));
 		// set up timer
-		thread = new Thread(() -> {
-			while (speak.clip.isActive()) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e1) {
-					return;
+		clockTask = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				while (speak.clip.isActive()) {
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e1) {
+						return null;
+					}
 				}
-			}
-			timer.schedule(task, 5000);
-		});
+				timer.schedule(task, 5000);
+				return null;
+				}
+		};
+		thread = new Thread(clockTask);
 		
 		timer = new Timer();
 		task = new TimerTask() {
 			public void run() {
-				// TODO make timer correct
-				System.out.println("timesUp");
+				Platform.runLater(() -> check(" "));
 			}
 		};
 		// set up VBox and create scene
@@ -160,7 +169,6 @@ public class PlayGame {
 		bonusBox.setAlignment(Pos.TOP_CENTER);
 		bonusBox.getChildren().addAll(q1, a1, q2, a2, q3, a3, answer);
 		bonusScene = new Scene(bonusBox, Main.stageHeight * 2, Main.stageHeight);
-
 	}
 
 	private void doBonusQuestion() {
@@ -264,7 +272,7 @@ public class PlayGame {
 	}
 
 	private void check(String answer) {
-
+		System.out.println("checked ");
 		ran[line / 3] = true;
 		// decrease deck length array
 		int sum = 0;
@@ -278,14 +286,17 @@ public class PlayGame {
 		String correctAnswers = allDecks.get(line * 3 + 1);
 		// if correct
 		if (checkAnswer(answer, correctAnswers)) {
+			System.out.println("correct ");
 			score1 += 3;
 			new Speak("Correct");
 			doBonusQuestion();
 		} else {
 			new Speak("Incorrect");
+			System.out.println("incorrect ");
 			score1--;
 			window.setScene(scene);
 			speak.speak(allDecks.get(line * 3));
+			new Thread(clockTask).start();
 		}
 
 		// change question
@@ -293,6 +304,8 @@ public class PlayGame {
 		while (ran[line / 3]) {
 			line = (int) (Math.random() * (numQuestions));
 		}
+		team1Label.setText(team1 + ": " + score1);
+		team1LabelQ.setText(team1 + ": " + score1);
 
 	}
 
@@ -343,4 +356,5 @@ public class PlayGame {
 //	TODO problem when file length is 1
 //	TODO make sure all questions are run
 //	TODO create opponent
+//	say correct answer when incorrect
 //	TODO create time limit

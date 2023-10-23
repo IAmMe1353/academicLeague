@@ -31,7 +31,7 @@ public class Practice {
 	TextArea answerT;
 	static String[] questions;
 	static boolean shuffle;
-	boolean[] ran;
+	static boolean[] ran;
 	VBox mainBox;
 	static String questionsWrong = "";
 	Stage window;
@@ -47,6 +47,9 @@ public class Practice {
 		});
 		// turn deck into array
 		questions = readFileAsArray(fileName);
+		for(String i : questions)
+			System.out.print(i + "\n");
+			
 		numQuestions = (int) (questions.length / 3.0 + .5);
 		this.window = window;
 		line = 0;
@@ -84,7 +87,7 @@ public class Practice {
 		if (shuffle)
 			firstImage = shuffleLine * 3 + 2;
 		if (!questions[firstImage].trim().equals("")) {
-			System.out.println(questions[firstImage]);
+			System.out.println("First image: " + firstImage + "first image: " + questions[firstImage]);
 			ImageView imageView = new ImageView(
 					new Image(System.getProperty("user.dir") + "/resources/images/" + questions[firstImage].trim()));
 			imageView.setPreserveRatio(true);
@@ -202,6 +205,7 @@ public class Practice {
 			e.printStackTrace();
 			return null;
 		}
+		System.out.println(fileContents.endsWith("\r\n"));
 		if (fileContents.endsWith("\r\n"))
 			return fileContents.split("\r\n");
 		else
@@ -276,7 +280,7 @@ public class Practice {
 				window.setScene(correctScene);
 			} else {
 				// adds wrong questions to global string
-				questionsWrong += questions[shuffleLine * 3] + "\n" + questions[shuffleLine * 3 + 1] + "\n\n";
+				questionsWrong += questions[shuffleLine * 3] + "\n" + questions[shuffleLine * 3 + 1] + "\n" + questions[shuffleLine * 3 + 2] + "\n";
 				correctAnswer.setText("The correct answer is " + questions[shuffleLine * 3 + 1].split(";")[0]);
 				window.setScene(wrongScene);
 			}
@@ -287,7 +291,7 @@ public class Practice {
 				window.setScene(correctScene);
 			} else {
 				// adds wrong questions to global string
-				questionsWrong += questions[line - 1] + "\n" + questions[line] + "\n\n";
+				questionsWrong += questions[line - 1] + "\n" + questions[line] + "\n" + questions[line + 1] + "\n";
 				correctAnswer.setText("The correct answer is " + questions[line].split(";")[0]);
 				window.setScene(wrongScene);
 			}

@@ -68,7 +68,12 @@ public class Alert {
 		});
 		saveButton.setOnAction(e -> {
 			if (Practice.shuffle) {
-
+				for (int i = 0; i < Practice.ran.length;i++) {
+					if (!Practice.ran[i]) {
+						Practice.questionsWrong += Practice.questions[i*3] + "\n" + Practice.questions[i*3+1] + "\n" + Practice.questions[i*3+2] + "\n"; 
+					}
+				}
+				Practice.saveToFile(overwrite.isSelected(), Practice.questionsWrong, tempDeck.getValue());
 			} else {
 				for (int i = Practice.line; i < Practice.questions.length; i++)
 					Practice.questionsWrong += Practice.questions[i] + "\n";

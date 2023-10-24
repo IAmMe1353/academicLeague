@@ -113,7 +113,8 @@ public class PlayGame {
 		// set scene
 		window.setScene(scene);
 		speak.speak(allDecks.get(line * 3));
-		thread.start();
+		//TODO
+		//thread.start();
 		// create answer Scene
 		TextArea answerT = new TextArea();
 		answerT.setPromptText("Press Enter When Finished");
@@ -296,7 +297,8 @@ public class PlayGame {
 			score1--;
 			window.setScene(scene);
 			speak.speak(allDecks.get(line * 3));
-			new Thread(clockTask).start();
+			//TODO
+			//	new Thread(clockTask).start();
 		}
 
 		// change question
